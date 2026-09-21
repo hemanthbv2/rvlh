@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions & RV-TSA Scholarships | RV Learning Hub (RSST)</title>
+  <meta name="description" content="Apply for RV Learning Hub Admissions 2026-27. Learn about RV-TSA scholarship tiers offering up to 100% tuition fee waivers, transparent fee structures, and the 5-step admission roadmap.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="website-nav.css">
+  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.5">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--site-bg);
+      color: var(--site-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page-hero {
+      max-width: 1200px;
+      margin: 50px auto 30px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .page-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 16.5px;
+      color: var(--site-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Scholarship Slabs Grid */
+    .scholarship-section {
+      max-width: 1200px;
+      margin: 40px auto 70px auto;
+      padding: 0 24px;
+    }
+    .section-headline {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-headline h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .section-headline p {
+      color: var(--site-text-muted);
+      font-size: 14.5px;
+      margin-top: 6px;
+    }
+
+    .slabs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .slab-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--site-border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      position: relative;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .slab-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    .slab-card.platinum {
+      border-color: rgba(59, 130, 246, 0.5);
+      background: linear-gradient(180deg, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.8) 100%);
+    }
+    .slab-card.gold {
+      border-color: rgba(245, 158, 11, 0.5);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+    }
+    .slab-card.silver {
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+    .slab-card.sports {
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+
+    .slab-tier {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .slab-waiver {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .slab-criteria {
+      font-size: 13.5px;
+      color: var(--site-text-muted);
+      line-height: 1.55;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* 5-Step Admission Roadmap */
+    .roadmap-section {
+      max-width: 1200px;
+      margin: 50px auto 80px auto;
+      padding: 0 24px;
+    }
+    .steps-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .step-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--site-border);
+      border-radius: 16px;
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--site-primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px auto;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .step-desc {
+      font-size: 12.5px;
+      color: var(--site-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Admissions & Application Form Area */
+    .apply-section {
+      max-width: 1200px;
+      margin: 40px auto 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .fee-guidelines-box {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--site-border);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .fee-guidelines-box h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .fee-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .fee-item {
+      display: flex;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--site-text-muted);
+      line-height: 1.5;
+    }
+    .fee-check { color: #10b981; font-weight: bold; }
+
+    /* Form Container */
+    .form-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+    .form-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .form-card p {
+      font-size: 13.5px;
+      color: var(--site-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full { grid-column: span 2; }
+    .form-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .form-input, .form-select {
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 13.5px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--site-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    }
+    .form-select option {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .btn-submit-app {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+    .btn-submit-app:hover {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      transform: translateY(-1px);
+    }
+
+    .submission-notice {
+      display: none;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .steps-container { grid-template-columns: repeat(2, 1fr); }
+      .apply-section { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+    }
+    @media (max-width: 640px) {
+      .page-hero h1 { font-size: 32px; }
+      .steps-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="site-nav-container">
+      <a href="index.html" class="site-logo-group">
+        <div class="site-logo-badge">RV</div>
+        <div class="site-logo-text">
+          <div class="site-logo-title">RV Learning Hub</div>
+          <p>RSST Educational Initiative</p>
+        </div>
+      </a>
+      <nav class="site-nav-links">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="campuses.html" class="site-nav-link">8 Campuses</a>
+        <a href="courses.html" class="site-nav-link">Courses</a>
+        <a href="hostels.html" class="site-nav-link">Residential & Hostels</a>
+        <a href="admissions.html" class="site-nav-link active">Scholarships & Fees</a>
+        <a href="faculty.html" class="site-nav-link">Faculty</a>
+        <a href="events.html" class="site-nav-link">Events</a>
+        <a href="contact.html" class="site-nav-link">Contact</a>
+        <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+      </nav>
+      <button class="site-mobile-toggle" id="site-mobile-toggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="site-mobile-drawer" id="site-mobile-drawer">
+    <a href="index.html" class="site-nav-link">Home</a>
+    <a href="campuses.html" class="site-nav-link">8 Campuses Directory</a>
+    <a href="courses.html" class="site-nav-link">Courses (JEE / NEET / Commerce)</a>
+    <a href="hostels.html" class="site-nav-link">Residential & Hostels (Harohalli)</a>
+    <a href="admissions.html" class="site-nav-link active">Scholarships & Fees (RV-TSA)</a>
+    <a href="faculty.html" class="site-nav-link">Faculty & Leadership</a>
+    <a href="events.html" class="site-nav-link">Events & Calendar</a>
+    <a href="contact.html" class="site-nav-link">Admissions Contact & Counseling</a>
+    <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-pill">
+      <span>🎓 Admissions 2026-27 & Merit Slabs</span>
+    </div>
+    <h1>RV-TSA Scholarships & Admissions</h1>
+    <p>
+      Rashtreeya Sikshana Samithi Trust (RSST) is committed to nurturing merit and academic hunger. 
+      Through the RVLH Talent & Scholarship Assessment (RV-TSA), deserving students can earn up to 100% tuition waivers across all 8 PU campuses.
+    </p>
+  </section>
+
+  <!-- Scholarship Slabs -->
+  <section class="scholarship-section" id="scholarships">
+    <div class="section-headline">
+      <h2>RV-TSA Merit Scholarship Tiers</h2>
+      <p>Scholarship percentages are applied directly onto the tuition fee component for the full 2-year duration.</p>
+    </div>
+
+    <div class="slabs-grid">
+      <!-- 1. Platinum -->
+      <div class="slab-card platinum">
+        <div>
+          <div class="slab-tier" style="color: #60a5fa;">Platinum Scholar</div>
+          <div class="slab-waiver">100% Fee Waiver</div>
+        </div>
+        <div class="slab-criteria">
+          <strong>Criteria:</strong> 96% and above in 10th Board (SSLC / CBSE / ICSE) OR Top 5% rank in the RV-TSA Assessment.
+        </div>
+      </div>
+
+      <!-- 2. Gold -->
+      <div class="slab-card gold">
+        <div>
+          <div class="slab-tier" style="color: #fbbf24;">Gold Scholar</div>
+          <div class="slab-waiver">50% Fee Waiver</div>
+        </div>
+        <div class="slab-criteria">
+          <strong>Criteria:</strong> 91% to 95.9% in 10th Board OR Top 15% rank in the RV-TSA Assessment.
+        </div>
+      </div>
+
+      <!-- 3. Silver -->
+      <div class="slab-card silver">
+        <div>
+          <div class="slab-tier" style="color: #cbd5e1;">Silver Scholar</div>
+          <div class="slab-waiver">25% Fee Waiver</div>
+        </div>
+        <div class="slab-criteria">
+          <strong>Criteria:</strong> 85% to 90.9% in 10th Board OR Top 30% rank in the RV-TSA Assessment.
+        </div>
+      </div>
+
+      <!-- 4. Sports -->
+      <div class="slab-card sports">
+        <div>
+          <div class="slab-tier" style="color: #34d399;">Sports & Olympiad</div>
+          <div class="slab-waiver">Up to 50% Waiver</div>
+        </div>
+        <div class="slab-criteria">
+          <strong>Criteria:</strong> State or National level representation in recognized sports or National Science/Math Olympiad medalists.
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 24px;">
+      <button onclick="testBrainPrompt('Can you evaluate my eligibility for RV-TSA scholarship with 92% in 10th?')" style="background:rgba(37,99,235,0.15); border:1px solid rgba(59,130,246,0.3); color:#93c5fd; padding:10px 22px; border-radius:30px; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s;">
+        ✨ Check Your Scholarship Eligibility with AI Chatbot &rarr;
+      </button>
+    </div>
+  </section>
+
+  <!-- 5-Step Roadmap -->
+  <section class="roadmap-section">
+    <div class="section-headline">
+      <h2>5-Step Admissions Procedure</h2>
+      <p>A seamless, transparent admission flow from initial registration to batch orientation.</p>
+    </div>
+
+    <div class="steps-container">
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div class="step-title">Online Application</div>
+        <div class="step-desc">Fill out the quick enrollment inquiry form below or through this portal.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div class="step-title">RV-TSA Test</div>
+        <div class="step-desc">Take the diagnostic scholarship test online or at your nearest RVLH campus.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div class="step-title">Counseling & Tour</div>
+        <div class="step-desc">Meet senior academic deans with your parents to finalize stream and batch.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">4</div>
+        <div class="step-title">Document Check</div>
+        <div class="step-desc">Submit 10th marks card copy, transfer certificate, and identification proof.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">5</div>
+        <div class="step-title">Seat Confirmation</div>
+        <div class="step-desc">Confirm enrollment, collect decoded study modules, and receive timetable.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application & Fee Details Area -->
+  <section class="apply-section" id="apply">
+
+    <!-- Left: Fee Transparency Guidelines -->
+    <div class="fee-guidelines-box">
+      <h3>Transparent Fee Guidelines</h3>
+      <p style="font-size: 13.5px; color: var(--site-text-muted); line-height: 1.6;">
+        Unlike external coaching centers that charge separate private tuition fees on top of high school fees, 
+        RV Learning Hub offers a unified synchronized package.
+      </p>
+
+      <ul class="fee-list">
+        <li class="fee-item">
+          <span class="fee-check">&#10003;</span>
+          <span><strong>Single All-Inclusive Fee:</strong> Covers PU Board tuition, complete competitive entrance coaching (JEE / NEET / CA), test series, and study materials.</span>
+        </li>
+        <li class="fee-item">
+          <span class="fee-check">&#10003;</span>
+          <span><strong>Flexible Installment Options:</strong> Pay conveniently across 2 to 4 scheduled terms throughout the academic year.</span>
+        </li>
+        <li class="fee-item">
+          <span class="fee-check">&#10003;</span>
+          <span><strong>Zero-Cost EMI Partnerships:</strong> Education loan facilities with leading nationalized banks at 0% effective interest rates.</span>
+        </li>
+        <li class="fee-item">
+          <span class="fee-check">&#10003;</span>
+          <span><strong>Hostel & Boarding:</strong> Harohalli residential boarding and NMKRV women's hostel fees are billed transparently on a term basis covering 4 meals and laundry.</span>
+        </li>
+      </ul>
+
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);">
+        <div style="font-size: 13px; font-weight: 700; color: var(--site-accent); margin-bottom: 4px;">Admissions Helpline</div>
+        <div style="font-size: 13px; color: #cbd5e1;">Direct phone: <a href="tel:08026632000" style="color:#60a5fa; text-decoration:none;">080-2663 2000</a> / <a href="https://wa.me/918317346585" style="color:#60a5fa; text-decoration:none;">+91 83173 46585</a></div>
+        <div style="font-size: 12px; color: var(--site-text-dim); margin-top: 4px;">Email: admissions.rvlh@rvei.edu.in</div>
+      </div>
+    </div>
+
+    <!-- Right: Application Form -->
+    <div class="form-card">
+      <h3>Admissions & Callback Form</h3>
+      <p>Submit your details to receive customized fee estimates, scholarship verification, and campus counseling.</p>
+
+      <form id="rvlh-admissions-form" onsubmit="handleAdmissionsSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label class="form-label" for="app-student-name">Student's Full Name *</label>
+            <input type="text" id="app-student-name" class="form-input" placeholder="Enter student's full name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-parent-phone">Parent / Student Mobile *</label>
+            <input type="tel" id="app-parent-phone" class="form-input" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-email">Email Address</label>
+            <input type="email" id="app-email" class="form-input" placeholder="student@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-10th-board">10th Class Board *</label>
+            <select id="app-10th-board" class="form-select" required>
+              <option value="">Select Board</option>
+              <option value="CBSE">CBSE</option>
+              <option value="ICSE">ICSE</option>
+              <option value="Karnataka SSLC">Karnataka SSLC</option>
+              <option value="IGCSE / Other">IGCSE / Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-10th-percent">10th Score / Expectation (%) *</label>
+            <input type="number" id="app-10th-percent" class="form-input" placeholder="e.g. 92" min="50" max="100" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-course">Preferred Coaching Track *</label>
+            <select id="app-course" class="form-select" required>
+              <option value="">Select Track</option>
+              <option value="jee_adv">JEE Advanced (Main + KCET)</option>
+              <option value="jee_main">JEE Main + KCET Decoded</option>
+              <option value="neet_ug">NEET UG Medical Decoded</option>
+              <option value="commerce">Commerce Decoded (CA/CS/CUET)</option>
+              <option value="revise_cet">ReVise CET Crash Course</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-campus">Preferred PU Campus *</label>
+            <select id="app-campus" class="form-select" required>
+              <option value="">Select Campus</option>
+              <option value="ssmrv">SSMRV PU College (Jayanagar)</option>
+              <option value="nmkrv">NMKRV PU College for Women (Jayanagar)</option>
+              <option value="rv_north">RV PU College North (Yelahanka)</option>
+              <option value="rv_south">RV PU College South (Jayanagar)</option>
+              <option value="rv_ecity">RV PU College Electronic City</option>
+              <option value="rv_harohalli">RV Harohalli Residential (50 Acres)</option>
+              <option value="rv_mysuru">RV PU College Mysuru</option>
+              <option value="vvn">VVN PU College (VV Puram)</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="app-boarding">Mode of Study *</label>
+            <select id="app-boarding" class="form-select" required>
+              <option value="day_scholar">Day Scholar (With College Bus Fleet)</option>
+              <option value="residential">Residential Hostels (Harohalli / NMKRV)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit-app">Submit Application & Request Callback</button>
+        <div class="submission-notice" id="app-notice">
+          🎉 <strong>Application Received!</strong> Our Senior Academic Counselor will contact you shortly with your customized RV-TSA scholarship evaluation.
+        </div>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="site-footer-container">
+      <div class="site-footer-brand">
+        <div class="site-logo-group" style="margin-bottom: 12px;">
+          <div class="site-logo-badge">RV</div>
+          <div class="site-logo-text">
+            <div class="site-logo-title">RV Learning Hub</div>
+            <p>RSST Educational Initiative</p>
+          </div>
+        </div>
+        <p>
+          Rashtreeya Sikshana Samithi Trust (RSST) has pioneered world-class education since 1940. 
+          RV Learning Hub synchronizes premier coaching for JEE, NEET, and Commerce with Karnataka Pre-University board studies.
+        </p>
+        <div class="site-footer-trust">85+ Years of Academic Legacy &bull; 8 PU Campuses</div>
+      </div>
+      <div class="site-footer-col">
+        <h5>Explore Campuses</h5>
+        <ul>
+          <li><a href="campuses.html#ssmrv">SSMRV PU College (Jayanagar)</a></li>
+          <li><a href="campuses.html#nmkrv">NMKRV PU College for Women</a></li>
+          <li><a href="campuses.html#rv_north">RV PU College North (Yelahanka)</a></li>
+          <li><a href="campuses.html#rv_south">RV PU College South (Jayanagar)</a></li>
+          <li><a href="campuses.html#rv_ecity">RV PU College Electronic City</a></li>
+          <li><a href="campuses.html#rv_harohalli">Harohalli Residential Campus</a></li>
+          <li><a href="campuses.html#rv_mysuru">RV PU College Mysuru</a></li>
+          <li><a href="campuses.html#vvn">VVN PU College (VV Puram)</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Academic Tracks</h5>
+        <ul>
+          <li><a href="courses.html#jee_adv">JEE Advanced Decoded</a></li>
+          <li><a href="courses.html#jee_main">JEE Main + KCET Decoded</a></li>
+          <li><a href="courses.html#neet_ug">NEET UG Medical Decoded</a></li>
+          <li><a href="courses.html#commerce">Commerce Decoded (CA/CS/CUET)</a></li>
+          <li><a href="courses.html#revise_cet">ReVise CET Crash Course</a></li>
+          <li><a href="admissions.html#scholarships">RV-TSA Scholarship Slabs</a></li>
+          <li><a href="hostels.html#schedule">Synchronized Timetables</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Admissions & Help</h5>
+        <ul>
+          <li><a href="tel:08026632000">📞 Central Desk: 080-2663 2000</a></li>
+          <li><a href="https://wa.me/918317346585">💬 WhatsApp: +91 83173 46585</a></li>
+          <li><a href="mailto:admissions.rvlh@rvei.edu.in">✉️ admissions.rvlh@rvei.edu.in</a></li>
+          <li><a href="hostels.html">🏡 Residential Living & Hostels</a></li>
+          <li><a href="admissions.html">💰 Fees & Installments</a></li>
+          <li><a href="contact.html">📍 Campus Map & Addresses</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div>&copy; 2026 RV Learning Hub &bull; Rashtreeya Sikshana Samithi Trust (RSST). All Rights Reserved.</div>
+      <div>
+        <a href="index.html">Home</a> &bull;
+        <a href="campuses.html">Campuses</a> &bull;
+        <a href="courses.html">Courses</a> &bull;
+        <a href="hostels.html">Hostels</a> &bull;
+        <a href="admissions.html">Admissions</a> &bull;
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="website-nav.js"></script>
+  <script>
+    function handleAdmissionsSubmit(e) {
+      e.preventDefault();
+      const studentName = document.getElementById('app-student-name').value;
+      const phone = document.getElementById('app-parent-phone').value;
+      const board = document.getElementById('app-10th-board').value;
+      const percent = document.getElementById('app-10th-percent').value;
+      const course = document.getElementById('app-course').value;
+      const campus = document.getElementById('app-campus').value;
+
+      // Dispatch Telemetry
+      if (window.RVLHTelemetry) {
+        window.RVLHTelemetry.capture('lead_captured', {
+          studentName,
+          phone,
+          board,
+          percentage: percent,
+          courseInterest: course,
+          campusInterest: campus,
+          source: 'admissions_page_form'
+        });
+      }
+
+      document.getElementById('app-notice').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+  <!-- RVLH Chatbot Widget Scripts -->
+  <script src="rvlh-knowledge-base.js?v=2.5"></script>
+  <script src="telemetry.js?v=2.5"></script>
+  <script src="rvlh-engine.js?v=2.5"></script>
+  <script src="rvlh-chatbot.js?v=2.5"></script>
+
+</body>
+</html>

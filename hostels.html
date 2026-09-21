@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residential Campus & Hostels | RV Learning Hub (RSST)</title>
+  <meta name="description" content="Explore RV Learning Hub 50-acre Harohalli Residential Campus and NMKRV Women's Hostel. Air-cooled boarding, 4 nutritious meals, 24/7 faculty mentorship, and sports facilities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="website-nav.css">
+  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.5">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--site-bg);
+      color: var(--site-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page-hero {
+      max-width: 1200px;
+      margin: 50px auto 30px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .page-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--site-accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 16.5px;
+      color: var(--site-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Spotlight Cards Grid */
+    .spotlight-section {
+      max-width: 1200px;
+      margin: 40px auto 70px auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .spotlight-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--site-border);
+      border-radius: 20px;
+      padding: 36px;
+      transition: all 0.3s ease;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 32px;
+    }
+    .spotlight-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(245, 158, 11, 0.12);
+    }
+
+    .spotlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .spotlight-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .spotlight-loc {
+      font-size: 14px;
+      color: #93c5fd;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .spotlight-desc {
+      font-size: 14px;
+      color: var(--site-text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .amenity-icon { font-size: 18px; }
+
+    /* Right Sidebar in Spotlight */
+    .spotlight-sidebar {
+      background: rgba(2, 6, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quick-stat-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+    }
+    .stat-row:last-of-type { border-bottom: none; }
+    .stat-lbl { color: var(--site-text-dim); font-weight: 600; }
+    .stat-val { color: #fff; font-weight: 700; text-align: right; }
+
+    .action-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn-hostel-chat {
+      background: linear-gradient(135deg, #d97706, #f59e0b);
+      color: #0b1120;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-hostel-chat:hover {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24);
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+    }
+    .btn-hostel-visit {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--site-border);
+      color: #e2e8f0;
+      padding: 11px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .btn-hostel-visit:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    /* Timetable Comparison Section */
+    .timetable-section {
+      max-width: 1200px;
+      margin: 50px auto 80px auto;
+      padding: 0 24px;
+    }
+    .timetable-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .timetable-header h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .timetable-header p {
+      color: var(--site-text-muted);
+      font-size: 14.5px;
+      margin-top: 6px;
+    }
+
+    .timetables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .schedule-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--site-border);
+      border-radius: 18px;
+      padding: 28px;
+    }
+    .schedule-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .schedule-badge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .schedule-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .schedule-hours {
+      font-size: 12.5px;
+      color: var(--site-accent);
+      font-weight: 600;
+    }
+
+    .routine-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .routine-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 14px;
+      font-size: 13px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .routine-row:last-of-type { border-bottom: none; }
+    .routine-time {
+      color: #38bdf8;
+      font-weight: 700;
+      font-size: 12.5px;
+    }
+    .routine-act {
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 960px) {
+      .spotlight-card { grid-template-columns: 1fr; }
+      .timetables-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .page-hero h1 { font-size: 32px; }
+      .routine-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="site-nav-container">
+      <a href="index.html" class="site-logo-group">
+        <div class="site-logo-badge">RV</div>
+        <div class="site-logo-text">
+          <div class="site-logo-title">RV Learning Hub</div>
+          <p>RSST Educational Initiative</p>
+        </div>
+      </a>
+      <nav class="site-nav-links">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="campuses.html" class="site-nav-link">8 Campuses</a>
+        <a href="courses.html" class="site-nav-link">Courses</a>
+        <a href="hostels.html" class="site-nav-link active">Residential & Hostels</a>
+        <a href="admissions.html" class="site-nav-link">Scholarships & Fees</a>
+        <a href="faculty.html" class="site-nav-link">Faculty</a>
+        <a href="events.html" class="site-nav-link">Events</a>
+        <a href="contact.html" class="site-nav-link">Contact</a>
+        <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+      </nav>
+      <button class="site-mobile-toggle" id="site-mobile-toggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="site-mobile-drawer" id="site-mobile-drawer">
+    <a href="index.html" class="site-nav-link">Home</a>
+    <a href="campuses.html" class="site-nav-link">8 Campuses Directory</a>
+    <a href="courses.html" class="site-nav-link">Courses (JEE / NEET / Commerce)</a>
+    <a href="hostels.html" class="site-nav-link active">Residential & Hostels (Harohalli)</a>
+    <a href="admissions.html" class="site-nav-link">Scholarships & Fees (RV-TSA)</a>
+    <a href="faculty.html" class="site-nav-link">Faculty & Leadership</a>
+    <a href="events.html" class="site-nav-link">Events & Calendar</a>
+    <a href="contact.html" class="site-nav-link">Admissions Contact & Counseling</a>
+    <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-pill">
+      <span>🏡 Immersive Residential Life</span>
+    </div>
+    <h1>World-Class Boarding & Campus Hostels</h1>
+    <p>
+      Experience distraction-free, 24/7 academic immersion at our 50-Acre Harohalli Residential Sanctuary or secure urban boarding at NMKRV Women's Hostel. 
+      Combining nutritious dining, dedicated mentor study hours, and sports facilities for holistic student success.
+    </p>
+  </section>
+
+  <!-- Spotlight Cards -->
+  <section class="spotlight-section">
+
+    <!-- 1. Harohalli Residential Campus -->
+    <div class="spotlight-card" id="harohalli">
+      <div>
+        <span class="spotlight-badge">50-Acre Flagship Residential Campus</span>
+        <h2 class="spotlight-title">RV Harohalli Residential PU College</h2>
+        <div class="spotlight-loc">📍 Off Kanakapura Road, NH-209, Harohalli, Bengaluru South</div>
+        <p class="spotlight-desc">
+          Surrounded by tranquil green landscapes, our 50-acre flagship residential campus offers a distraction-free academic ecosystem for boys and girls. 
+          With on-campus resident professors, 3-hour supervised evening study halls, and sports infrastructure, students achieve peak exam readiness with peace of mind.
+        </p>
+
+        <div class="amenities-grid">
+          <div class="amenity-item">
+            <span class="amenity-icon">❄️</span>
+            <span>Separate Air-Cooled Boys & Girls Hostels</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">🥗</span>
+            <span>4 Nutritious Meals Daily (Pure Veg Mess)</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">📖</span>
+            <span>6:30 PM - 9:30 PM Supervised Study Halls</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">⚽</span>
+            <span>Cricket Ground, Football Turf & Gym</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">🏥</span>
+            <span>24/7 Infirmary with Doctor & Ambulance</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">📵</span>
+            <span>Regulated Digital Access Environment</span>
+          </div>
+        </div>
+
+        <div style="font-size: 13px; color: var(--site-text-dim);">
+          ⚡ <strong>Academic Programs at Harohalli:</strong> Integrated JEE Advanced, JEE Main, and NEET UG Medical batches.
+        </div>
+      </div>
+
+      <div class="spotlight-sidebar">
+        <div class="quick-stat-box">
+          <div class="stat-row">
+            <span class="stat-lbl">Campus Extent</span>
+            <span class="stat-val">50 Sprawling Acres</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Boarding Type</span>
+            <span class="stat-val">Boys & Girls (Separate)</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Evening Study</span>
+            <span class="stat-val">3 Hours Supervised</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Security</span>
+            <span class="stat-val">24/7 CCTV & Wardens</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Weekend Trips</span>
+            <span class="stat-val">Dedicated Shuttle Service</span>
+          </div>
+        </div>
+
+        <div class="action-stack">
+          <button class="btn-hostel-chat" onclick="openChatWithCampus('rv_harohalli')">
+            <span>💬 Chat About Harohalli Boarding</span>
+          </button>
+          <a href="contact.html?campus=harohalli#visit" class="btn-hostel-visit">Schedule a Campus Visit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. NMKRV Women's Hostel -->
+    <div class="spotlight-card" id="nmkrv">
+      <div>
+        <span class="spotlight-badge" style="background:rgba(236,72,153,0.15); color:#f472b6; border-color:rgba(236,72,153,0.3);">
+          Exclusively For Women &bull; Urban Jayanagar
+        </span>
+        <h2 class="spotlight-title">NMKRV PU College Women's Hostel</h2>
+        <div class="spotlight-loc">📍 Jayanagar 3rd Block, Opposite South End Circle Metro, Bengaluru</div>
+        <p class="spotlight-desc">
+          Situated right in the cultural heart of Jayanagar, NMKRV offers a high-security on-campus hostel exclusively for female students. 
+          Surrounded by green trees and adjacent to the South End Circle Metro station, it provides unmatched safety, personalized female faculty mentorship, and academic focus.
+        </p>
+
+        <div class="amenities-grid">
+          <div class="amenity-item">
+            <span class="amenity-icon">🛡️</span>
+            <span>Biometric Access & 24/7 Security</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">🚇</span>
+            <span>Direct Metro Access (Green Line)</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">👩‍🏫</span>
+            <span>Resident Female Wardens & Mentors</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">🍲</span>
+            <span>Hygienic Home-Style Vegetarian Dining</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">📚</span>
+            <span>Quiet Study Halls & Reading Rooms</span>
+          </div>
+          <div class="amenity-item">
+            <span class="amenity-icon">🏥</span>
+            <span>Emergency Medical Protocols On-Call</span>
+          </div>
+        </div>
+
+        <div style="font-size: 13px; color: var(--site-text-dim);">
+          ⚡ <strong>Academic Programs at NMKRV:</strong> Integrated NEET UG Medical, JEE Main + KCET, and Commerce Decoded (CA Foundation).
+        </div>
+      </div>
+
+      <div class="spotlight-sidebar">
+        <div class="quick-stat-box">
+          <div class="stat-row">
+            <span class="stat-lbl">Eligibility</span>
+            <span class="stat-val">Girl Students Only</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Location</span>
+            <span class="stat-val">Jayanagar 3rd Block</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Transit</span>
+            <span class="stat-val">Metro 100m Away</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Meals</span>
+            <span class="stat-val">Breakfast, Lunch, Dinner</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">Supervision</span>
+            <span class="stat-val">Senior Resident Wardens</span>
+          </div>
+        </div>
+
+        <div class="action-stack">
+          <button class="btn-hostel-chat" onclick="openChatWithCampus('nmkrv')">
+            <span>💬 Chat About NMKRV Hostel</span>
+          </button>
+          <a href="contact.html?campus=nmkrv#visit" class="btn-hostel-visit">Schedule a Hostel Visit</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Daily Schedule Comparison -->
+  <section class="timetable-section" id="schedule">
+    <div class="timetable-header">
+      <h3>Compare Daily Routines: Day Scholar vs. Residential</h3>
+      <p>Observe how our synchronized routine optimizes every hour of your academic preparation.</p>
+    </div>
+
+    <div class="timetables-grid">
+      <!-- Day Scholar Schedule -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-badge-icon" style="background:rgba(37,99,235,0.2); color:#60a5fa;">🚌</div>
+          <div>
+            <div class="schedule-title">Day Scholar Routine</div>
+            <div class="schedule-hours">SSMRV, NMKRV, North, South, E-City, VVN (08:15 AM - 04:15 PM)</div>
+          </div>
+        </div>
+
+        <ul class="routine-list">
+          <li class="routine-row">
+            <span class="routine-time">08:15 AM - 08:30 AM</span>
+            <span class="routine-act">Campus Arrival, Morning Assembly & Mindfulness Session</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">08:30 AM - 10:30 AM</span>
+            <span class="routine-act"><strong>Session 1:</strong> Karnataka PU Board Theory & Core Concept Mastery</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">10:30 AM - 10:45 AM</span>
+            <span class="routine-act">Nutritious Refreshment & Healthy Beverage Break</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">10:45 AM - 01:00 PM</span>
+            <span class="routine-act"><strong>Session 2:</strong> Decoded Competitive Entrance Masterclass (JEE / NEET / CA)</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">01:00 PM - 01:45 PM</span>
+            <span class="routine-act">Wholesome Lunch Break in Cafeteria</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">01:45 PM - 03:15 PM</span>
+            <span class="routine-act"><strong>Session 3:</strong> Practical Laboratories / Financial Problem Drills</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">03:15 PM - 04:15 PM</span>
+            <span class="routine-act">Daily Practice Paper (DPP) & 1-on-1 Faculty Doubt Clinic</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">04:15 PM</span>
+            <span class="routine-act">College Bus Fleets Departure across all Bengaluru routes</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Residential Schedule -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-badge-icon" style="background:rgba(245,158,11,0.2); color:#fbbf24;">🌅</div>
+          <div>
+            <div class="schedule-title">Harohalli Residential Routine</div>
+            <div class="schedule-hours">24/7 Immersive Schedule (06:00 AM - 10:30 PM)</div>
+          </div>
+        </div>
+
+        <ul class="routine-list">
+          <li class="routine-row">
+            <span class="routine-time">06:00 AM - 06:45 AM</span>
+            <span class="routine-act">Wake Up, Morning Jogging, Yoga & Breathwork</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">06:45 AM - 07:45 AM</span>
+            <span class="routine-act">Freshen up & Nutritious Vegetarian Breakfast</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">08:00 AM - 01:15 PM</span>
+            <span class="routine-act"><strong>Academic Session:</strong> Integrated PU Board & Advanced Entrance Lectures</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">01:15 PM - 02:15 PM</span>
+            <span class="routine-act">Healthy Balanced Lunch & Campus Relaxation Walk</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">02:15 PM - 04:30 PM</span>
+            <span class="routine-act">Advanced CBT Simulation Tests / Science Laboratory Practicals</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">04:30 PM - 05:45 PM</span>
+            <span class="routine-act">Outdoor Sports (Cricket, Football, Basketball, Table Tennis)</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">05:45 PM - 06:30 PM</span>
+            <span class="routine-act">Evening Refreshments & Energy Snacks</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">06:30 PM - 09:30 PM</span>
+            <span class="routine-act"><strong>Supervised Study:</strong> 3-Hour mandatory self-study with resident faculty</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">09:30 PM - 10:15 PM</span>
+            <span class="routine-act">Wholesome Dinner & Informal Peer Discussion</span>
+          </li>
+          <li class="routine-row">
+            <span class="routine-time">10:30 PM</span>
+            <span class="routine-act">Lights Out & Recharging Sleep</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="site-footer-container">
+      <div class="site-footer-brand">
+        <div class="site-logo-group" style="margin-bottom: 12px;">
+          <div class="site-logo-badge">RV</div>
+          <div class="site-logo-text">
+            <div class="site-logo-title">RV Learning Hub</div>
+            <p>RSST Educational Initiative</p>
+          </div>
+        </div>
+        <p>
+          Rashtreeya Sikshana Samithi Trust (RSST) has pioneered world-class education since 1940. 
+          RV Learning Hub synchronizes premier coaching for JEE, NEET, and Commerce with Karnataka Pre-University board studies.
+        </p>
+        <div class="site-footer-trust">85+ Years of Academic Legacy &bull; 8 PU Campuses</div>
+      </div>
+      <div class="site-footer-col">
+        <h5>Explore Campuses</h5>
+        <ul>
+          <li><a href="campuses.html#ssmrv">SSMRV PU College (Jayanagar)</a></li>
+          <li><a href="campuses.html#nmkrv">NMKRV PU College for Women</a></li>
+          <li><a href="campuses.html#rv_north">RV PU College North (Yelahanka)</a></li>
+          <li><a href="campuses.html#rv_south">RV PU College South (Jayanagar)</a></li>
+          <li><a href="campuses.html#rv_ecity">RV PU College Electronic City</a></li>
+          <li><a href="campuses.html#rv_harohalli">Harohalli Residential Campus</a></li>
+          <li><a href="campuses.html#rv_mysuru">RV PU College Mysuru</a></li>
+          <li><a href="campuses.html#vvn">VVN PU College (VV Puram)</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Academic Tracks</h5>
+        <ul>
+          <li><a href="courses.html#jee_adv">JEE Advanced Decoded</a></li>
+          <li><a href="courses.html#jee_main">JEE Main + KCET Decoded</a></li>
+          <li><a href="courses.html#neet_ug">NEET UG Medical Decoded</a></li>
+          <li><a href="courses.html#commerce">Commerce Decoded (CA/CS/CUET)</a></li>
+          <li><a href="courses.html#revise_cet">ReVise CET Crash Course</a></li>
+          <li><a href="admissions.html#scholarships">RV-TSA Scholarship Slabs</a></li>
+          <li><a href="hostels.html#schedule">Synchronized Timetables</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Admissions & Help</h5>
+        <ul>
+          <li><a href="tel:08026632000">📞 Central Desk: 080-2663 2000</a></li>
+          <li><a href="https://wa.me/918317346585">💬 WhatsApp: +91 83173 46585</a></li>
+          <li><a href="mailto:admissions.rvlh@rvei.edu.in">✉️ admissions.rvlh@rvei.edu.in</a></li>
+          <li><a href="hostels.html">🏡 Residential Living & Hostels</a></li>
+          <li><a href="admissions.html">💰 Fees & Installments</a></li>
+          <li><a href="contact.html">📍 Campus Map & Addresses</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div>&copy; 2026 RV Learning Hub &bull; Rashtreeya Sikshana Samithi Trust (RSST). All Rights Reserved.</div>
+      <div>
+        <a href="index.html">Home</a> &bull;
+        <a href="campuses.html">Campuses</a> &bull;
+        <a href="courses.html">Courses</a> &bull;
+        <a href="hostels.html">Hostels</a> &bull;
+        <a href="admissions.html">Admissions</a> &bull;
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="website-nav.js"></script>
+
+  <!-- RVLH Chatbot Widget Scripts -->
+  <script src="rvlh-knowledge-base.js?v=2.5"></script>
+  <script src="telemetry.js?v=2.5"></script>
+  <script src="rvlh-engine.js?v=2.5"></script>
+  <script src="rvlh-chatbot.js?v=2.5"></script>
+
+</body>
+</html>

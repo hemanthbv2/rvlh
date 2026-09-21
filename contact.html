@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Campus Help Desks | RV Learning Hub (RSST)</title>
+  <meta name="description" content="Connect with RV Learning Hub central headquarters at Bull Temple Road and campus admissions desks across all 8 PU colleges in Bengaluru and Mysuru. Schedule campus visits and speak with academic counselors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="website-nav.css">
+  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.5">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--site-bg);
+      color: var(--site-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page-hero {
+      max-width: 1200px;
+      margin: 50px auto 30px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .page-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: #c084fc;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 16.5px;
+      color: var(--site-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Central HQ Card */
+    .hq-section {
+      max-width: 1200px;
+      margin: 40px auto 60px auto;
+      padding: 0 24px;
+    }
+    .hq-card {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 20px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+    .hq-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .hq-desc {
+      font-size: 14px;
+      color: var(--site-text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .hq-contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13.5px;
+    }
+    .hq-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #cbd5e1;
+    }
+    .hq-contact-row a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .hq-contact-row a:hover { text-decoration: underline; }
+
+    /* Central Action Buttons */
+    .hq-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      background: rgba(2, 6, 23, 0.6);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .btn-hq-call {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-hq-wa {
+      background: #10b981;
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* 8 Campus Help Desks Grid */
+    .desks-section {
+      max-width: 1200px;
+      margin: 0 auto 80px auto;
+      padding: 0 24px;
+    }
+    .desks-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .desks-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .desks-header p {
+      color: var(--site-text-muted);
+      font-size: 14.5px;
+      margin-top: 6px;
+    }
+
+    .desks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 22px;
+    }
+    .desk-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--site-border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .desk-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+    .desk-name {
+      font-size: 17.5px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .desk-zone {
+      font-size: 12.5px;
+      color: var(--site-accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .desk-address {
+      font-size: 13px;
+      color: var(--site-text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .desk-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 16px;
+    }
+    .desk-contact-info a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .desk-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-desk-chat {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--site-border);
+      color: #fff;
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-desk-chat:hover {
+      background: var(--site-primary);
+      border-color: var(--site-primary);
+    }
+    .btn-desk-call {
+      flex: 1;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .btn-desk-call:hover {
+      background: var(--site-primary);
+      color: #fff;
+    }
+
+    /* Campus Visit Booking Form Area */
+    .visit-section {
+      max-width: 1200px;
+      margin: 0 auto 80px auto;
+      padding: 0 24px;
+    }
+    .visit-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--site-border);
+      border-radius: 20px;
+      padding: 36px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .visit-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .visit-card p {
+      text-align: center;
+      font-size: 14px;
+      color: var(--site-text-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full { grid-column: span 2; }
+    .form-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .form-input, .form-select {
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 13.5px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--site-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    }
+    .form-select option {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .btn-submit-visit {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 14px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+    .btn-submit-visit:hover {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      transform: translateY(-1px);
+    }
+
+    .visit-notice {
+      display: none;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hq-card { grid-template-columns: 1fr; }
+      .desks-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+    }
+    @media (max-width: 640px) {
+      .page-hero h1 { font-size: 32px; }
+      .visit-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="site-nav-container">
+      <a href="index.html" class="site-logo-group">
+        <div class="site-logo-badge">RV</div>
+        <div class="site-logo-text">
+          <div class="site-logo-title">RV Learning Hub</div>
+          <p>RSST Educational Initiative</p>
+        </div>
+      </a>
+      <nav class="site-nav-links">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="campuses.html" class="site-nav-link">8 Campuses</a>
+        <a href="courses.html" class="site-nav-link">Courses</a>
+        <a href="hostels.html" class="site-nav-link">Residential & Hostels</a>
+        <a href="admissions.html" class="site-nav-link">Scholarships & Fees</a>
+        <a href="faculty.html" class="site-nav-link">Faculty</a>
+        <a href="events.html" class="site-nav-link">Events</a>
+        <a href="contact.html" class="site-nav-link active">Contact</a>
+        <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+      </nav>
+      <button class="site-mobile-toggle" id="site-mobile-toggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="site-mobile-drawer" id="site-mobile-drawer">
+    <a href="index.html" class="site-nav-link">Home</a>
+    <a href="campuses.html" class="site-nav-link">8 Campuses Directory</a>
+    <a href="courses.html" class="site-nav-link">Courses (JEE / NEET / Commerce)</a>
+    <a href="hostels.html" class="site-nav-link">Residential & Hostels (Harohalli)</a>
+    <a href="admissions.html" class="site-nav-link">Scholarships & Fees (RV-TSA)</a>
+    <a href="faculty.html" class="site-nav-link">Faculty & Leadership</a>
+    <a href="events.html" class="site-nav-link">Events & Calendar</a>
+    <a href="contact.html" class="site-nav-link active">Admissions Contact & Counseling</a>
+    <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-pill">
+      <span>📍 Admissions Counseling & Help Desks</span>
+    </div>
+    <h1>Connect With Our Admissions Desks</h1>
+    <p>
+      Whether you wish to visit our historic Bull Temple Road central offices or tour one of our 8 PU College campuses, 
+      our expert academic counselors are ready to guide you on courses, scholarships, and residential boarding.
+    </p>
+  </section>
+
+  <!-- Central HQ Spotlight -->
+  <section class="hq-section">
+    <div class="hq-card">
+      <div>
+        <div style="font-size: 12px; font-weight: 700; color: var(--site-accent); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px;">
+          Rashtreeya Sikshana Samithi Trust (RSST)
+        </div>
+        <h2 class="hq-title">Central Admissions Headquarters</h2>
+        <p class="hq-desc">
+          Located in the landmark RV Teachers College complex on Bull Temple Road, our central admissions cell coordinates scholarship assessments, academic allotments, and multi-campus counseling.
+        </p>
+
+        <div class="hq-contact-details">
+          <div class="hq-contact-row">
+            <span>📍</span>
+            <span>RV Teachers College Building, 131/78, Sunkenahalli, Bull Temple Road, Basavanagudi, Bengaluru – 560019</span>
+          </div>
+          <div class="hq-contact-row">
+            <span>📞</span>
+            <span>Central Phone: <a href="tel:08026632000">080-2663 2000</a> / <a href="tel:918317346585">+91 83173 46585</a></span>
+          </div>
+          <div class="hq-contact-row">
+            <span>✉️</span>
+            <span>Central Email: <a href="mailto:admissions.rvlh@rvei.edu.in">admissions.rvlh@rvei.edu.in</a></span>
+          </div>
+          <div class="hq-contact-row">
+            <span>🕒</span>
+            <span>Counseling Hours: Monday to Saturday (8:30 AM – 6:00 PM)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hq-actions">
+        <a href="tel:08026632000" class="btn-hq-call">
+          <span>📞 Call Central Desk (080-2663 2000)</span>
+        </a>
+        <a href="https://wa.me/918317346585" target="_blank" class="btn-hq-wa">
+          <span>💬 WhatsApp Counselor (+91 83173 46585)</span>
+        </a>
+        <button onclick="testBrainPrompt('How do I visit the Bull Temple Road admissions office?')" style="background:rgba(255,255,255,0.06); border:1px solid var(--site-border); color:#cbd5e1; padding:10px; border-radius:8px; font-size:12.5px; font-weight:600; cursor:pointer; transition:all 0.2s;">
+          ✨ Ask AI Chatbot for Directions
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 Campus Desks Directory -->
+  <section class="desks-section">
+    <div class="desks-header">
+      <h2>All 8 Campus Admissions Desks</h2>
+      <p>Direct lines and campus locations for localized inquiries and student counseling.</p>
+    </div>
+
+    <div class="desks-grid">
+
+      <!-- 1. SSMRV -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">SSMRV PU College</div>
+          <div class="desk-zone">South Bengaluru &bull; Jayanagar 4th T Block</div>
+          <div class="desk-address">No. 17, 26th Main, 36th Cross, 4th 'T' Block, Jayanagar, Bengaluru - 560041</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08022445437">080-2244 5437</a> / <a href="tel:08026632000">080-2663 2000</a></div>
+            <div>✉️ Email: ssmrv.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('ssmrv')">Chat About SSMRV</button>
+          <a href="tel:08022445437" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 2. NMKRV -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">NMKRV PU College for Women</div>
+          <div class="desk-zone">South Bengaluru &bull; Jayanagar 3rd Block (Hostel On-Campus)</div>
+          <div class="desk-address">3rd Block, Jayanagar, Bengaluru - 560011 (Opposite South End Circle Metro)</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08026637042">080-2663 7042</a></div>
+            <div>✉️ Email: nmkrv.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('nmkrv')">Chat About NMKRV</button>
+          <a href="tel:08026637042" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 3. RV PU North -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">RV PU College North</div>
+          <div class="desk-zone">North Bengaluru &bull; Yelahanka / Sahakarnagar</div>
+          <div class="desk-address">Near Kogilu Cross, Off Bellary Airport Expressway, Yelahanka, Bengaluru - 560064</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08068199000">080-6819 9000</a></div>
+            <div>✉️ Email: north.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('rv_north')">Chat About North</button>
+          <a href="tel:08068199000" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 4. RV PU South -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">RV PU College South</div>
+          <div class="desk-zone">South Bengaluru &bull; Bull Temple Road / Jayanagar</div>
+          <div class="desk-address">RV Teachers College Building, Bull Temple Road, Bengaluru - 560004</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08026632000">080-2663 2000</a></div>
+            <div>✉️ Email: south.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('rv_south')">Chat About South</button>
+          <a href="tel:08026632000" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 5. RV PU Electronic City -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">RV PU College Electronic City</div>
+          <div class="desk-zone">IT Corridor &bull; Phase 1, Electronic City</div>
+          <div class="desk-address">Phase 1, Electronic City, Hosur Road, Bengaluru - 560100</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08028521000">080-2852 1000</a></div>
+            <div>✉️ Email: ecity.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('rv_ecity')">Chat About E-City</button>
+          <a href="tel:08028521000" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 6. Harohalli Residential Campus -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">RV Harohalli Residential Campus</div>
+          <div class="desk-zone">Bengaluru South &bull; 50-Acre Kanakapura Road Campus</div>
+          <div class="desk-address">NH-209, Kanakapura Road, Harohalli, Bengaluru South - 562112</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08028435000">080-2843 5000</a></div>
+            <div>✉️ Email: residential.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('rv_harohalli')">Chat Harohalli</button>
+          <a href="tel:08028435000" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 7. RV PU Mysuru -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">RV PU College Mysuru</div>
+          <div class="desk-zone">Heritage Mysuru &bull; Vijayanagar 2nd Stage</div>
+          <div class="desk-address">Vijayanagar 2nd Stage, Ring Road, Mysuru - 570017</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08212415000">0821-241 5000</a></div>
+            <div>✉️ Email: mysuru.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('rv_mysuru')">Chat Mysuru</button>
+          <a href="tel:08212415000" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+      <!-- 8. VVN PU College -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-name">VVN PU College (VV Puram)</div>
+          <div class="desk-zone">Central Bengaluru &bull; Vanivilas Road, VV Puram</div>
+          <div class="desk-address">Vanivilas Road, Visvesvarapuram, Bengaluru - 560004 (Near National College Metro)</div>
+          <div class="desk-contact-info">
+            <div>📞 Desk: <a href="tel:08022423000">080-2242 3000</a></div>
+            <div>✉️ Email: vvn.admissions@rvei.edu.in</div>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <button class="btn-desk-chat" onclick="openChatWithCampus('vvn')">Chat About VVN</button>
+          <a href="tel:08022423000" class="btn-desk-call">Call Desk</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Campus Visit Booking Form -->
+  <section class="visit-section" id="visit">
+    <div class="visit-card">
+      <h3>Schedule an In-Person Campus Tour</h3>
+      <p>Select your campus and preferred appointment date to meet academic directors and inspect classroom infrastructure.</p>
+
+      <form id="rvlh-visit-form" onsubmit="handleVisitSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="visit-name">Parent / Student Name *</label>
+            <input type="text" id="visit-name" class="form-input" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="visit-phone">Contact Mobile Number *</label>
+            <input type="tel" id="visit-phone" class="form-input" placeholder="10-digit mobile" pattern="[0-9]{10}" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="visit-campus">Select Campus to Visit *</label>
+            <select id="visit-campus" class="form-select" required>
+              <option value="">Choose Campus</option>
+              <option value="ssmrv">SSMRV PU College (Jayanagar)</option>
+              <option value="nmkrv">NMKRV PU College for Women (Jayanagar)</option>
+              <option value="rv_north">RV PU College North (Yelahanka)</option>
+              <option value="rv_south">RV PU College South (Bull Temple Rd)</option>
+              <option value="rv_ecity">RV PU College Electronic City</option>
+              <option value="rv_harohalli">RV Harohalli Residential (50-Acre Campus)</option>
+              <option value="rv_mysuru">RV PU College Mysuru</option>
+              <option value="vvn">VVN PU College (VV Puram)</option>
+              <option value="hq">RSST Central HQ (Bull Temple Rd)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="visit-date">Preferred Date *</label>
+            <input type="date" id="visit-date" class="form-input" required>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="visit-notes">Questions or Special Requests</label>
+            <input type="text" id="visit-notes" class="form-input" placeholder="e.g. Interested in Harohalli hostel tour and JEE Advanced batch details">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit-visit">Confirm Visit Appointment</button>
+        <div class="visit-notice" id="visit-notice">
+          📅 <strong>Appointment Confirmed!</strong> An SMS confirmation and campus location guide has been generated. Our admissions team looks forward to welcoming you.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="site-footer-container">
+      <div class="site-footer-brand">
+        <div class="site-logo-group" style="margin-bottom: 12px;">
+          <div class="site-logo-badge">RV</div>
+          <div class="site-logo-text">
+            <div class="site-logo-title">RV Learning Hub</div>
+            <p>RSST Educational Initiative</p>
+          </div>
+        </div>
+        <p>
+          Rashtreeya Sikshana Samithi Trust (RSST) has pioneered world-class education since 1940. 
+          RV Learning Hub synchronizes premier coaching for JEE, NEET, and Commerce with Karnataka Pre-University board studies.
+        </p>
+        <div class="site-footer-trust">85+ Years of Academic Legacy &bull; 8 PU Campuses</div>
+      </div>
+      <div class="site-footer-col">
+        <h5>Explore Campuses</h5>
+        <ul>
+          <li><a href="campuses.html#ssmrv">SSMRV PU College (Jayanagar)</a></li>
+          <li><a href="campuses.html#nmkrv">NMKRV PU College for Women</a></li>
+          <li><a href="campuses.html#rv_north">RV PU College North (Yelahanka)</a></li>
+          <li><a href="campuses.html#rv_south">RV PU College South (Jayanagar)</a></li>
+          <li><a href="campuses.html#rv_ecity">RV PU College Electronic City</a></li>
+          <li><a href="campuses.html#rv_harohalli">Harohalli Residential Campus</a></li>
+          <li><a href="campuses.html#rv_mysuru">RV PU College Mysuru</a></li>
+          <li><a href="campuses.html#vvn">VVN PU College (VV Puram)</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Academic Tracks</h5>
+        <ul>
+          <li><a href="courses.html#jee_adv">JEE Advanced Decoded</a></li>
+          <li><a href="courses.html#jee_main">JEE Main + KCET Decoded</a></li>
+          <li><a href="courses.html#neet_ug">NEET UG Medical Decoded</a></li>
+          <li><a href="courses.html#commerce">Commerce Decoded (CA/CS/CUET)</a></li>
+          <li><a href="courses.html#revise_cet">ReVise CET Crash Course</a></li>
+          <li><a href="admissions.html#scholarships">RV-TSA Scholarship Slabs</a></li>
+          <li><a href="hostels.html#schedule">Synchronized Timetables</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Admissions & Help</h5>
+        <ul>
+          <li><a href="tel:08026632000">📞 Central Desk: 080-2663 2000</a></li>
+          <li><a href="https://wa.me/918317346585">💬 WhatsApp: +91 83173 46585</a></li>
+          <li><a href="mailto:admissions.rvlh@rvei.edu.in">✉️ admissions.rvlh@rvei.edu.in</a></li>
+          <li><a href="hostels.html">🏡 Residential Living & Hostels</a></li>
+          <li><a href="admissions.html">💰 Fees & Installments</a></li>
+          <li><a href="contact.html">📍 Campus Map & Addresses</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div>&copy; 2026 RV Learning Hub &bull; Rashtreeya Sikshana Samithi Trust (RSST). All Rights Reserved.</div>
+      <div>
+        <a href="index.html">Home</a> &bull;
+        <a href="campuses.html">Campuses</a> &bull;
+        <a href="courses.html">Courses</a> &bull;
+        <a href="hostels.html">Hostels</a> &bull;
+        <a href="admissions.html">Admissions</a> &bull;
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="website-nav.js"></script>
+  <script>
+    // Pre-populate campus from URL params if available
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const campusParam = params.get('campus');
+      if (campusParam) {
+        const select = document.getElementById('visit-campus');
+        if (select) {
+          if (campusParam.includes('harohalli')) select.value = 'rv_harohalli';
+          else if (campusParam.includes('nmkrv')) select.value = 'nmkrv';
+          else if (select.querySelector(`option[value="${campusParam}"]`)) {
+            select.value = campusParam;
+          }
+        }
+      }
+    });
+
+    function handleVisitSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('visit-name').value;
+      const phone = document.getElementById('visit-phone').value;
+      const campus = document.getElementById('visit-campus').value;
+      const date = document.getElementById('visit-date').value;
+      const notes = document.getElementById('visit-notes').value;
+
+      if (window.RVLHTelemetry) {
+        window.RVLHTelemetry.capture('campus_visit_scheduled', {
+          name, phone, campus, date, notes, source: 'contact_page_form'
+        });
+      }
+
+      document.getElementById('visit-notice').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+  <!-- RVLH Chatbot Widget Scripts -->
+  <script src="rvlh-knowledge-base.js?v=2.5"></script>
+  <script src="telemetry.js?v=2.5"></script>
+  <script src="rvlh-engine.js?v=2.5"></script>
+  <script src="rvlh-chatbot.js?v=2.5"></script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+/* ==========================================================================
+   RVLH Website Common Navigation & Footer Stylesheet
+   Executive Dark Theme with High-Contrast Typography & Glassmorphism
+   ========================================================================== */
+
+:root {
+  --site-primary: #2563eb;
+  --site-primary-hover: #1d4ed8;
+  --site-accent: #f59e0b;
+  --site-accent-hover: #d97706;
+  --site-bg: #060913;
+  --site-surface: #0b1120;
+  --site-card: rgba(17, 24, 39, 0.7);
+  --site-border: rgba(255, 255, 255, 0.08);
+  --site-text: #f8fafc;
+  --site-text-muted: #94a3b8;
+  --site-text-dim: #64748b;
+}
+
+/* --- Ambient Glow Background --- */
+.ambient-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(245, 158, 11, 0.07) 0%, transparent 40%),
+    #060913;
+  pointer-events: none;
+}
+
+/* --- Sticky Header Navigation --- */
+header.site-header {
+  border-bottom: 1px solid var(--site-border);
+  background: rgba(11, 17, 32, 0.92);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.25s ease;
+}
+
+.site-nav-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--site-text);
+}
+
+.site-logo-badge {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--site-accent);
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.site-logo-text h1, .site-logo-text .site-logo-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.site-logo-text p {
+  font-size: 11px;
+  color: var(--site-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Nav Links */
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-nav-link {
+  color: var(--site-text-muted);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.site-nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.site-nav-link.active {
+  color: #fff;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.site-nav-cta {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-nav-cta:hover {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+/* Mobile Hamburger Toggle */
+.site-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--site-border);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Drawer Overlay */
+.site-mobile-drawer {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  background: rgba(11, 17, 32, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--site-border);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transform: translateY(-120%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+}
+
+.site-mobile-drawer.open {
+  transform: translateY(0);
+}
+
+.site-mobile-drawer .site-nav-link {
+  font-size: 15px;
+  padding: 10px 14px;
+  display: block;
+}
+
+.site-mobile-drawer .site-nav-cta {
+  text-align: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* --- Unified Footer --- */
+footer.site-footer {
+  border-top: 1px solid var(--site-border);
+  background: #04060c;
+  padding: 60px 24px 30px 24px;
+  margin-top: 80px;
+}
+
+.site-footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-footer-brand h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.site-footer-brand p {
+  font-size: 13px;
+  color: var(--site-text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.site-footer-trust {
+  font-size: 12px;
+  color: var(--site-accent);
+  font-weight: 600;
+}
+
+.site-footer-col h5 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.site-footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.site-footer-col a {
+  color: var(--site-text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.site-footer-col a:hover {
+  color: var(--site-primary-light);
+}
+
+.site-footer-bottom {
+  max-width: 1240px;
+  margin: 30px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--site-text-dim);
+}
+
+.site-footer-bottom a {
+  color: var(--site-text-muted);
+  text-decoration: none;
+}
+.site-footer-bottom a:hover {
+  color: #fff;
+}
+
+@media (max-width: 960px) {
+  .site-nav-links { display: none; }
+  .site-mobile-toggle { display: flex; }
+  .site-footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .site-footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

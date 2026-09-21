@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8 Constituent PU Campuses | RV Learning Hub (RSST)</title>
+  <meta name="description" content="Explore all 8 RV Learning Hub PU College campuses in Bengaluru and Mysuru. Day scholar and 50-acre Harohalli residential campus with integrated JEE, NEET, and Commerce coaching.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="website-nav.css">
+  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.5">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--site-bg);
+      color: var(--site-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page-hero {
+      max-width: 1200px;
+      margin: 50px auto 30px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .page-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 16.5px;
+      color: var(--site-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Filter Bar */
+    .filter-section {
+      max-width: 1200px;
+      margin: 30px auto 40px auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--site-border);
+      color: var(--site-text-muted);
+      padding: 8px 18px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--site-primary);
+      border-color: var(--site-primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Campus Grid */
+    .campuses-container {
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .campus-card-full {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--site-border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .campus-card-full:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(37, 99, 235, 0.12);
+    }
+
+    .campus-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .campus-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .campus-badge.day {
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .campus-badge.res {
+      background: rgba(245, 158, 11, 0.18);
+      color: #fde68a;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+    .campus-zone-tag {
+      font-size: 12px;
+      color: var(--site-text-dim);
+      font-weight: 600;
+    }
+
+    .campus-card-full h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .campus-address {
+      font-size: 12.5px;
+      color: var(--site-accent);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .campus-desc {
+      font-size: 13.5px;
+      color: var(--site-text-muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .meta-block {
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    .campus-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .btn-chat {
+      flex: 1;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-chat:hover {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+    .btn-counselor {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--site-border);
+      color: #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-counselor:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    /* Comparison Matrix Table */
+    .comparison-section {
+      max-width: 1200px;
+      margin: 40px auto 80px auto;
+      padding: 0 24px;
+    }
+    .comparison-section h3 {
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--site-border);
+      background: rgba(15, 23, 42, 0.7);
+    }
+    .matrix-table th {
+      background: rgba(30, 41, 59, 0.95);
+      color: var(--site-accent);
+      padding: 14px 18px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-align: left;
+      border-bottom: 1px solid var(--site-border);
+    }
+    .matrix-table td {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--site-text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .matrix-table tr:hover td {
+      background: rgba(37, 99, 235, 0.08);
+      color: #fff;
+    }
+    .check-icon { color: #10b981; font-weight: bold; }
+    .cross-icon { color: #ef4444; }
+
+    @media (max-width: 768px) {
+      .page-hero h1 { font-size: 32px; }
+      .campuses-container { grid-template-columns: 1fr; }
+      .matrix-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="site-nav-container">
+      <a href="index.html" class="site-logo-group">
+        <div class="site-logo-badge">RV</div>
+        <div class="site-logo-text">
+          <div class="site-logo-title">RV Learning Hub</div>
+          <p>RSST Educational Initiative</p>
+        </div>
+      </a>
+      <nav class="site-nav-links">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="campuses.html" class="site-nav-link active">8 Campuses</a>
+        <a href="courses.html" class="site-nav-link">Courses</a>
+        <a href="hostels.html" class="site-nav-link">Residential & Hostels</a>
+        <a href="admissions.html" class="site-nav-link">Scholarships & Fees</a>
+        <a href="faculty.html" class="site-nav-link">Faculty</a>
+        <a href="events.html" class="site-nav-link">Events</a>
+        <a href="contact.html" class="site-nav-link">Contact</a>
+        <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+      </nav>
+      <button class="site-mobile-toggle" id="site-mobile-toggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="site-mobile-drawer" id="site-mobile-drawer">
+    <a href="index.html" class="site-nav-link">Home</a>
+    <a href="campuses.html" class="site-nav-link active">8 Campuses</a>
+    <a href="courses.html" class="site-nav-link">Courses (JEE / NEET / Commerce)</a>
+    <a href="hostels.html" class="site-nav-link">Residential & Hostels (Harohalli)</a>
+    <a href="admissions.html" class="site-nav-link">Scholarships & Fees (RV-TSA)</a>
+    <a href="faculty.html" class="site-nav-link">Faculty & Leadership</a>
+    <a href="events.html" class="site-nav-link">Events & Calendar</a>
+    <a href="contact.html" class="site-nav-link">Admissions Contact & Counseling</a>
+    <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-pill">
+      <span>🏛️ 8 Premier Institutions Under RSST</span>
+    </div>
+    <h1>Constituent PU College Campuses</h1>
+    <p>
+      Whether you prefer an intensive 50-acre distraction-free residential boarding experience on Kanakapura Road, or a premier day-scholar center in Jayanagar, Yelahanka, or Mysuru, RV Learning Hub provides benchmark integrated academic coaching across Karnataka.
+    </p>
+  </section>
+
+  <!-- Filter Pills -->
+  <div class="filter-section">
+    <button class="filter-btn active" onclick="filterCampuses('all')">All 8 Campuses</button>
+    <button class="filter-btn" onclick="filterCampuses('jee')">🚀 JEE (IIT/NIT)</button>
+    <button class="filter-btn" onclick="filterCampuses('commerce')">📊 Commerce (CA/CS)</button>
+    <button class="filter-btn" onclick="filterCampuses('neet')">🩺 NEET Medical</button>
+    <button class="filter-btn" onclick="filterCampuses('residential')">🏡 50-Acre Residential</button>
+    <button class="filter-btn" onclick="filterCampuses('women')">👩 Women Only (NMKRV)</button>
+    <button class="filter-btn" onclick="filterCampuses('day')">Day Scholar (Co-ed)</button>
+  </div>
+
+  <!-- 8 Campuses Grid -->
+  <div class="campuses-container" id="campuses-grid">
+
+    <!-- 1. SSMRV -->
+    <div class="campus-card-full" data-type="day" data-zone="south" data-courses="jee_adv jee_main neet_ug commerce" id="ssmrv">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge day">Day Scholar (Co-ed)</span>
+          <span class="campus-zone-tag">South Bengaluru</span>
+        </div>
+        <h2>SSMRV PU College</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>No. 17, 26th Main, 36th Cross, 4th 'T' Block, Jayanagar, Bengaluru - 560041</span>
+        </div>
+        <p class="campus-desc">
+          One of Karnataka's most acclaimed Pre-University institutions with a decades-long record of top 10 State PU Board ranks and high percentages in JEE & NEET.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams Offered</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">Commerce (EBAC, MEBA)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Integrated Coaching Tracks</div>
+          <div class="meta-tags">
+            <span class="tag-pill">JEE Advanced</span>
+            <span class="tag-pill">JEE Main + KCET</span>
+            <span class="tag-pill">NEET UG</span>
+            <span class="tag-pill">Commerce Decoded</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Bus Routes</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Banashankari</span>
+            <span class="tag-pill">JP Nagar</span>
+            <span class="tag-pill">BTM Layout</span>
+            <span class="tag-pill">Basavanagudi</span>
+            <span class="tag-pill">Vijayanagar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('ssmrv')">
+          <span>💬 Chat About SSMRV</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('SSMRV fee structure and admissions process')">
+          Fees & Info
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. NMKRV -->
+    <div class="campus-card-full" data-type="women" data-zone="south" data-courses="jee_main neet_ug commerce" id="nmkrv">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge res">👩 Women Only (On-Campus Hostel)</span>
+          <span class="campus-zone-tag">South Bengaluru</span>
+        </div>
+        <h2>NMKRV PU College for Women</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>3rd Block, Jayanagar (Opp. South End Circle Metro), Bengaluru - 560011</span>
+        </div>
+        <p class="campus-desc">
+          Benchmark women's institution empowering girl students in STEM and Commerce. Features a dedicated, secure on-campus women's hostel directly adjacent to the Green Line Metro.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams Offered</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">Commerce (EBAC, MEBA, PEAC)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Hostel & Accommodation</div>
+          <div class="meta-tags">
+            <span class="tag-pill">✅ Secure Women's Hostel</span>
+            <span class="tag-pill">Biometric Access</span>
+            <span class="tag-pill">Hygienic Dining</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Transit & Access</div>
+          <div class="meta-tags">
+            <span class="tag-pill">South End Circle Metro</span>
+            <span class="tag-pill">College Bus Fleets</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('nmkrv')">
+          <span>💬 Chat About NMKRV</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('NMKRV women hostel fees and facilities')">
+          Hostel Details
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. Harohalli Residential Campus -->
+    <div class="campus-card-full" data-type="residential" data-zone="south" data-courses="jee_adv jee_main neet_ug" id="rv_harohalli">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge res">🏡 50-Acre Flagship Residential</span>
+          <span class="campus-zone-tag">Kanakapura Highway</span>
+        </div>
+        <h2>RV PU College, Harohalli</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>RV Vidyaniketan Post, Harohalli, Kanakapura Road, Karnataka</span>
+        </div>
+        <p class="campus-desc">
+          World-class 24/7 immersive residential sanctuary away from city distractions. Ideal for serious entrance exam aspirants with faculty residing on campus, air-cooled hostels, and athletic grounds.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams & Entrance Focus</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">JEE Advanced (IITs)</span>
+            <span class="tag-pill">NEET UG (Top Medical)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Residential Highlights</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Air-cooled Boys & Girls Hostels</span>
+            <span class="tag-pill">Evening Mentor Study (6:30-9:30 PM)</span>
+            <span class="tag-pill">24/7 Medical Clinic</span>
+            <span class="tag-pill">Sports Complex</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Weekend Transit</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Weekend Bengaluru Shuttles</span>
+            <span class="tag-pill">Day Boarding Buses</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('rv_harohalli')">
+          <span>💬 Chat About Harohalli</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('Harohalli residential daily schedule and full fee')">
+          Residential Info
+        </button>
+      </div>
+    </div>
+
+    <!-- 4. RV PU College North -->
+    <div class="campus-card-full" data-type="day" data-zone="north" data-courses="jee_adv jee_main neet_ug" id="rv_north">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge day">Day Scholar (Co-ed)</span>
+          <span class="campus-zone-tag">North Bengaluru</span>
+        </div>
+        <h2>RV PU College North</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>North Campus, Accessible from Airport Road, Yelahanka & Hebbal, Bengaluru</span>
+        </div>
+        <p class="campus-desc">
+          Bringing the prestigious RV quality to North Bengaluru. Equipped with state-of-the-art CBT digital testing labs and senior master faculty rotated from RV headquarters.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams & Tracks</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">JEE Advanced</span>
+            <span class="tag-pill">JEE Main + KCET</span>
+            <span class="tag-pill">NEET UG</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Bus Routes</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Yelahanka New Town</span>
+            <span class="tag-pill">Sahakarnagar</span>
+            <span class="tag-pill">Hebbal</span>
+            <span class="tag-pill">Manyata Tech Park corridor</span>
+            <span class="tag-pill">Vidyaranyapura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('rv_north')">
+          <span>💬 Chat About RV North</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('RV PU North transport and courses')">
+          View Details
+        </button>
+      </div>
+    </div>
+
+    <!-- 5. RV PU College South -->
+    <div class="campus-card-full" data-type="day" data-zone="south" data-courses="jee_adv jee_main neet_ug commerce" id="rv_south">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge day">Day Scholar (Co-ed)</span>
+          <span class="campus-zone-tag">South Bengaluru</span>
+        </div>
+        <h2>RV PU College South</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>South Campus, Near Kanakapura Road Green Line Metro, Bengaluru South</span>
+        </div>
+        <p class="campus-desc">
+          Rigorous coaching pedagogy for science & commerce aspirants. Proximity to Green Line Metro ensures a seamless daily commute for students across South Bengaluru.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams Offered</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">Commerce (EBAC)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Bus Transit</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Kanakapura Road</span>
+            <span class="tag-pill">JP Nagar</span>
+            <span class="tag-pill">Kumaraswamy Layout</span>
+            <span class="tag-pill">Bannerghatta Road</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('rv_south')">
+          <span>💬 Chat About RV South</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('RV PU South commerce and science streams')">
+          View Details
+        </button>
+      </div>
+    </div>
+
+    <!-- 6. RV PU College Electronic City -->
+    <div class="campus-card-full" data-type="day" data-zone="south" data-courses="jee_adv jee_main neet_ug" id="rv_ecity">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge day">Day Scholar (Co-ed)</span>
+          <span class="campus-zone-tag">Tech Corridor</span>
+        </div>
+        <h2>RV PU College, Electronic City</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>Electronic City Phase 1 / Tech Corridor, Hosur Road, Bengaluru - 560100</span>
+        </div>
+        <p class="campus-desc">
+          Located in the heart of Bengaluru's Silicon Hub. High focus on JEE Advanced conceptual rigor and physics modeling for students aiming for IITs, NITs, and IIITs.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams Offered</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">Engineering Focus (IIT/NIT)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Bus Transit</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Electronic City 1 & 2</span>
+            <span class="tag-pill">Bommasandra</span>
+            <span class="tag-pill">HSR Layout</span>
+            <span class="tag-pill">BTM Layout</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('rv_ecity')">
+          <span>💬 Chat About E-City</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('RV Electronic City JEE coaching')">
+          View Details
+        </button>
+      </div>
+    </div>
+
+    <!-- 7. RV PU College Mysuru -->
+    <div class="campus-card-full" data-type="day" data-zone="other" data-courses="jee_main neet_ug commerce" id="rv_mysuru">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge day">Heritage Campus & Local Boarding</span>
+          <span class="campus-zone-tag">Mysuru City</span>
+        </div>
+        <h2>RV PU College, Mysuru</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>Heritage Campus, Mysuru City, Karnataka - 570001</span>
+        </div>
+        <p class="campus-desc">
+          Brings RV's benchmark academic excellence to the cultural capital of Karnataka. Serving students from Mysore, Mandya, Hassan, and Coorg with tie-up boarding facilities.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams Offered</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">Commerce (EBAC)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Key Strengths</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Rotated Bangalore Master Faculty</span>
+            <span class="tag-pill">Top KCET State Ranks in Mysore</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('rv_mysuru')">
+          <span>💬 Chat About Mysuru</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('RV Mysore PU college admissions and boarding')">
+          View Details
+        </button>
+      </div>
+    </div>
+
+    <!-- 8. VVN PU College -->
+    <div class="campus-card-full" data-type="day" data-zone="central" data-courses="jee_main neet_ug commerce" id="vvn">
+      <div>
+        <div class="campus-top-meta">
+          <span class="campus-badge day">Day Scholar (Co-ed)</span>
+          <span class="campus-zone-tag">Central Bengaluru</span>
+        </div>
+        <h2>VVN PU College</h2>
+        <div class="campus-address">
+          <span>📍</span>
+          <span>V.V. Puram (Near National College Metro Station), Bengaluru - 560004</span>
+        </div>
+        <p class="campus-desc">
+          A historic educational collaboration between V.V.N. Trust and RV Educational Institutions (RVEI) under an official MoU, uniting a century of educational heritage with modern decoded coaching.
+        </p>
+
+        <div class="meta-block">
+          <div class="meta-label">Streams Offered</div>
+          <div class="meta-tags">
+            <span class="tag-pill">Science (PCMB, PCMC)</span>
+            <span class="tag-pill">Commerce (EBAC, MEBA)</span>
+          </div>
+        </div>
+
+        <div class="meta-block">
+          <div class="meta-label">Location Highlight</div>
+          <div class="meta-tags">
+            <span class="tag-pill">2-min walk from National College Metro</span>
+            <span class="tag-pill">Affordable Fee Structure</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card-actions">
+        <button class="btn-chat" onclick="openChatWithCampus('vvn')">
+          <span>💬 Chat About VVN</span>
+        </button>
+        <button class="btn-counselor" onclick="testBrainPrompt('VVN PU college RV partnership fees')">
+          View Details
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Comparison Matrix Section -->
+  <section class="comparison-section">
+    <h3>📊 Quick Campus Comparison Matrix</h3>
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Campus</th>
+          <th>Zone</th>
+          <th>Type</th>
+          <th>Hostel Facility</th>
+          <th>Streams Offered</th>
+          <th>Coaching Focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SSMRV PU College</strong></td>
+          <td>South Bengaluru</td>
+          <td>Day Scholar (Co-ed)</td>
+          <td><span class="cross-icon">🚫</span> Day Bus Transit</td>
+          <td>Science & Commerce</td>
+          <td>JEE Advanced, NEET, CA</td>
+        </tr>
+        <tr>
+          <td><strong>NMKRV PU for Women</strong></td>
+          <td>South Bengaluru</td>
+          <td>Exclusively Women</td>
+          <td><span class="check-icon">✅</span> On-Campus Women's Hostel</td>
+          <td>Science & Commerce</td>
+          <td>NEET, JEE, CA Foundation</td>
+        </tr>
+        <tr>
+          <td><strong>Harohalli Residential</strong></td>
+          <td>Kanakapura Road</td>
+          <td>Residential Boarding</td>
+          <td><span class="check-icon">✅</span> 50-Acre Full Boarding (Boys & Girls)</td>
+          <td>Science (PCMB/C)</td>
+          <td>24/7 Immersive JEE/NEET</td>
+        </tr>
+        <tr>
+          <td><strong>RV PU North</strong></td>
+          <td>North Bengaluru</td>
+          <td>Day Scholar (Co-ed)</td>
+          <td><span class="cross-icon">🚫</span> Day Bus Transit</td>
+          <td>Science (PCMB/C)</td>
+          <td>JEE Main, NEET, CBT Lab</td>
+        </tr>
+        <tr>
+          <td><strong>RV PU South</strong></td>
+          <td>South Bengaluru</td>
+          <td>Day Scholar (Co-ed)</td>
+          <td><span class="cross-icon">🚫</span> Day Bus Transit</td>
+          <td>Science & Commerce</td>
+          <td>JEE, NEET, Commerce</td>
+        </tr>
+        <tr>
+          <td><strong>RV PU Electronic City</strong></td>
+          <td>Tech Corridor</td>
+          <td>Day Scholar (Co-ed)</td>
+          <td><span class="cross-icon">🚫</span> Day Bus Transit</td>
+          <td>Science (PCMB/C)</td>
+          <td>IIT-JEE Conceptual Rigor</td>
+        </tr>
+        <tr>
+          <td><strong>RV PU Mysuru</strong></td>
+          <td>Mysuru Heritage</td>
+          <td>Day & Local Boarding</td>
+          <td><span class="check-icon">✅</span> Local Tie-Up Hostels</td>
+          <td>Science & Commerce</td>
+          <td>KCET State Ranks, NEET</td>
+        </tr>
+        <tr>
+          <td><strong>VVN PU College</strong></td>
+          <td>Central Bengaluru</td>
+          <td>Day Scholar (Co-ed)</td>
+          <td><span class="cross-icon">🚫</span> Metro Proximity</td>
+          <td>Science & Commerce</td>
+          <td>High-Value Integrated PU</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="site-footer-container">
+      <div class="site-footer-brand">
+        <h4>RV Learning Hub (RVLH)</h4>
+        <p>
+          Rashtreeya Sikshana Samithi Trust (RSST). 85+ years of historic educational excellence across Karnataka. 
+          Synchronizing PU board curriculum with national entrance ranks (JEE, NEET, CA, KCET) under one unified timetable.
+        </p>
+        <div class="site-footer-trust">Official RSST Educational Trust Initiative</div>
+      </div>
+      <div class="site-footer-col">
+        <h5>8 PU Campuses</h5>
+        <ul>
+          <li><a href="campuses.html#ssmrv">SSMRV PU College (Jayanagar)</a></li>
+          <li><a href="campuses.html#nmkrv">NMKRV PU for Women (Jayanagar)</a></li>
+          <li><a href="campuses.html#rv_harohalli">Harohalli Residential Campus</a></li>
+          <li><a href="campuses.html#rv_north">RV PU College North (Yelahanka)</a></li>
+          <li><a href="campuses.html#rv_south">RV PU College South (Kanakapura Rd)</a></li>
+          <li><a href="campuses.html#rv_ecity">RV PU College Electronic City</a></li>
+          <li><a href="campuses.html#rv_mysuru">RV PU College Mysuru</a></li>
+          <li><a href="campuses.html#vvn">VVN PU College (VV Puram)</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Academic Tracks</h5>
+        <ul>
+          <li><a href="courses.html#jee_adv">JEE Advanced Decoded</a></li>
+          <li><a href="courses.html#jee_main">JEE Main + KCET Decoded</a></li>
+          <li><a href="courses.html#neet_ug">NEET UG Medical Decoded</a></li>
+          <li><a href="courses.html#commerce">Commerce Decoded (CA/CS/CUET)</a></li>
+          <li><a href="courses.html#revise_cet">ReVise CET Crash Course</a></li>
+          <li><a href="admissions.html#scholarships">RV-TSA Scholarship Slabs</a></li>
+          <li><a href="hostels.html#schedule">Synchronized Timetables</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h5>Admissions & Help</h5>
+        <ul>
+          <li><a href="tel:08026632000">📞 Central Desk: 080-2663 2000</a></li>
+          <li><a href="https://wa.me/918317346585">💬 WhatsApp: +91 83173 46585</a></li>
+          <li><a href="mailto:admissions.rvlh@rvei.edu.in">✉️ admissions.rvlh@rvei.edu.in</a></li>
+          <li><a href="hostels.html">🏡 Residential Living & Hostels</a></li>
+          <li><a href="admissions.html">💰 Fees & Installments</a></li>
+          <li><a href="contact.html">📍 Campus Map & Addresses</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div>&copy; 2026 RV Learning Hub • Rashtreeya Sikshana Samithi Trust (RSST). All Rights Reserved.</div>
+      <div>
+        <a href="index.html">Home</a> &bull;
+        <a href="campuses.html">Campuses</a> &bull;
+        <a href="courses.html">Courses</a> &bull;
+        <a href="hostels.html">Hostels</a> &bull;
+        <a href="admissions.html">Admissions</a> &bull;
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="website-nav.js"></script>
+  <script>
+    function filterCampuses(type) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (window.event && window.event.target) window.event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.campus-card-full');
+      cards.forEach(card => {
+        if (type === 'all') {
+          card.style.display = 'flex';
+        } else if (type === 'day' || type === 'residential' || type === 'women') {
+          card.style.display = card.getAttribute('data-type') === type ? 'flex' : 'none';
+        } else if (type === 'south' || type === 'north') {
+          card.style.display = card.getAttribute('data-zone') === type ? 'flex' : 'none';
+        } else if (type === 'jee') {
+          const courses = card.getAttribute('data-courses') || '';
+          card.style.display = courses.includes('jee') ? 'flex' : 'none';
+        } else if (type === 'commerce') {
+          const courses = card.getAttribute('data-courses') || '';
+          card.style.display = courses.includes('commerce') ? 'flex' : 'none';
+        } else if (type === 'neet') {
+          const courses = card.getAttribute('data-courses') || '';
+          card.style.display = courses.includes('neet') ? 'flex' : 'none';
+        }
+      });
+    }
+  </script>
+
+  <!-- RVLH Chatbot Widget Scripts -->
+  <script src="rvlh-knowledge-base.js?v=2.5"></script>
+  <script src="telemetry.js?v=2.5"></script>
+  <script src="rvlh-engine.js?v=2.5"></script>
+  <script src="rvlh-chatbot.js?v=2.5"></script>
+
+</body>
+</html>

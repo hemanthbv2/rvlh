@@ -1,0 +1,1123 @@
+/* ==========================================================================
+   RVLH Multi-Institute Chatbot Styling - Executive RSST Pro Edition
+   Brand Colors: Midnight Obsidian (#060913), Royal Blue (#2563eb), Gold (#f59e0b)
+   Features: Glassmorphism, Zero-Scrollbar Card Carousel with Nav Arrows,
+             Frosted Action Chips, Widescreen Command Center, Rich Markdown
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --rvlh-primary: #2563eb;
+  --rvlh-primary-hover: #1d4ed8;
+  --rvlh-primary-light: #60a5fa;
+  --rvlh-primary-glow: rgba(37, 99, 235, 0.35);
+  
+  --rvlh-accent: #f59e0b;
+  --rvlh-accent-hover: #d97706;
+  --rvlh-accent-light: #fbbf24;
+  --rvlh-accent-glow: rgba(245, 158, 11, 0.25);
+  
+  --rvlh-bg-deep: #060913;
+  --rvlh-bg-surface: #0b1120;
+  --rvlh-bg-card: rgba(17, 24, 39, 0.8);
+  --rvlh-bg-card-hover: rgba(30, 41, 59, 0.85);
+  
+  --rvlh-border: rgba(255, 255, 255, 0.09);
+  --rvlh-border-hover: rgba(255, 255, 255, 0.2);
+  --rvlh-border-active: rgba(59, 130, 246, 0.5);
+  
+  --rvlh-text: #f8fafc;
+  --rvlh-text-muted: #94a3b8;
+  --rvlh-text-dim: #64748b;
+  
+  --rvlh-success: #10b981;
+  --rvlh-danger: #ef4444;
+  
+  --rvlh-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px rgba(37, 99, 235, 0.15);
+  --rvlh-radius: 20px;
+}
+
+#rvlh-widget-root *,
+#rvlh-widget-root *::before,
+#rvlh-widget-root *::after {
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+#rvlh-widget-root h1,
+#rvlh-widget-root h2,
+#rvlh-widget-root h3,
+#rvlh-widget-root h4,
+#rvlh-widget-root button,
+#rvlh-widget-root input,
+#rvlh-widget-root form {
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   1. Floating Action Launcher Button (FAB)
+   ========================================================================== */
+.rvlh-fab-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999990;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.rvlh-chat-open .rvlh-fab-container {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.85);
+}
+
+.rvlh-fab-badge {
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(14px);
+  color: var(--rvlh-text);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  animation: rvlhSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.rvlh-fab-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--rvlh-accent);
+  box-shadow: 0 8px 25px var(--rvlh-accent-glow);
+}
+
+.rvlh-fab-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--rvlh-success);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--rvlh-success);
+  animation: rvlhPulse 2s infinite;
+}
+
+.rvlh-fab-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--rvlh-shadow);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  outline: none;
+}
+
+.rvlh-fab-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 18px 36px rgba(37, 99, 235, 0.5);
+}
+
+.rvlh-fab-btn svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+  transition: transform 0.25s ease;
+}
+
+/* ==========================================================================
+   2. Main Chat Container Window
+   ========================================================================== */
+.rvlh-chat-window {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 440px;
+  height: 640px;
+  max-height: calc(100vh - 40px);
+  background: radial-gradient(130% 120% at 50% 0%, #0d1527 0%, #060913 100%);
+  border-radius: var(--rvlh-radius);
+  border: 1px solid var(--rvlh-border);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(37, 99, 235, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.97);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(20px);
+}
+
+.rvlh-chat-window.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Widescreen Command Center Mode */
+.rvlh-chat-window.expanded {
+  width: 820px;
+  height: 720px;
+  max-height: calc(100vh - 40px);
+  bottom: 24px;
+  right: 24px;
+}
+
+/* ==========================================================================
+   3. Header Section
+   ========================================================================== */
+.rvlh-chat-header {
+  padding: 16px 20px;
+  background: rgba(11, 17, 32, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rvlh-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.rvlh-header-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rvlh-header-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rvlh-accent);
+  font-weight: 800;
+  font-size: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rvlh-avatar-pulse {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 11px;
+  height: 11px;
+  background: var(--rvlh-success);
+  border-radius: 50%;
+  border: 2px solid #0b1120;
+  box-shadow: 0 0 8px var(--rvlh-success);
+}
+
+.rvlh-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rvlh-title-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.rvlh-title-row h3 {
+  color: var(--rvlh-text);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.rvlh-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rvlh-header-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--rvlh-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.rvlh-status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--rvlh-success);
+  border-radius: 50%;
+}
+
+.rvlh-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rvlh-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--rvlh-border);
+  color: var(--rvlh-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.rvlh-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4. Category Quick Filter Toolbar
+   ========================================================================== */
+.rvlh-category-nav-wrapper {
+  position: relative;
+  background: rgba(11, 17, 32, 0.95);
+  border-bottom: 1px solid var(--rvlh-border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 6px;
+}
+
+.rvlh-cat-scroll-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--rvlh-text-muted);
+  width: 26px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  outline: none;
+  user-select: none;
+}
+.rvlh-cat-scroll-btn:hover {
+  background: rgba(37, 99, 235, 0.35);
+  color: #fff;
+  border-color: var(--rvlh-primary);
+}
+
+.rvlh-category-nav {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  padding: 2px 4px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: smooth;
+}
+
+.rvlh-category-nav::-webkit-scrollbar {
+  display: none; /* Chrome, Edge, Safari */
+}
+
+.rvlh-nav-tab {
+  white-space: nowrap;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--rvlh-text-muted);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.rvlh-nav-tab:hover {
+  background: rgba(37, 99, 235, 0.18);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.rvlh-nav-tab.active {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  border-color: #3b82f6;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+
+/* ==========================================================================
+   5. Active Campus Context Bar
+   ========================================================================== */
+.rvlh-context-bar {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.2), rgba(15, 23, 42, 0.9));
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #93c5fd;
+  flex-shrink: 0;
+}
+
+.rvlh-context-bar span {
+  font-weight: 700;
+  color: #fff;
+}
+
+.rvlh-context-clear {
+  background: transparent;
+  border: none;
+  color: var(--rvlh-accent);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  transition: opacity 0.2s;
+  outline: none;
+}
+.rvlh-context-clear:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. Messages Area Viewport & Bubbles
+   ========================================================================== */
+.rvlh-messages-area {
+  flex: 1 1 auto;
+  min-height: 0; /* Prevents flex children from overflowing parent and cutting off footer! */
+  padding: 20px 20px 24px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-behavior: smooth;
+}
+
+.rvlh-messages-area::-webkit-scrollbar {
+  width: 5px;
+}
+.rvlh-messages-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rvlh-messages-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.rvlh-messages-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Suggested Prompts Pill Container */
+.rvlh-suggested-prompts-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.rvlh-prompts-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--rvlh-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  margin-bottom: 4px;
+}
+
+.rvlh-prompt-pill-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 11px 16px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.rvlh-prompt-pill-btn:hover {
+  background: rgba(37, 99, 235, 0.18);
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* Message Rows */
+.rvlh-msg-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: rvlhFadeIn 0.25s ease;
+  width: 100%;
+}
+
+.rvlh-msg-row.bot {
+  align-items: flex-start;
+}
+
+.rvlh-msg-row.user {
+  align-items: flex-end;
+}
+
+/* Bubbles */
+#rvlh-widget-root .rvlh-bubble {
+  max-width: 95%;
+  padding: 18px 22px;
+  border-radius: 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  word-wrap: break-word;
+}
+
+#rvlh-widget-root .rvlh-msg-row.bot .rvlh-bubble {
+  background: var(--rvlh-bg-card);
+  backdrop-filter: blur(14px);
+  color: var(--rvlh-text);
+  border: 1px solid var(--rvlh-border);
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+#rvlh-widget-root .rvlh-bubble p {
+  margin: 0 0 12px 0;
+  line-height: 1.7;
+}
+#rvlh-widget-root .rvlh-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+#rvlh-widget-root .rvlh-bubble ul,
+#rvlh-widget-root .rvlh-bubble ol {
+  margin: 10px 0 14px 20px;
+  padding-left: 0;
+}
+
+#rvlh-widget-root .rvlh-bubble li {
+  margin-bottom: 8px;
+  line-height: 1.65;
+}
+#rvlh-widget-root .rvlh-bubble li:last-child {
+  margin-bottom: 0;
+}
+
+#rvlh-widget-root .rvlh-msg-row.user .rvlh-bubble {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #ffffff;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+  font-weight: 500;
+  padding: 14px 18px;
+}
+
+/* Alert Boxes */
+.rvlh-alert-box {
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid var(--rvlh-accent);
+  padding: 9px 12px;
+  border-radius: 6px;
+  margin: 8px 0;
+  font-size: 12.5px;
+  color: #fef3c7;
+}
+
+/* Rich Tables */
+.rvlh-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid var(--rvlh-border);
+}
+
+.rvlh-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+
+.rvlh-table th {
+  background: rgba(30, 41, 59, 0.95);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rvlh-border);
+  color: var(--rvlh-accent);
+  font-weight: 700;
+}
+
+.rvlh-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--rvlh-text);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+/* ==========================================================================
+   7. Campus & Course Cards Carousel (ZERO-SCROLLBAR & POLISHED)
+   ========================================================================== */
+.rvlh-carousel-wrapper {
+  width: 100%;
+  position: relative;
+  margin: 4px 0 6px 0;
+}
+
+.rvlh-cards-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 6px 2px 10px 2px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  
+  /* Kill default retro scrollbars across all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.rvlh-cards-scroll::-webkit-scrollbar {
+  display: none !important; /* Chrome, Edge, Safari */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* The Campus / Course Card */
+.rvlh-campus-card {
+  min-width: 235px;
+  max-width: 235px;
+  background: linear-gradient(180deg, rgba(22, 34, 56, 0.75) 0%, rgba(11, 18, 33, 0.9) 100%);
+  border: 1px solid var(--rvlh-border);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.rvlh-campus-card:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 15px rgba(37, 99, 235, 0.15);
+}
+
+.rvlh-card-top {
+  margin-bottom: 8px;
+}
+
+/* Card Badges */
+.rvlh-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+.rvlh-badge-blue {
+  background: rgba(37, 99, 235, 0.18);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.rvlh-badge-gold {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fde68a;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.rvlh-campus-card-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.rvlh-campus-card-loc {
+  color: var(--rvlh-text-muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.rvlh-campus-card-loc svg {
+  color: var(--rvlh-accent);
+  flex-shrink: 0;
+}
+
+.rvlh-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.rvlh-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.rvlh-card-desc {
+  color: var(--rvlh-text-muted);
+  font-size: 11.5px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.rvlh-card-desc strong {
+  color: #e2e8f0;
+}
+
+.rvlh-campus-btn {
+  width: 100%;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.rvlh-campus-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Carousel Nav Controls */
+.rvlh-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px 0 2px;
+}
+
+.rvlh-carousel-arrow {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--rvlh-border);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.rvlh-carousel-arrow:hover {
+  background: rgba(37, 99, 235, 0.3);
+  border-color: var(--rvlh-primary);
+  color: #fff;
+}
+
+.rvlh-carousel-counter {
+  font-size: 11px;
+  color: var(--rvlh-text-dim);
+  font-weight: 600;
+}
+
+/* In expanded mode, show cards in grid */
+.rvlh-chat-window.expanded .rvlh-cards-scroll {
+  flex-wrap: wrap;
+}
+.rvlh-chat-window.expanded .rvlh-campus-card {
+  min-width: 230px;
+  max-width: 230px;
+  flex: 1 1 230px;
+}
+
+/* ==========================================================================
+   8. Smart Action Chips (Balanced 2-Column Grid)
+   ========================================================================== */
+.rvlh-chips-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.rvlh-chip {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  color: #bfdbfe;
+  padding: 12px 14px;
+  min-height: 48px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  outline: none;
+  backdrop-filter: blur(8px);
+  width: 100%;
+  line-height: 1.35;
+}
+
+.rvlh-chip:hover {
+  background: rgba(37, 99, 235, 0.25);
+  border-color: #60a5fa;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+}
+
+/* If odd number of chips (like 5, 3, or 1), the last chip spans both columns! */
+.rvlh-chip:last-child:nth-child(odd) {
+  grid-column: span 2;
+  padding: 13px 16px;
+  font-size: 13px;
+}
+
+/* Highlighted Action Chips (Counselor / Scholarships) */
+.rvlh-chip-gold {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #fde68a !important;
+}
+
+.rvlh-chip-gold:hover {
+  background: rgba(245, 158, 11, 0.28) !important;
+  border-color: #fbbf24 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35) !important;
+}
+
+/* ==========================================================================
+   9. In-Chat Lead Form Modal
+   ========================================================================== */
+.rvlh-inchat-form {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: rvlhSlideIn 0.3s ease;
+}
+
+.rvlh-form-header {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--rvlh-accent);
+  margin-bottom: 12px;
+}
+
+.rvlh-form-group {
+  margin-bottom: 10px;
+}
+
+.rvlh-form-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--rvlh-text-muted);
+  margin-bottom: 4px;
+}
+
+.rvlh-form-input,
+.rvlh-form-select {
+  width: 100%;
+  padding: 9px 12px;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid var(--rvlh-border);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12.5px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.rvlh-form-input:focus,
+.rvlh-form-select:focus {
+  border-color: var(--rvlh-primary);
+  background: rgba(30, 41, 59, 1);
+}
+
+.rvlh-form-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #000;
+  font-size: 13px;
+  font-weight: 800;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 6px;
+}
+
+.rvlh-form-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================================================
+   10. Footer Input Area & Contact Bar
+   ========================================================================== */
+.rvlh-chat-footer {
+  padding: 16px 20px 18px 20px;
+  background: rgba(11, 17, 32, 0.98);
+  border-top: 1px solid var(--rvlh-border);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.rvlh-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(22, 33, 54, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: 6px 8px 6px 18px;
+  min-height: 52px;
+  transition: all 0.2s ease;
+}
+
+.rvlh-input-container:focus-within {
+  border-color: rgba(59, 130, 246, 0.85);
+  background: rgba(22, 33, 54, 0.98);
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.3);
+}
+
+.rvlh-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--rvlh-text);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.rvlh-input-field::placeholder {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.rvlh-mic-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--rvlh-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.rvlh-mic-btn:hover {
+  color: var(--rvlh-accent);
+}
+
+.rvlh-mic-btn.listening {
+  color: #ef4444;
+  animation: rvlhPulse 1.2s infinite;
+}
+
+.rvlh-send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.rvlh-send-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  transform: scale(1.05);
+}
+
+.rvlh-quick-contact-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding-top: 12px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  line-height: 1.4;
+  padding-bottom: 2px;
+}
+
+.rvlh-quick-link {
+  color: #94a3b8;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.rvlh-quick-link:hover {
+  color: var(--rvlh-accent);
+}
+
+.rvlh-footer-dot {
+  color: #334155;
+  font-size: 9px;
+}
+
+/* ==========================================================================
+   11. Animations & Typing Indicator
+   ========================================================================== */
+.rvlh-typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 8px 14px;
+  background: var(--rvlh-bg-card);
+  border-radius: 14px;
+  width: fit-content;
+  border: 1px solid var(--rvlh-border);
+}
+
+.rvlh-typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--rvlh-accent);
+  border-radius: 50%;
+  animation: rvlhBounce 1.4s infinite ease-in-out both;
+}
+
+.rvlh-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.rvlh-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes rvlhPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes rvlhSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rvlhFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rvlhBounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   12. Mobile Viewport (Drawer Sheet)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .rvlh-chat-window, .rvlh-chat-window.expanded {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    border: none;
+  }
+  .rvlh-fab-container {
+    bottom: 18px;
+    right: 18px;
+  }
+}

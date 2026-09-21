@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty & Academic Leadership | RV Learning Hub (RSST)</title>
+  <meta name="description" content="Meet Director Mr. Mayur Goyal and the academic leadership of RV Learning Hub. Explore our zero-clash faculty mentorship standard for JEE, NEET, and Commerce.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="website-nav.css">
+  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.5">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #060913;
+      color: #f8fafc;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 130px 24px 40px 24px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .page-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .page-hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      font-size: 16px;
+      color: #94a3b8;
+      max-width: 760px;
+      margin: 0 auto 30px auto;
+    }
+
+    /* Director Spotlight Card */
+    .director-section {
+      max-width: 1100px;
+      margin: 0 auto 60px auto;
+      padding: 0 24px;
+    }
+    .director-card {
+      background: linear-gradient(180deg, rgba(22, 34, 56, 0.8) 0%, rgba(11, 18, 33, 0.95) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 24px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .director-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, #f59e0b, #2563eb);
+    }
+    .director-badge-box {
+      text-align: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .director-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: 800;
+      margin: 0 auto 16px auto;
+      border: 3px solid rgba(245, 158, 11, 0.4);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    }
+    .director-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .director-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f59e0b;
+      margin-bottom: 12px;
+    }
+    .director-org {
+      font-size: 12.5px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+    .director-quote {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #e2e8f0;
+      margin-bottom: 24px;
+      font-style: italic;
+      border-left: 3px solid #2563eb;
+      padding-left: 18px;
+    }
+    .director-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .director-point {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .director-point strong {
+      display: block;
+      color: #93c5fd;
+      font-size: 13.5px;
+      margin-bottom: 4px;
+    }
+    .director-point span {
+      font-size: 12.5px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* Trust & Mentorship Standards */
+    .leadership-grid-section {
+      max-width: 1100px;
+      margin: 0 auto 60px auto;
+      padding: 0 24px;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-title h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .section-title p {
+      color: #94a3b8;
+      font-size: 14.5px;
+    }
+    .pillars-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .pillar-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.25s ease;
+    }
+    .pillar-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .pillar-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    .pillar-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .pillar-card p {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* RSST Trust Box */
+    .trust-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 36px;
+      max-width: 1100px;
+      margin: 0 auto 70px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .trust-info h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .trust-info p {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    .trust-leaders {
+      display: flex;
+      gap: 24px;
+    }
+    .trust-leader-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .trust-leader-item strong {
+      display: block;
+      color: #fde68a;
+      font-size: 13px;
+    }
+    .trust-leader-item span {
+      font-size: 11.5px;
+      color: #94a3b8;
+    }
+
+    /* Actions */
+    .faculty-cta {
+      text-align: center;
+      padding: 50px 24px;
+      background: rgba(11, 18, 33, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .faculty-cta h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .faculty-cta p {
+      color: #94a3b8;
+      font-size: 14.5px;
+      max-width: 600px;
+      margin: 0 auto 24px auto;
+    }
+    .btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary-action {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-primary-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    }
+    .btn-chat-action {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fde68a;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-chat-action:hover {
+      background: rgba(245, 158, 11, 0.3);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 860px) {
+      .director-card {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+      .trust-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .director-points {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="site-nav-container">
+      <a href="index.html" class="site-logo-group">
+        <div class="site-logo-badge">RV</div>
+        <div class="site-logo-text">
+          <div class="site-logo-title">RV Learning Hub</div>
+          <p>RSST Educational Initiative</p>
+        </div>
+      </a>
+      <nav class="site-nav-links">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="campuses.html" class="site-nav-link">8 Campuses</a>
+        <a href="courses.html" class="site-nav-link">Courses</a>
+        <a href="hostels.html" class="site-nav-link">Residential & Hostels</a>
+        <a href="admissions.html" class="site-nav-link">Scholarships & Fees</a>
+        <a href="faculty.html" class="site-nav-link active">Faculty</a>
+        <a href="events.html" class="site-nav-link">Events</a>
+        <a href="contact.html" class="site-nav-link">Contact</a>
+        <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+      </nav>
+      <button class="site-mobile-toggle" id="site-mobile-toggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="site-mobile-drawer" id="site-mobile-drawer">
+    <a href="index.html" class="site-nav-link">Home</a>
+    <a href="campuses.html" class="site-nav-link">8 Campuses</a>
+    <a href="courses.html" class="site-nav-link">Courses (JEE / NEET / Commerce)</a>
+    <a href="hostels.html" class="site-nav-link">Residential & Hostels (Harohalli)</a>
+    <a href="admissions.html" class="site-nav-link">Scholarships & Fees (RV-TSA)</a>
+    <a href="faculty.html" class="site-nav-link active">Faculty & Leadership</a>
+    <a href="events.html" class="site-nav-link">Events & Calendar</a>
+    <a href="contact.html" class="site-nav-link">Admissions Contact & Counseling</a>
+    <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-pill">
+      <span>👨‍🏫 Academic Leadership & Faculty Standard</span>
+    </div>
+    <h1>Leadership Guided by Academic Excellence</h1>
+    <p>
+      At RV Learning Hub (RVLH), our academic model eliminates tuition stress by uniting Karnataka PU Board theory with competitive entrance coaching under senior mentorship and direct leadership.
+    </p>
+  </section>
+
+  <!-- Director Profile Section -->
+  <section class="director-section">
+    <div class="director-card">
+      <div class="director-badge-box">
+        <div class="director-avatar">MG</div>
+        <div class="director-name">Mr. Mayur Goyal</div>
+        <div class="director-title">Director, RV Learning Hub</div>
+        <div class="director-org">Rashtreeya Sikshana Samithi Trust (RSST)<br>Bengaluru, Karnataka</div>
+      </div>
+
+      <div class="director-content">
+        <div class="director-quote">
+          "Our mission at RV Learning Hub is to liberate students from the exhaustion of dual-schooling. By synchronizing Board curriculum and national entrance coaching into one cohesive academic day, we build deep conceptual mastery, confidence, and genuine intellectual curiosity."
+        </div>
+
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">
+          As Director of RV Learning Hub, Mr. Mayur Goyal leads the strategic design, curriculum synchronization, and faculty governance across RSST's network of 8 Pre-University college campuses. He oversees the implementation of the <strong>Decoded Methodology</strong>, ensuring students targeting JEE Advanced, JEE Main, NEET-UG, and CA Foundation receive standardized high-caliber mentorship without conflicting timetables.
+        </p>
+
+        <div class="director-points">
+          <div class="director-point">
+            <strong>Assistant Director</strong>
+            <span>Mr. Srivatsa PV — Academic Operations & Student Mentorship</span>
+          </div>
+          <div class="director-point">
+            <strong>Academic Reach</strong>
+            <span>Directing programs across 8 PU Colleges in Bengaluru & Mysuru</span>
+          </div>
+          <div class="director-point">
+            <strong>Key Focus Tracks</strong>
+            <span>JEE (IIT/NIT), NEET-UG Medical, CA Foundation, KCET</span>
+          </div>
+          <div class="director-point">
+            <strong>Pedagogy Standard</strong>
+            <span>Zero-clash timetable with daily 1-on-1 doubt clinics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentorship Model & Pillars -->
+  <section class="leadership-grid-section">
+    <div class="section-title">
+      <h2>The RVLH Faculty Standard</h2>
+      <p>How our master educators guide students to top state and national ranks</p>
+    </div>
+
+    <div class="pillars-container">
+      <div class="pillar-card">
+        <div class="pillar-icon">🎯</div>
+        <h3>Zero-Clash Parallel Teaching</h3>
+        <p>The same master faculty teach PU Board derivations and competitive entrance shortcuts in parallel. No contradicting methods or fatigue.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">🧑‍🔬</div>
+        <h3>Elite National Faculty</h3>
+        <p>Senior lecturers drawn from premier IITs, NITs, and medical academies with 12+ years of proven entrance mentorship track records.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">💡</div>
+        <h3>Daily 1-on-1 Doubt Clinics</h3>
+        <p>Every day between 3:15 PM and 4:15 PM, faculty conduct personalized doubt sessions so students never carry backlogs home.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">📊</div>
+        <h3>Diagnostic CBT Analytics</h3>
+        <p>Weekly computer-based test papers evaluated with question-level diagnostic reports analyzing accuracy, negative marks, and speed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSST Governing Trust Box -->
+  <div class="trust-box">
+    <div class="trust-info">
+      <h3>Rashtreeya Sikshana Samithi Trust (RSST)</h3>
+      <p>Pioneering world-class education in Karnataka since 1940 with 85+ years of historic academic legacy.</p>
+    </div>
+    <div class="trust-leaders">
+      <div class="trust-leader-item">
+        <strong>Dr. M.P. Shyam</strong>
+        <span>President, RSST</span>
+      </div>
+      <div class="trust-leader-item">
+        <strong>Dr. (h.c.) A.V.S. Murthy</strong>
+        <span>Hon. Secretary, RSST</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Call to Action -->
+  <section class="faculty-cta">
+    <h2>Connect with RVLH Academic Counselors</h2>
+    <p>
+      Have questions regarding integrated coaching streams, curriculum structure, or scholarship eligibility? Our admissions desk is available 6 days a week.
+    </p>
+    <div class="btn-group">
+      <a href="admissions.html" class="btn-primary-action">Apply for Admissions</a>
+      <button class="btn-chat-action" onclick="openChatWithFaculty()">💬 Chat with AI About Faculty</button>
+    </div>
+  </section>
+
+  <!-- Shared Navigation Helpers -->
+  <script src="website-nav.js"></script>
+  <script>
+    function openChatWithFaculty() {
+      const fabBtn = document.getElementById('rvlh-fab-toggle');
+      const chatWindow = document.getElementById('rvlh-chat-window');
+      if (fabBtn && chatWindow) {
+        if (!chatWindow.classList.contains('open')) fabBtn.click();
+        setTimeout(() => {
+          if (window.RVLHWidgetInstance && window.RVLHWidgetInstance.engine) {
+            const payload = window.RVLHWidgetInstance.engine.handleFacultyInquiry();
+            window.RVLHWidgetInstance.appendBotPayload(payload);
+          }
+        }, 300);
+      }
+    }
+  </script>
+
+  <!-- RVLH Chatbot Widget Scripts -->
+  <script src="rvlh-knowledge-base.js?v=2.5"></script>
+  <script src="telemetry.js?v=2.5"></script>
+  <script src="rvlh-engine.js?v=2.5"></script>
+  <script src="rvlh-chatbot.js?v=2.5"></script>
+
+</body>
+</html>
