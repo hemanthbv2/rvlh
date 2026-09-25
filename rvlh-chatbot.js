@@ -46,6 +46,17 @@
 
       // 5. Render Initial Bot Greeting
       this.displayInitialGreeting();
+
+      // 6. Auto-Open & Transparent Background Support
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('nobg') === '1' || urlParams.get('transparent') === '1' || document.body.dataset.nobg === 'true') {
+        document.documentElement.style.background = 'transparent';
+        document.body.style.background = 'transparent';
+        document.body.style.backgroundColor = 'transparent';
+      }
+      if (urlParams.get('open') === '1' || urlParams.get('chat') === '1' || urlParams.get('auto') === '1' || document.body.dataset.autoOpen === 'true' || window.AUTO_OPEN_CHATBOT) {
+        setTimeout(() => this.toggleChat(true), 250);
+      }
     }
 
     renderWidgetDOM() {
