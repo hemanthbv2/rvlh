@@ -705,26 +705,6 @@
         row.appendChild(chipsContainer);
       }
 
-      // 6. Suggested Prompts (Fills initial state with balanced, helpful query shortcuts)
-      if (payload.suggestedPrompts && payload.suggestedPrompts.length > 0) {
-        const promptsBox = document.createElement('div');
-        promptsBox.className = 'rvlh-suggested-prompts-box';
-        promptsBox.innerHTML = `<div class="rvlh-prompts-title">💡 Popular Questions:</div>`;
-        payload.suggestedPrompts.forEach(p => {
-          const pBtn = document.createElement('button');
-          pBtn.className = 'rvlh-prompt-pill-btn';
-          pBtn.textContent = p.label;
-          pBtn.addEventListener('click', () => {
-            if (this.inputEl) {
-              this.inputEl.value = p.query;
-              document.getElementById('rvlh-chat-form').dispatchEvent(new Event('submit'));
-            }
-          });
-          promptsBox.appendChild(pBtn);
-        });
-        row.appendChild(promptsBox);
-      }
-
       this.messagesEl.appendChild(row);
       if (isInitial) {
         this.messagesEl.scrollTop = 0;

@@ -77,11 +77,6 @@ class RVLHEngine {
         { label: '👨‍🏫 Director & Faculty', action: 'view_faculty' },
         { label: '🏡 Hostel & Boarding', action: 'ask_hostel' },
         { label: '💰 Fees & Scholarships', action: 'ask_fees' }
-      ],
-      suggestedPrompts: [
-        { label: '📅 Upcoming events & scholarship test dates', query: 'what are the upcoming events and scholarship tests' },
-        { label: '✨ Compare Day Scholar vs Harohalli Residential', query: 'Compare day scholar and harohalli residential routine' },
-        { label: '🌐 Show all pages & website links', query: 'show all website pages and links' }
       ]
     };
   }
