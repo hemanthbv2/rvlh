@@ -9,7 +9,9 @@ const RVLH_KB = {
     name: "RV Learning Hub (RVLH)",
     parentTrust: "Rashtreeya Sikshana Samithi Trust (RSST)",
     foundedYear: 1940,
-    legacy: "85+ years of historic educational excellence across Karnataka",
+    founder: "Late Sri M.C. Sivananda Sarma",
+    legacy: "80+ years of historic educational excellence across Karnataka",
+    ecosystem: "More than 28 institutions, 24,000+ students and supported by over 3,000 staff members covering educational needs from kindergarten to postgraduate disciplines.",
     mission: "Synchronizing Karnataka State Pre-University board curriculum with premier national entrance coaching (JEE, NEET, CA Foundation, KCET) under one unified timetable.",
     headquarters: {
       address: "131/78, Sunkenahalli, Bull Temple Road, Bengaluru – 560019",
@@ -67,22 +69,68 @@ const RVLH_KB = {
       ]
     },
     admissionSteps: [
-      { step: 1, title: "Online Registration", desc: "Submit application on admissions.rvlearninghub.com or via this chatbot." },
-      { step: 2, title: "RV-TSA Scholarship Test", desc: "Appear for the online or in-campus diagnostic scholarship assessment." },
-      { step: 3, title: "Counseling & Campus Tour", desc: "Meet senior academic heads with your parents to select stream & batch." },
-      { step: 4, title: "Document Verification", desc: "Verification of 10th marks card, transfer certificate, and photo ID." },
-      { step: 5, title: "Seat Confirmation", desc: "Payment of admission fee and allocation of batch, books, and uniform." }
+      { step: 1, title: "Application", desc: "Students must fill out the application form and complete registration on admissions.rvlearninghub.com." },
+      { step: 2, title: "Selection & Centre Confirmation", desc: "Based on the application and RACE test, admission will be confirmed for the selected course and campus centre." },
+      { step: 3, title: "Fee Payment", desc: "The fee requirement must be paid once the application is accepted and confirmed." },
+      { step: 4, title: "Commencement", desc: "The enrolled students will begin their classes as per the start date of the scheduled batch." }
     ],
-    director: {
-      name: "Mr. Mayur Goyal",
-      title: "Director, RV Learning Hub (RVLH)",
-      organization: "Rashtreeya Sikshana Samithi Trust (RSST)",
-      assistantDirector: "Mr. Srivatsa PV",
-      vision: "Empowering Karnataka's Pre-University students through synchronized competitive coaching (JEE, NEET, CA, KCET) integrated seamlessly into the PU Board academic calendar.",
-      governingTrust: "Rashtreeya Sikshana Samithi Trust (RSST)",
-      president: "Dr. M.P. Shyam (President, RSST)",
-      secretary: "Dr. (h.c.) A.V.S. Murthy (Hon. Secretary, RSST)",
+    leadership: {
+      governingTrust: "Rashtreeya Sikshana Samithi Trust (RSST) / RV Educational Institutions (RVEI)",
+      president: "Dr. M.P. Shyam (President, RVEI)",
+      vicePresidents: ["Dr. A.C. Chandrashekar Raju (Vice President, RVEI)", "Dr. C. Vinod Hayagriv (Vice President, RVEI)"],
+      honSecretary: "Dr. (h.c.) A.V.S. Murthy (Hon. Secretary, RVEI)",
+      honJointSecretary: "Mr. D.P. Nagaraj (Hon. Joint Secretary, RVEI)",
+      treasurer: "Mr. P.S. Venkatesh Babu (Treasurer, RVEI)",
+      assistantSecretary: "Mr. Nikhil A Murthy (Assistant Secretary, RVEI)",
+      director: "Mr. Mayur Goyal (Director, RV Learning Hub)",
+      assistantDirector: "Mr. Srivatsa P.V. (Assistant Director, RV Learning Hub)",
+      academicOperations: "Kallesh K.P. (Head - Academic Operations)",
+      academics: "Rajai Mithil Kanaiyalal (Head - Academics)",
+      iqaac: "Dr. Y. Madhusudhana Reddy (Head - IQAAC)",
+      hr: "B. Thara Ayinna (Head - HR)",
+      finance: "Asha D. (Manager - Finance)",
       facultyPageUrl: "faculty.html"
+    },
+    raceExam: {
+      name: "RACE (RV Admission and Competitive Examination)",
+      officialTitle: "RACE - Selection Test for RV Educational Institutions' PU Colleges",
+      websiteQuote: "RACE is a selection test for admission into RV Educational Institutions’ PU Colleges. Students can choose coaching for competitive exams like JEE, NEET, KCET, CA and CMA along with board.",
+      extendedQuote: "RACE admission test is used for entrance into the PU Colleges of RVEI. Students who enrol can receive coaching for board exams as well as competitive exams such as JEE, NEET, KCET, CA Foundation and CLAT.",
+      targetAudience: "Ambitious 10th Graders: Ideal for students aiming to excel in competitive exams such as JEE, NEET, KCET, CA, and CMA.",
+      coreBenefits: [
+        "Mastery of concepts: Gain a deep understanding of concepts to stand out among your peers.",
+        "Efficient time management: Designed for students interested in an integrated programme that maximises learning while optimising time.",
+        "Learn with the best: A chance to study alongside the most talented and driven peers in your city.",
+        "Renowned educators: Learn from highly experienced and renowned educators dedicated to your success."
+      ],
+      participatingCampuses: [
+        "SSMRV PU College, Bengaluru",
+        "NMKRV PU College, Bengaluru",
+        "RV PU College North, Bengaluru",
+        "RV PU College South, Bengaluru",
+        "RV PU College, Electronic City",
+        "RV PU College, Harohalli",
+        "RV PU College, Mysuru",
+        "VVN PU College, Bengaluru"
+      ],
+      portalUrl: "https://rvlearninghub.com/race/",
+      registrationUrl: "https://admissions.rvlearninghub.com",
+      helpline: "080 2663 2000 / +91 83173 46585",
+      email: "admissions.rvlh@rvei.edu.in"
+    },
+    kcetDetails: {
+      name: "KCET (Karnataka Common Entrance Test)",
+      authority: "Karnataka Examination Authority (KEA)",
+      websiteQuote: "The Karnataka Common Entrance Test (KCET) is a state-level exam administered by the Karnataka Examination Authority (KEA) for undergraduate admissions in Karnataka. This entrance test allows eligible students to secure seats in various engineering courses offered by colleges and universities across the state.",
+      targetAudience: "Ambitious 10th Graders: Ideal for students aiming to excel in KCET and secure seats in colleges of their choice.",
+      admissionProcess: [
+        "1. Application: Students must fill out the application form and complete registration.",
+        "2. Selection & Centre Confirmation: Based on the application, admission will be confirmed for the selected course and centre.",
+        "3. Fee Payment: The fee requirement must be paid once the application is accepted and confirmed.",
+        "4. Commencement: The enrolled students will begin their classes as per the start date of the scheduled batch."
+      ],
+      portalUrl: "https://rvlearninghub.com/kcet/",
+      helpline: "080 2663 2000 / +91 83173 46585"
     }
   },
 
@@ -132,9 +180,9 @@ const RVLH_KB = {
       hasHostel: false,
       hostelNote: "SSMRV operates extensive dedicated bus fleets covering all major South, Central, and West Bengaluru routes. Outstation students seeking boarding are enrolled in our Harohalli Residential Campus.",
       streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC, MEBA)"],
-      courseIds: ["jee_adv", "jee_main", "neet_ug", "commerce"],
-      rvlhPrograms: ["JEE Advanced (Main + KCET)", "JEE Main + KCET Decoded", "NEET UG Decoded", "Commerce Decoded Programme"],
-      description: "One of Karnataka's most acclaimed Pre-University institutions with a decades-long record of top 10 State PU Board ranks and high percentages in JEE & NEET.",
+      courseIds: ["jee_main", "neet_ug", "commerce"],
+      rvlhPrograms: ["Course 2: JEE (Main + KCET Decoded) + PU Board", "Course 3: NEET UG + KCET + PU Board", "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)"],
+      description: "SSMRV PU College where academic excellence meets holistic development. Explore our vibrant campus and the diverse programmes designed to empower students to reach their full potential.",
       highlights: [
         "Smart digital lecture theaters",
         "Cutting-edge Physics, Chemistry, Biology & Computer Labs",
@@ -155,14 +203,19 @@ const RVLH_KB = {
       hasHostel: true,
       hostelNote: "Dedicated secure on-campus Women's Hostel with biometric entry, 24/7 CCTV surveillance, resident wardens, and hygienic vegetarian dining.",
       streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC, MEBA, PEAC)"],
-      courseIds: ["jee_main", "neet_ug", "commerce"],
-      rvlhPrograms: ["JEE Main + KCET Decoded", "NEET UG Decoded", "Commerce Decoded Programme"],
-      description: "Karnataka's benchmark women's institution empowering girl students in STEM and Commerce with academic rigor and personal leadership training.",
+      courseIds: ["jee_adv", "jee_main", "neet_ug", "commerce"],
+      rvlhPrograms: [
+        "Course 1: JEE Advanced (Main + KCET Decoded) + PU Board",
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board",
+        "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)"
+      ],
+      description: "Join a legacy of excellence at NMKRV PU College. Discover our commitment to providing a high-quality education in a supportive environment.",
       highlights: [
         "Directly adjacent to South End Circle Metro Station (Green Line)",
         "Secure women's hostel inside the campus boundary",
-        "Specialized girl student mentorship in medicine & finance",
-        "High success rate in CA Foundation and NEET medical entrance"
+        "Specialized girl student mentorship in IIT-JEE, NEET medicine & CA/CLAT finance",
+        "High success rate in CA Foundation, KCET and NEET medical entrance"
       ],
       transportRoutes: ["Metro connectivity across all Bangalore lines", "Dedicated college buses from South & Central Bangalore"]
     },
@@ -177,15 +230,21 @@ const RVLH_KB = {
       landmark: "Easily accessible from Airport Road, Yelahanka & Hebbal flyover",
       hasHostel: false,
       hostelNote: "Day-scholar center equipped with college transport serving Yelahanka, Sahakarnagar, Hebbal, Jalahalli, and Vidyaranyapura.",
-      streamsOffered: ["Science (PCMB, PCMC)"],
-      courseIds: ["jee_adv", "jee_main", "neet_ug", "revise_cet"],
-      rvlhPrograms: ["JEE Advanced (Main + KCET)", "JEE Main + KCET Decoded", "NEET UG Decoded", "ReVise CET"],
-      description: "Established to bring the prestigious RV educational quality to students residing in North Bengaluru with integrated high-rank coaching.",
+      streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC)"],
+      courseIds: ["jee_adv", "jee_main", "neet_ug", "commerce", "revise_cet"],
+      rvlhPrograms: [
+        "Course 1: JEE Advanced (Main + KCET Decoded) + PU Board",
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board",
+        "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)",
+        "ReVise CET Fast-Track Crash Course"
+      ],
+      description: "A thriving community of learners at RV PU College North, Bengaluru. Discover our commitment to providing a quality education that empowers students to reach their full potential.",
       highlights: [
         "Modern campus built with open-space architecture",
         "Computer-Based Testing (CBT) digital laboratory",
         "Experienced national faculty permanently stationed at North campus",
-        "High focus on engineering and medical entrance speed techniques"
+        "High focus on engineering, KCET speed techniques, and medical entrance"
       ],
       transportRoutes: ["Yelahanka New Town", "Sahakarnagar", "Hebbal", "Manyata Tech Park corridor", "Vidyaranyapura"]
     },
@@ -202,12 +261,18 @@ const RVLH_KB = {
       hostelNote: "Day-scholar facility with comprehensive bus transit covering South Bengaluru.",
       streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC)"],
       courseIds: ["jee_adv", "jee_main", "neet_ug", "commerce"],
-      rvlhPrograms: ["JEE Advanced (Main + KCET)", "JEE Main + KCET Decoded", "NEET UG Decoded", "Commerce Decoded Programme"],
-      description: "State-of-the-art South Bengaluru campus equipped with forward-looking labs and rigorous coaching pedagogy for science & commerce aspirants.",
+      rvlhPrograms: [
+        "Course 1: JEE Advanced (Main + KCET Decoded) + PU Board",
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board",
+        "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)"
+      ],
+      description: "Discover RV PU College South, Bengaluru, a state-of-the-art campus in Bengaluru designed to inspire and empower students. Explore our modern facilities, innovative programmes, and vibrant community.",
       highlights: [
         "Smart digital classrooms with interactive boards",
         "Intensive problem-solving sessions and formula mind-maps",
-        "Proximity to Green Line Metro for convenient daily commute"
+        "Proximity to Green Line Metro for convenient daily commute",
+        "All 4 premier integrated courses offered"
       ],
       transportRoutes: ["Kanakapura Road", "JP Nagar (all phases)", "Kumaraswamy Layout", "Bannerghatta Road"]
     },
@@ -222,14 +287,20 @@ const RVLH_KB = {
       landmark: "Adjacent to Electronic City Tech Corridor",
       hasHostel: false,
       hostelNote: "Day college catering to students along Hosur Road, Electronic City, BTM, and Bommasandra.",
-      streamsOffered: ["Science (PCMB, PCMC)"],
-      courseIds: ["jee_adv", "jee_main", "neet_ug"],
-      rvlhPrograms: ["JEE Advanced (Main + KCET)", "JEE Main + KCET Decoded", "NEET UG Decoded"],
-      description: "Located in the heart of Bengaluru's Silicon Hub, designed for future engineers and technologists aiming for top-tier IITs, NITs, and IIITs.",
+      streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC)"],
+      courseIds: ["jee_adv", "jee_main", "neet_ug", "commerce"],
+      rvlhPrograms: [
+        "Course 1: JEE Advanced (Main + KCET Decoded) + PU Board",
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board",
+        "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)"
+      ],
+      description: "In Bengaluru's tech hub, RV PU College, Electronic City offers unparalleled industry exposure and real-world learning opportunities. Discover how we prepare you for a successful career in technology.",
       highlights: [
-        "Tech-integrated learning environment",
-        "High focus on JEE Advanced conceptual rigor and physics modeling",
-        "Fast-track connectivity via elevated expressway and upcoming Yellow Line Metro"
+        "Tech-integrated learning environment with digital testing pods",
+        "High focus on JEE Advanced conceptual rigor, physics modeling & KCET speed hacks",
+        "Fast-track connectivity via elevated expressway and upcoming Yellow Line Metro",
+        "All 4 premier integrated courses offered"
       ],
       transportRoutes: ["Electronic City Phase 1 & 2", "Bommasandra", "HSR Layout", "BTM Layout", "Hosur Road"]
     },
@@ -244,10 +315,14 @@ const RVLH_KB = {
       landmark: "Serene, sprawling 50+ acre green campus on Kanakapura Highway",
       hasHostel: true,
       hostelNote: "Premier 50-acre residential campus! Features separate air-cooled boys' and girls' hostels with 24/7 medical room, hygienic vegetarian dining, sports grounds, and evening supervised study halls.",
-      streamsOffered: ["Science (PCMB, PCMC)"],
-      courseIds: ["jee_adv", "jee_main", "neet_ug"],
-      rvlhPrograms: ["JEE Advanced (Main + KCET)", "JEE Main + KCET Decoded", "NEET UG Decoded"],
-      description: "A world-class residential and integrated learning sanctuary away from city distractions. Ideal for serious entrance exam aspirants who thrive in a disciplined, 24/7 mentor-supervised environment.",
+      streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC)"],
+      courseIds: ["jee_main", "neet_ug", "commerce"],
+      rvlhPrograms: [
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board",
+        "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)"
+      ],
+      description: "RV PU College, Harohalli is a campus that offers a peaceful and conducive learning environment. Experience quality education amidst tranquil surroundings.",
       highlights: [
         "Complete distraction-free 50-acre eco-friendly green campus",
         "Evening mentor study hours (6:30 PM - 9:30 PM) with resident faculty",
@@ -269,13 +344,20 @@ const RVLH_KB = {
       hasHostel: true,
       hostelNote: "Tie-up boarding facilities available for outstation students from Mandya, Hassan, and Coorg.",
       streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC)"],
-      courseIds: ["jee_main", "neet_ug", "commerce", "revise_cet"],
-      rvlhPrograms: ["JEE Main + KCET Decoded", "NEET UG Decoded", "Commerce Decoded Programme", "ReVise CET"],
-      description: "Brings RV's benchmark academic excellence to the heritage city of Mysuru, offering localized integrated coaching for Karnataka CET, NEET, and JEE.",
+      courseIds: ["jee_adv", "jee_main", "neet_ug", "commerce", "revise_cet"],
+      rvlhPrograms: [
+        "Course 1: JEE Advanced (Main + KCET Decoded) + PU Board",
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board",
+        "Course 4: Commerce Decoded (Commerce + CA + CLAT + PU Board)",
+        "ReVise CET Fast-Track Crash Course"
+      ],
+      description: "Experience the enriching learning environment at RV PU College, Mysuru. Located in the cultural capital of Karnataka, we offer a unique blend of academic rigour and cultural immersion.",
       highlights: [
         "Senior master faculty rotated from RV Bangalore headquarters",
         "Proven track record in KCET & NEET state ranks in the Mysore region",
-        "Spacious campus library with entrance prep resources"
+        "Spacious campus library with entrance prep resources",
+        "Offers all 4 premier integrated courses"
       ],
       transportRoutes: ["Covering all major localities in Mysore City: Vijayanagar, Kuvempunagar, Saraswathipuram, Gokulam"]
     },
@@ -290,14 +372,18 @@ const RVLH_KB = {
       landmark: "Near National College Metro Station & VV Puram cultural center",
       hasHostel: false,
       hostelNote: "Day scholar institution in central Bangalore. Conveniently connected by Green Line Metro.",
-      streamsOffered: ["Science (PCMB, PCMC)", "Commerce (EBAC, MEBA)"],
-      courseIds: ["jee_main", "neet_ug", "commerce"],
-      rvlhPrograms: ["JEE Main + KCET Decoded", "NEET UG Decoded", "Commerce Decoded Programme"],
-      description: "A prestigious educational collaboration between V.V.N. Trust and RV Educational Institutions (RVEI) under an official MoU, uniting a century of educational heritage with modern decoded coaching.",
+      streamsOffered: ["Science (PCMB, PCMC)"],
+      courseIds: ["jee_main", "neet_ug"],
+      rvlhPrograms: [
+        "Course 2: JEE (Main + KCET Decoded) + PU Board",
+        "Course 3: NEET UG + KCET + PU Board"
+      ],
+      description: "VVN PU College is a proud outcome of a powerful educational collaboration between V.V.N. Trust and RV Educational Institutions (RVEI), brought together through a strategic Memorandum of Understanding to offer students an institution that blends legacy, values and modern academic excellence.",
       highlights: [
         "Prime central city location with 2-minute walk from National College Metro Station",
         "Heritage educational institution combined with modern decoded coaching methodology",
-        "Affordable fee structure with high return on academic outcomes"
+        "Affordable fee structure with high return on academic outcomes",
+        "Focused Science batches for JEE Main, KCET and NEET"
       ],
       transportRoutes: ["Connected by Namma Metro Green Line", "Central BMTC bus terminal proximity"]
     }
@@ -307,95 +393,185 @@ const RVLH_KB = {
   courses: [
     {
       id: "jee_adv",
-      title: "JEE Advanced (Main + KCET Decoded)",
+      courseNumber: 1,
+      title: "Course 1: JEE Advanced (Main + KCET Decoded) + PU Board",
+      shortTitle: "JEE Advanced Decoded",
       category: "Science (Engineering)",
       duration: "2-Year Integrated (PU-I + PU-II)",
+      websiteDescription: "A 2-year programme for students aspiring to pursue engineering/pure sciences from the best colleges in India. Exhaustive training for competitive exams like JEE Advanced, JEE Main, Karnataka CET, COMEDK and other private university entrance examinations. The PU Board syllabus is also covered.",
+      combinations: [
+        "Physics | Chemistry | Mathematics | Biology",
+        "Physics | Chemistry | Mathematics | Computer Science"
+      ],
+      languages: "English and Sanskrit | Kannada | Hindi | French",
       targetExams: ["JEE Advanced (IITs)", "JEE Main (NITs/IIITs)", "KCET (RVCE, BMSCE, MSRIT)", "BITS / COMEDK"],
       eligibility: "Completed 10th standard (min 75% in Science & Maths recommended)",
       keySubjects: ["Physics", "Chemistry", "Mathematics"],
       features: [
         "Rigorous multi-concept problem sets targeting top 1,000 national ranks in JEE Advanced",
-        "Deep foundational conceptual drills aligning board curriculum with IIT-JEE standards",
+        "Synchronized zero-clash parallel timetable with Karnataka State PU Board derivations",
         "150+ simulated online computer-based tests (CBT) mirroring the real NTA/IIT interface",
-        "Masterclasses by senior IIT alumni and subject experts",
-        "Weekly rank analysis and micro-level negative marking rectification"
+        "Direct preparation for top branches at IITs, NITs, and RV College of Engineering (RVCE)",
+        "Daily 1-on-1 faculty doubt clearing clinics (3:15 PM - 4:15 PM)"
       ],
-      campuses: ["ssmrv", "rv_north", "rv_south", "rv_ecity", "rv_harohalli"]
+      campuses: ["rv_north", "rv_south", "rv_mysuru", "rv_ecity", "nmkrv"],
+      campusNames: [
+        "RV PU College North, Bengaluru",
+        "RV PU College South, Bengaluru",
+        "RV PU College, Mysuru",
+        "RV PU College, Electronic City",
+        "NMKRV PU College, Bengaluru"
+      ]
     },
     {
       id: "jee_main",
-      title: "JEE (Main + KCET Decoded)",
+      courseNumber: 2,
+      title: "Course 2: JEE (Main + KCET Decoded) + PU Board",
+      shortTitle: "JEE Main + KCET Decoded",
       category: "Science (Engineering)",
       duration: "2-Year Integrated (PU-I + PU-II)",
-      targetExams: ["JEE Main", "KCET", "COMEDK", "State Engineering Entrances"],
+      websiteDescription: "A 2-year programme exclusively for students pursuing engineering at the top NITs and engineering colleges in Bangalore. Exhaustive training for JEE Main, Karnataka CET, COMEDK and other private university entrance examinations. The PU Board syllabus is also covered.",
+      combinations: [
+        "Physics | Chemistry | Mathematics | Biology",
+        "Physics | Chemistry | Mathematics | Computer Science"
+      ],
+      languages: "English and Sanskrit | Kannada | Hindi | French",
+      targetExams: ["KCET (Top 100 Ranks for RVCE)", "JEE Main (NITs/IIITs)", "COMEDK", "State Engineering Entrances"],
       eligibility: "Completed 10th standard",
       keySubjects: ["Physics", "Chemistry", "Mathematics"],
       features: [
         "Balanced dual focus on securing 98%+ in Karnataka PU Board and 99+ percentile in JEE Main",
-        "Karnataka CET shortcut methods, speed-maths, and time management hacks",
-        "Comprehensive question banks with 15+ years of solved past papers",
-        "Guaranteed readiness for admission into premier colleges like RVCE"
+        "Mastering KCET speed shortcuts (60 questions in 80 mins) to secure RVCE Computer Science seats",
+        "Comprehensive question banks with 15+ years of chapter-wise solved KCET & JEE papers",
+        "Available across ALL 8 constituent RV PU campuses"
       ],
-      campuses: ["ssmrv", "nmkrv", "rv_north", "rv_south", "rv_ecity", "rv_harohalli", "rv_mysuru", "vvn"]
+      campuses: ["ssmrv", "nmkrv", "rv_north", "rv_south", "rv_ecity", "rv_harohalli", "rv_mysuru", "vvn"],
+      campusNames: [
+        "NMKRV PU College, Bengaluru",
+        "SSMRV PU College, Bengaluru",
+        "RV PU College North, Bengaluru",
+        "RV PU College South, Bengaluru",
+        "RV PU College, Electronic City",
+        "RV PU College, Harohalli",
+        "RV PU College, Mysuru",
+        "VVN PU College, Bengaluru"
+      ]
     },
     {
       id: "neet_ug",
-      title: "NEET UG Decoded",
-      category: "Medical",
+      courseNumber: 3,
+      title: "Course 3: NEET UG + KCET + PU Board Course",
+      shortTitle: "NEET UG + KCET Decoded",
+      category: "Medical & Allied Healthcare",
       duration: "2-Year Integrated (PU-I + PU-II)",
-      targetExams: ["NEET UG (MBBS/BDS)", "AIIMS", "JIPMER", "Veterinary & Agri Entrances"],
+      websiteDescription: "A 2-year programme specially designed for students aspiring for medical courses like MBBS, BDS and other allied medical branches. Trains students for Karnataka CET and the PU Board syllabus.",
+      combinations: [
+        "Physics | Chemistry | Mathematics | Biology"
+      ],
+      languages: "English and Sanskrit | Kannada | Hindi | French",
+      targetExams: ["NEET UG (MBBS/BDS)", "KCET (Veterinary, Agri, Pharmacy, Nursing)", "AIIMS", "JIPMER"],
       eligibility: "Completed 10th standard with Biology interest",
       keySubjects: ["Physics", "Chemistry", "Biology (Botany & Zoology)"],
       features: [
-        "100% line-by-line NCERT dissection & memorization mapping",
-        "Extensive diagram-based reasoning and assertion-reason mastery",
-        "Speed-training to solve 180 questions within 180 minutes with zero panic",
-        "Special doctor mentorship sessions and clinical orientation",
-        "Full-length OMR sheet mock drills every alternate Saturday"
+        "100% line-by-line NCERT dissection & memorization mapping for Biology & Chemistry",
+        "Dual coverage of NEET national medical entrance and Karnataka KCET allied science streams",
+        "Speed-training to solve 180 questions within 180 minutes with zero panic and negative marking control",
+        "Full-length OMR sheet mock drills every alternate Saturday with question-level diagnostic review",
+        "Available across ALL 8 constituent RV PU campuses"
       ],
-      campuses: ["ssmrv", "nmkrv", "rv_north", "rv_south", "rv_ecity", "rv_harohalli", "rv_mysuru", "vvn"]
+      campuses: ["rv_north", "rv_south", "ssmrv", "nmkrv", "rv_harohalli", "rv_ecity", "rv_mysuru", "vvn"],
+      campusNames: [
+        "RV PU North, Bengaluru",
+        "RV PU South, Bengaluru",
+        "SSMRV PU College, Bengaluru",
+        "NMKRV PU College, Bengaluru",
+        "RV PU College, Harohalli",
+        "RV PU College, Electronic City",
+        "RV PU College, Mysuru",
+        "VVN PU College, Bengaluru"
+      ]
     },
     {
       id: "commerce",
-      title: "Commerce Decoded Programme",
-      category: "Commerce & Professional Finance",
+      courseNumber: 4,
+      title: "Course 4: Commerce Decoded Programme (Commerce + CA + CLAT + PU Board)",
+      shortTitle: "Commerce Decoded (CA + CLAT)",
+      category: "Commerce & Professional Finance / Law",
       duration: "2-Year Integrated (PU-I + PU-II)",
-      targetExams: ["CA Foundation (ICAI)", "CMA Foundation", "CS Executive Entrance (CSEET)", "CUET (Central Universities)"],
-      eligibility: "Completed 10th standard",
-      keySubjects: ["Accountancy", "Business Studies", "Economics", "Statistics / Basic Maths"],
-      features: [
-        "Seamless integration of Karnataka PU Board Commerce syllabus with CA Foundation modules",
-        "Classes led by practicing Chartered Accountants and financial analysts",
-        "Practical financial literacy, balance sheet analysis, and business aptitude",
-        "CUET coaching to enter top commerce colleges like SRCC, St. Xavier's, and Christ University",
-        "Guest lectures by corporate CFOs and RV alumni"
+      websiteDescription: "Commerce Decoded Programme. A 2-year PU course with CA Foundation, CLAT and IPMAT, Computer Certification Course, Business and Entrepreneurship Training, Personality Development Course, Guest lectures by CA/CS/UPSC/Stock Market Experts/Startup Founders/Entrepreneurs, and Student Exchange Programmes.",
+      combinations: [
+        "Business Studies | Accountancy | Basic Mathematics | Statistics",
+        "Business Studies | Accountancy | Basic Mathematics | Economics"
       ],
-      campuses: ["ssmrv", "nmkrv", "rv_south", "rv_mysuru", "vvn"]
+      languages: "English and Sanskrit | Kannada | Hindi | French",
+      targetExams: ["CA Foundation (ICAI)", "CLAT (National Law Universities)", "CMA Foundation", "CS Executive Entrance (CSEET)", "CUET (Central Universities)"],
+      eligibility: "Completed 10th standard",
+      keySubjects: ["Accountancy", "Business Studies", "Economics", "Statistics / Basic Maths", "Legal Aptitude"],
+      features: [
+        "Complete PU syllabus covered with innovative techniques and methodologies for better understanding",
+        "CA Foundation, CLAT and IPMAT preparation",
+        "Computer Certification Course & Personality Development Course",
+        "Business and Entrepreneurship Training with Startup Founders & Industry Leaders",
+        "Guest lectures by CA/CS/UPSC/Stock Market Experts/Entrepreneurs",
+        "Student Exchange Programmes with foreign universities and Study Tours (additional cost)",
+        "Offered across 7 premier RV campuses (Note: Not offered at VVN)"
+      ],
+      campuses: ["rv_north", "rv_south", "ssmrv", "nmkrv", "rv_harohalli", "rv_ecity", "rv_mysuru"],
+      campusNames: [
+        "RV PU North, Bengaluru",
+        "RV PU South, Bengaluru",
+        "SSMRV PU College, Bengaluru",
+        "NMKRV PU College, Bengaluru",
+        "RV PU College, Harohalli",
+        "RV PU College, Electronic City",
+        "RV PU College, Mysuru"
+      ]
     },
     {
       id: "revise_cet",
-      title: "ReVise CET",
+      courseNumber: 5,
+      title: "ReVise CET (KCET Fast-Track Crash Programme)",
+      shortTitle: "ReVise CET Crash",
       category: "Fast-Track Revision / Crash",
       duration: "Fast-Track Intensive (30 to 60 Days before KCET)",
-      targetExams: ["KCET (Karnataka Common Entrance Test)"],
+      websiteDescription: "ReVise CET is a KCET Crash Course designed to help students effectively prepare for the exam and improve their chances of securing admission into top colleges across the state.",
+      examPattern: {
+        examName: "Karnataka Common Entrance Test (KCET)",
+        conductingBody: "Karnataka Examination Authority (KEA)",
+        mode: "Offline",
+        duration: "Each Paper 1hr 10min conducted in 2 days",
+        totalQuestions: "60 Questions per subject",
+        totalMarks: "PCM (180 Marks), PCMB (240 Marks)",
+        questionType: "Multiple-choice Questions",
+        markingScheme: "No Negative Marking",
+        medium: "Kannada & English",
+        officialWebsite: "www.cetonline.karnataka.gov.in/kea/"
+      },
+      targetExams: ["KCET (Karnataka Common Entrance Test)", "COMEDK"],
       eligibility: "Students studying in or completed 12th / PU-II",
       keySubjects: ["Physics", "Chemistry", "Mathematics", "Biology"],
       features: [
-        "High-yield formula revision and shortcut problem-solving techniques",
-        "Chapter-wise quick-glance mind maps and cheat sheets",
-        "Daily 60-minute simulated timed mock tests with detailed video solutions",
-        "Focus on high-weightage topics to maximize score in minimum time"
+        "High-yield formula revision and shortcut problem-solving techniques for 60 questions per subject",
+        "Chapter-wise quick-glance mind maps, formula cheat sheets, and time elimination hacks",
+        "Simulated timed mock tests mirroring real KEA examination environment",
+        "Focus on high-weightage topics to maximize score in minimum time for top RVCE cutoffs"
       ],
-      campuses: ["ssmrv", "rv_north", "rv_mysuru", "vvn"]
+      campuses: ["ssmrv", "rv_north", "rv_south", "rv_ecity", "rv_harohalli", "rv_mysuru", "nmkrv", "vvn"],
+      campusNames: ["All 8 RV PU Campuses"]
     }
   ],
 
   // Frequently Asked Questions
   faqs: [
     {
-      question: "How do I apply for admission to RV Learning Hub?",
-      keywords: ["apply", "admission", "process", "enroll", "registration", "form", "steps"],
-      answer: "Admissions to RVLH for 2026-27 are open online!\n\n1. Submit application online at **admissions.rvlearninghub.com** or leave your details in this chat.\n2. Appear for the **RV-TSA Scholarship Test**.\n3. Attend personal counseling at your chosen campus with parents.\n4. Complete document verification and confirm seat."
+      question: "What is RACE (RV Admission & Coaching Entrance)?",
+      keywords: ["race", "race exam", "race test", "rv-tsa", "tsa", "entrance test", "scholarship test", "aptitude test", "race syllabus", "race pattern"],
+      answer: "🎯 **About RACE (RV Admission & Coaching Entrance)**\n\n**RACE** is the official entrance & scholarship assessment conducted by **RV Educational Institutions (RVEI)** for admission into our 8 constituent Pre-University (PU) colleges and enrollment into **RV Learning Hub** integrated coaching programs.\n\n### 📝 Exam Pattern (90 Minutes, 60 MCQs):\n• **Part A (Mental Ability & Aptitude):** 10 MCQs testing logical reasoning, patterns, and analytical aptitude.\n• **Part B (Subject Knowledge):** 50 MCQs based on Class 9 & 10 syllabi (Mathematics - 20, Physics - 10, Chemistry - 10, Biology - 10).\n\n### 💰 Scholarship Slabs via RACE:\n• **Platinum Scholar (Top 5% in RACE or 96%+ in 10th):** 100% Tuition Fee Waiver!\n• **Gold Scholar (Top 15% in RACE or 91%-95.9% in 10th):** 50% Tuition Fee Waiver.\n• **Silver Scholar (Top 30% in RACE or 85%-90.9% in 10th):** 25% Tuition Fee Waiver.\n\n👉 *Mode: Online CBT or In-Campus at all 8 RV PU colleges.* Register online at **[admissions.rvlearninghub.com](https://admissions.rvlearninghub.com)** or call **080-2663 2000**."
+    },
+    {
+      question: "What coaching does RV Learning Hub offer for KCET?",
+      keywords: ["kcet", "cet", "kea", "k-cet", "kcet coaching", "rvce", "bmsce", "msrit", "kcet rank", "kcet syllabus"],
+      answer: "🚀 **KCET Coaching at RV Learning Hub — Gateway to RVCE!**\n\nKCET (Karnataka Common Entrance Test conducted by KEA) is Karnataka's premier gateway for engineering seats—most notably Karnataka's #1 engineering college, **RV College of Engineering (RVCE)**.\n\n### 📘 RVLH KCET Course Offerings:\n• **Course 1: JEE Advanced (Main + KCET Decoded) + PU Board:** Top-tier engineering batch at North, South, E-City, Mysuru, NMKRV.\n• **Course 2: JEE (Main + KCET Decoded) + PU Board:** Offered at **ALL 8 Campuses** (North, South, E-City, Harohalli, Mysuru, NMKRV, SSMRV, VVN).\n• **Course 3: NEET UG + KCET + PU Board:** Covers KCET Veterinary, Agriculture, Pharmacy, and allied sciences across **ALL 8 Campuses**.\n• **ReVise CET Crash Batch:** Intensive 30-60 day speed-drill crash course with 5,000+ shortcuts and past 15-year solved papers.\n\n### ⚡ The RVLH Advantage for KCET:\n1. **Zero-Clash Timetable:** PU Board theory and KCET speed drills taught together—eliminating outside tuitions.\n2. **Speed-Mastery:** Special training to solve 60 MCQs in 80 minutes with high accuracy.\n3. **Proven Results:** Consistent single-digit and top 100 Karnataka state ranks securing government-subsidized quota seats at RVCE!"
     },
     {
       question: "Which campuses have hostel facilities?",
@@ -558,7 +734,7 @@ const RVLH_KB = {
       title: "RVLH Home Portal",
       url: "index.html",
       icon: "🏠",
-      brief: "Flagship overview of RV Learning Hub under RSST (85+ years legacy), rankers showcase, and campus comparison.",
+      brief: "Flagship overview of RV Learning Hub under RSST (80+ years legacy), rankers showcase, and campus comparison.",
       actionLabel: "🏠 Open Home Page"
     }
   ]

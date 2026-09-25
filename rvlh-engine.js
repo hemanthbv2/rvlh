@@ -118,6 +118,12 @@ class RVLHEngine {
       case 'ask_fees':
         return this.handleFeesInquiry();
 
+      case 'ask_race':
+        return this.handleRaceInquiry();
+
+      case 'ask_kcet':
+        return this.handleKcetInquiry();
+
       case 'open_lead_form':
         return this.renderLeadForm(payload.reason || 'counselor_request');
 
@@ -176,7 +182,7 @@ class RVLHEngine {
     this.logTelemetry('explain_everything');
     const text = `🌟 **The Complete Guide to RV Learning Hub (RVLH)**\n\n` +
       `### 1. What is RV Learning Hub?\n` +
-      `Backed by **RSST (85+ years of historic legacy)**, RVLH integrates Karnataka Pre-University (PU) Board education with premier entrance exam preparation (**JEE, NEET, KCET & CA Foundation**). Students cover board theory and entrance objective drills under **one synchronized college timetable**—no evening tuition stress!\n\n` +
+      `Backed by **RSST (80+ years of historic legacy)**, RVLH integrates Karnataka Pre-University (PU) Board education with premier entrance exam preparation (**JEE, NEET, KCET & CA Foundation**). Students cover board theory and entrance objective drills under **one synchronized college timetable**—no evening tuition stress!\n\n` +
       `### 2. Our 8 Constituent PU Campuses:\n` +
       `• **SSMRV PU College (Jayanagar, South Blr):** Co-ed Day Scholar, top board & entrance ranks in Science & Commerce.\n` +
       `• **NMKRV PU College (Jayanagar, South Blr):** Dedicated Women's institution with on-campus secure hostel.\n` +
@@ -461,7 +467,7 @@ class RVLHEngine {
   handleCampusesPageInquiry() {
     this.logTelemetry('campuses_page_inquiry');
     const text = `🏛️ **RVLH 8 Constituent PU College Campuses**\n\n` +
-      `RV Learning Hub operates 8 constituent PU institutions under the governance of RSST (85+ years legacy) across Bengaluru and Mysuru:\n\n` +
+      `RV Learning Hub operates 8 constituent PU institutions under the governance of RSST (80+ years legacy) across Bengaluru and Mysuru:\n\n` +
       `• **South Bengaluru:** SSMRV PU College (Jayanagar, Co-ed) & NMKRV PU College for Women (with on-campus hostel).\n` +
       `• **North Bengaluru:** RV PU College North (Yelahanka / Hebbal).\n` +
       `• **East / Tech Corridor:** RV PU College Electronic City (Hosur Rd).\n` +
@@ -501,9 +507,82 @@ class RVLHEngine {
       text: text,
       quickChips: [
         { label: '📚 Open Courses Page', action: 'navigate_page', payload: { url: 'courses.html' } },
+        { label: '🎯 RACE Entrance Exam', action: 'ask_race' },
+        { label: '🚀 KCET Coaching & RVCE', action: 'ask_kcet' },
         { label: '🚀 Campuses with JEE', action: 'filter_campuses', payload: { programKey: 'jee' } },
         { label: '🩺 Campuses with NEET', action: 'filter_campuses', payload: { programKey: 'neet_ug' } },
         { label: '📊 Campuses with Commerce', action: 'filter_campuses', payload: { programKey: 'commerce' } }
+      ]
+    };
+  }
+
+  // --- RACE Exam Inquiry Handler (Data directly from rvlearninghub.com/race/) ---
+  handleRaceInquiry() {
+    this.logTelemetry('race_exam_inquiry');
+    const text = `🎯 **RACE — Selection Test for RV Educational Institutions' PU Colleges**\n\n` +
+      `*(Source: Official RV Learning Hub Portal — [rvlearninghub.com/race](https://rvlearninghub.com/race/))*\n\n` +
+      `**RACE** is a selection test for admission into RV Educational Institutions’ PU Colleges. Students who enrol can choose and receive coaching for board exams as well as competitive exams such as **JEE, NEET, KCET, CA Foundation, CMA, and CLAT**.\n\n` +
+      `### 🌟 Key Pillars of the Programme:\n` +
+      `• **For Ambitious 10th Graders:** Ideal for students aiming to excel in competitive exams such as JEE, NEET, KCET, CA, and CMA.\n` +
+      `• **Mastery of Concepts:** Gain a deep understanding of concepts to stand out among your peers.\n` +
+      `• **Efficient Time Management:** Designed for students interested in an integrated programme that maximises learning while optimising time.\n` +
+      `• **Learn with the Best:** A chance to study alongside the most talented and driven peers in your city, learning from highly experienced and renowned educators dedicated to your success.\n\n` +
+      `### 🏫 Participating PU Campuses:\n` +
+      `• SSMRV PU College, Bengaluru\n` +
+      `• NMKRV PU College, Bengaluru\n` +
+      `• RV PU College North, Bengaluru\n` +
+      `• RV PU College South, Bengaluru\n` +
+      `• RV PU College, Electronic City\n` +
+      `• RV PU College, Harohalli\n` +
+      `• RV PU College, Mysuru\n` +
+      `• VVN PU College, Bengaluru\n\n` +
+      `### 📞 Contact & Registration:\n` +
+      `• **Admissions Portal:** [admissions.rvlearninghub.com](https://admissions.rvlearninghub.com)\n` +
+      `• **Helpline:** **080 2663 2000** / **+91 83173 46585**\n` +
+      `• **Email:** admissions.rvlh@rvei.edu.in`;
+
+    return {
+      type: 'bot',
+      text: text,
+      quickChips: [
+        { label: '📝 Register on Portal', action: 'navigate_page', payload: { url: 'https://admissions.rvlearninghub.com' } },
+        { label: '🚀 KCET Coaching & RVCE', action: 'ask_kcet' },
+        { label: '🏛️ Explore Campuses', action: 'explore_campuses' },
+        { label: '📞 Speak with Academic Counselor', action: 'open_lead_form', payload: { reason: 'race_inquiry' } },
+        { label: '🔙 Main Menu', action: 'reset_context' }
+      ]
+    };
+  }
+
+  // --- KCET Coaching Inquiry Handler (Data directly from rvlearninghub.com/kcet/) ---
+  handleKcetInquiry() {
+    this.logTelemetry('kcet_inquiry');
+    const text = `🚀 **KCET Coaching Classes | RV Learning Hub**\n\n` +
+      `*(Source: Official RV Learning Hub Portal — [rvlearninghub.com/kcet](https://rvlearninghub.com/kcet/))*\n\n` +
+      `The **Karnataka Common Entrance Test (KCET)** is a state-level exam administered by the **Karnataka Examination Authority (KEA)** for undergraduate admissions in Karnataka. This entrance test allows eligible students to secure seats in various engineering courses offered by colleges and universities across the state (including premier institutions like **RV College of Engineering - RVCE**).\n\n` +
+      `### 🎯 Programme Highlights:\n` +
+      `• **For Ambitious 10th Graders:** Ideal for students aiming to excel in KCET and secure seats in colleges of their choice.\n` +
+      `• **Concept Mastery:** Deep foundational understanding of Physics, Chemistry, and Mathematics/Biology to stand out among peers.\n` +
+      `• **Integrated Efficiency:** An integrated curriculum that maximises learning while optimising study hours without external tuition burden.\n` +
+      `• **Renowned Educators:** Dedicated coaching from highly experienced national faculty.\n\n` +
+      `### 📝 4-Step Admission Process:\n` +
+      `1. **Application:** Students must fill out the application form and complete registration.\n` +
+      `2. **Selection & Centre Confirmation:** Based on the application, admission will be confirmed for the selected course and centre.\n` +
+      `3. **Fee Payment:** The fee requirement must be paid once the application is accepted and confirmed.\n` +
+      `4. **Class Commencement:** Enrolled students will begin their classes as per the start date of the scheduled batch.\n\n` +
+      `### 📞 Central Admissions Desk:\n` +
+      `• **Helpline:** **080 2663 2000** / **+91 83173 46585**\n` +
+      `• **Email:** admissions.rvlh@rvei.edu.in`;
+
+    return {
+      type: 'bot',
+      text: text,
+      quickChips: [
+        { label: '🚀 Campuses with KCET & JEE', action: 'filter_campuses', payload: { programKey: 'kcet' } },
+        { label: '🎯 RACE Selection Test', action: 'ask_race' },
+        { label: '🏎️ ReVise CET Crash Course', action: 'select_course', payload: { courseId: 'revise_cet' } },
+        { label: '📝 Request KCET Admission Guidance', action: 'open_lead_form', payload: { reason: 'kcet_inquiry' } },
+        { label: '🔙 Main Menu', action: 'reset_context' }
       ]
     };
   }
@@ -697,29 +776,32 @@ class RVLHEngine {
 
     if (programKey === 'jee_adv' || programKey === 'advanced') {
       filterTag = 'jee_adv';
-      title = '🚀 Campuses Offering JEE Advanced (IIT/NIT Track)';
+      title = '🚀 Campuses Offering Course 1: JEE Advanced (Main + KCET Decoded) + PU Board';
       intro = 'The following **5 premier RVLH PU colleges** offer our specialized 2-Year integrated **JEE Advanced** coaching batch:';
-    } else if (programKey.includes('jee') || programKey === 'engineering') {
-      filterTag = 'jee';
-      title = '🚀 Campuses Offering JEE (Main & Advanced) Coaching';
-      intro = 'Here are the RVLH constituent PU colleges offering synchronized **JEE Main & Advanced** entrance preparation:';
-    } else if (programKey.includes('commerce') || programKey.includes('ca')) {
+    } else if (programKey === 'kcet' || programKey.includes('cet')) {
+      filterTag = 'kcet';
+      title = '🚀 Campuses Offering KCET Decoded Coaching (Gateway to RVCE)';
+      intro = 'KCET integrated coaching is offered across **ALL 8 RVLH PU Campuses**, synchronizing Karnataka PU Board theory with KCET speed-solving drills for premier RVCE seats:';
+    } else if (programKey.includes('commerce') || programKey.includes('ca') || programKey.includes('clat')) {
       filterTag = 'commerce';
-      title = '📊 Campuses Offering Commerce (CA Foundation / CS / CUET)';
-      intro = 'Here are the **5 RVLH campuses** offering integrated **Commerce (EBAC/MEBA/PEAC)** with CA Foundation preparation.\n\n*(Note: RV North, RV E-City, and Harohalli Residential are pure Science/Engineering centers.)*';
+      title = '📊 Campuses Offering Course 4: Commerce Decoded (CA Foundation + CLAT + PU Board)';
+      intro = 'Here are the **7 RVLH campuses** offering integrated **Commerce Decoded (Commerce + CA + CLAT + PU Board)**:\n\n*(Offered at North, South, SSMRV, NMKRV, Harohalli Residential, E-City, and Mysuru. Note: VVN PU College offers Science only.)*';
     } else if (programKey.includes('neet') || programKey.includes('medical')) {
       filterTag = 'neet_ug';
-      title = '🩺 Campuses Offering NEET UG Medical Coaching';
-      intro = 'Here are the RVLH PU colleges offering synchronized **NEET UG Medical (MBBS/BDS)** preparation:';
+      title = '🩺 Campuses Offering Course 3: NEET UG + KCET + PU Board Course';
+      intro = 'Here are the RVLH PU colleges offering synchronized **NEET UG Medical (MBBS/BDS) & KCET allied science** preparation across **ALL 8 Campuses**:';
     } else {
-      filterTag = 'jee';
-      title = '🚀 Campuses Offering JEE Coaching';
-      intro = 'Here are the campuses offering integrated competitive entrance preparation:';
+      filterTag = 'jee_main';
+      title = '🚀 Campuses Offering Course 2: JEE (Main + KCET Decoded) + PU Board';
+      intro = 'Here are the RVLH constituent PU colleges offering synchronized **JEE Main & KCET** entrance preparation across **ALL 8 Campuses**:';
     }
 
     // Filter institutes
     const filteredInstitutes = this.kb.institutes.filter(inst => {
       if (!inst.courseIds) return true;
+      if (filterTag === 'kcet') {
+        return inst.courseIds.includes('jee_main') || inst.courseIds.includes('jee_adv') || inst.courseIds.includes('neet_ug') || inst.courseIds.includes('revise_cet');
+      }
       if (filterTag === 'jee') {
         return inst.courseIds.includes('jee_adv') || inst.courseIds.includes('jee_main');
       }
@@ -824,11 +906,463 @@ class RVLHEngine {
     };
   }
 
-  // --- Natural Language Query Handler (Free Text) ---
+  // --- Check if a specific program is offered at a specific campus ---
+  checkProgramAtCampus(q) {
+    // 1. Detect Campus
+    let campusId = null;
+    if (q.includes('ssmrv')) {
+      campusId = 'ssmrv';
+    } else if (q.includes('nmkrv')) {
+      campusId = 'nmkrv';
+    } else if (q.includes('harohalli') || q.includes('kanakapura')) {
+      campusId = 'rv_harohalli';
+    } else if (q.includes('electronic city') || q.includes('ecity')) {
+      campusId = 'rv_ecity';
+    } else if (q.includes('north') || q.includes('yelahanka') || q.includes('hebbal')) {
+      campusId = 'rv_north';
+    } else if (q.includes('south') || q.includes('jp nagar')) {
+      campusId = 'rv_south';
+    } else if (q.includes('mysore') || q.includes('mysuru')) {
+      campusId = 'rv_mysuru';
+    } else if (q.includes('vvn') || q.includes('vv puram')) {
+      campusId = 'vvn';
+    }
+
+    if (!campusId) return null;
+
+    const campus = this.kb.institutes.find(c => c.id === campusId);
+    if (!campus) return null;
+
+    // 2. Check for Hostel / Boarding Inquiries at this Campus
+    if (q.includes('hostel') || q.includes('boarding') || q.includes('stay') || q.includes('room') || q.includes('accommodation')) {
+      this.logTelemetry('campus_hostel_inquiry', { campusId });
+      if (campusId === 'rv_harohalli') {
+        return {
+          type: 'bot',
+          text: `🏡 **Yes, absolutely! RV PU College Harohalli is a premier 50-Acre Residential Campus with full boarding facilities.**\n\n` +
+            `• **Separate Hostels:** Modern, secure, air-cooled hostel blocks for both boys and girls.\n` +
+            `• **24/7 Faculty Mentorship:** Evening supervised mentor study hours (6:30 PM - 9:30 PM) with resident faculty on standby.\n` +
+            `• **Health & Wellness:** 24/7 medical clinic with resident nurse, hygienic vegetarian dining planned by nutritionists, and vast sports grounds (cricket, football, basketball).\n\n` +
+            `📍 **Location:** Kanakapura Highway (distraction-free green environment).`,
+          quickChips: [
+            { label: '📝 Inquire Harohalli Hostel Admission', action: 'open_lead_form', payload: { reason: 'harohalli_hostel' } },
+            { label: '🏡 View Harohalli Details', action: 'select_campus', payload: { campusId: 'rv_harohalli' } },
+            { label: '⏱️ View 24/7 Daily Schedule', action: 'view_schedules' },
+            { label: '🔙 Main Menu', action: 'reset_context' }
+          ]
+        };
+      } else if (campusId === 'nmkrv') {
+        return {
+          type: 'bot',
+          text: `🏡 **Yes! NMKRV PU College for Women has a secure, dedicated on-campus Women's Hostel.**\n\n` +
+            `• **Security & Safety:** Biometric entry, 24/7 CCTV surveillance, and resident lady wardens.\n` +
+            `• **Facilities:** Hygienic vegetarian dining hall, study lounge, and Wi-Fi access.\n` +
+            `• **Location:** Located right inside the campus boundary in Jayanagar 3rd Block (adjacent to South End Circle Metro Station).`,
+          quickChips: [
+            { label: '📝 Inquire for NMKRV Hostel', action: 'open_lead_form', payload: { reason: 'nmkrv_hostel' } },
+            { label: '🏛️ View NMKRV Details', action: 'select_campus', payload: { campusId: 'nmkrv' } },
+            { label: '🔙 Main Menu', action: 'reset_context' }
+          ]
+        };
+      } else if (campusId === 'rv_mysuru') {
+        return {
+          type: 'bot',
+          text: `🏡 **Yes! RV PU College Mysuru offers verified hostel and boarding support** for outstation students coming from Mandya, Hassan, and Coorg.\n\nDay-scholar facilities with city bus transit are also fully operational.`,
+          quickChips: [
+            { label: '📝 Inquire for Mysuru Boarding', action: 'open_lead_form', payload: { reason: 'mysuru_hostel' } },
+            { label: '🏛️ View Mysuru Details', action: 'select_campus', payload: { campusId: 'rv_mysuru' } },
+            { label: '🔙 Main Menu', action: 'reset_context' }
+          ]
+        };
+      } else {
+        return {
+          type: 'bot',
+          text: `ℹ️ **No, ${campus.name} is a Day Scholar campus and does not have an in-campus hostel.**\n\n` +
+            `However, ${campus.shortName} operates extensive college bus transit across Bengaluru routes.\n\n` +
+            `For students requiring full residential boarding with 24/7 faculty mentorship, RSST provides our **50-Acre Harohalli Residential Campus** (or NMKRV Women's Hostel for female students in Jayanagar).`,
+          quickChips: [
+            { label: '🏡 Explore Harohalli 50-Acre Residential', action: 'select_campus', payload: { campusId: 'rv_harohalli' } },
+            { label: `🚌 View ${campus.shortName} Bus Routes`, action: 'select_campus', payload: { campusId: campus.id } },
+            { label: '📝 Speak to Admissions Counselor', action: 'open_lead_form' }
+          ]
+        };
+      }
+    }
+
+    // 3. Check for Gender / Boys / Girls Inquiries
+    if (q.includes('boy') || q.includes('girl') || q.includes('women') || q.includes('female') || q.includes('male') || q.includes('coed') || q.includes('co-ed')) {
+      this.logTelemetry('campus_gender_inquiry', { campusId });
+      if (campusId === 'nmkrv') {
+        return {
+          type: 'bot',
+          text: `👩 **NMKRV PU College is exclusively an institution for Women.**\n\n` +
+            `Male students cannot enroll at NMKRV. However, all **7 other RV PU Colleges** under RSST are fully **Co-educational (Co-ed)** and welcome both boys and girls:\n` +
+            `• **SSMRV PU College** (Jayanagar 4th T Block — right next door!)\n` +
+            `• **RV PU College South** (Kanakapura Road)\n` +
+            `• **RV PU College North** (Yelahanka / Hebbal)\n` +
+            `• **RV PU College, Electronic City**\n` +
+            `• **RV PU College, Harohalli (Residential)**\n` +
+            `• **RV PU College, Mysuru**\n` +
+            `• **VVN PU College, Bengaluru**`,
+          quickChips: [
+            { label: '🏛️ Explore SSMRV (Co-ed Jayanagar)', action: 'select_campus', payload: { campusId: 'ssmrv' } },
+            { label: '🏫 View All Co-ed Campuses', action: 'explore_campuses' },
+            { label: '📝 Speak to Counselor', action: 'open_lead_form' }
+          ]
+        };
+      } else {
+        return {
+          type: 'bot',
+          text: `👥 **Yes! ${campus.name} is a Co-educational (Co-ed) campus**, open to both boys and girls for Science and Commerce streams.\n\n` +
+            `*(Note: Only NMKRV PU College in Jayanagar is exclusively for women).*`,
+          quickChips: [
+            { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+            { label: '📚 View Courses Offered', action: 'explore_courses' },
+            { label: '📝 Apply for Admission', action: 'open_lead_form' }
+          ]
+        };
+      }
+    }
+
+    // 4. Check for Bus / Transit Inquiries at this Campus
+    if (q.includes('bus') || q.includes('transport') || q.includes('route') || q.includes('commute')) {
+      this.logTelemetry('campus_transport_inquiry', { campusId });
+      const routes = (campus.transportRoutes && campus.transportRoutes.length > 0) 
+        ? campus.transportRoutes.join(', ') 
+        : 'Major city arterial roads';
+      return {
+        type: 'bot',
+        text: `🚌 **Yes! College bus transit is available for ${campus.name}.**\n\n` +
+          `• **Key Routes & Localities Covered:** ${routes}.\n` +
+          `• **Safety:** GPS-tracked college buses with dedicated drivers and safety escorts.\n` +
+          `• **Schedule:** Morning arrival by 8:15 AM and evening departure at 4:15 PM after doubt-clearing clinics.`,
+        quickChips: [
+          { label: `📞 Inquire About ${campus.shortName} Bus Routes`, action: 'open_lead_form', payload: { reason: `${campus.id}_transport` } },
+          { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
+
+    // 5. Detect Program
+    let programType = null;
+    if (q.includes('neet') || q.includes('medical') || q.includes('doctor') || q.includes('mbbs') || q.includes('biology')) {
+      programType = 'neet';
+    } else if (q.includes('jee adv') || q.includes('jee advanced') || q.includes('iit') || (q.includes('advanced') && q.includes('jee'))) {
+      programType = 'jee_adv';
+    } else if (q.includes('jee') || q.includes('engineering') || q.includes('nit')) {
+      programType = 'jee_main';
+    } else if (q.includes('kcet') || q.includes(' cet') || q === 'cet' || q.includes('rvce') || q.includes('comedk')) {
+      programType = 'kcet';
+    } else if (q.includes('commerce') || q.includes('ca ') || q.includes('clat') || q.includes('cma') || q.includes('cs ') || q.includes('law') || q.includes('ipmat') || q.includes('account')) {
+      programType = 'commerce';
+    }
+
+    if (!programType) return null;
+
+    this.logTelemetry('program_at_campus_inquiry', { campusId, programType });
+
+    // Handle NEET (Offered across ALL 8 Campuses)
+    if (programType === 'neet') {
+      return {
+        type: 'bot',
+        text: `🩺 **Yes, absolutely! NEET UG coaching is offered at ${campus.name}.**\n\n` +
+          `At **${campus.name}**, we provide **Course 3: NEET UG + KCET + PU Board Course** with the **PCMB (Physics, Chemistry, Mathematics, Biology)** stream.\n\n` +
+          `### 🌟 Key Highlights at ${campus.name}:\n` +
+          `• **Synchronized Timetable:** Karnataka State PU Board theory + NEET entrance coaching under one unified schedule (no external coaching or tuition fatigue).\n` +
+          `• **100% NCERT Mastery:** In-depth line-by-line coverage for Biology and Chemistry.\n` +
+          `• **NTA Mock Drills & OMR Analytics:** Regular weekend full-length simulation tests with negative marking control.\n` +
+          `• **Dual Advantage:** Prepares students simultaneously for **NEET UG (MBBS/BDS)** and **KCET Medical/Allied Sciences** (Veterinary, Agriculture, Pharmacy, etc.).\n\n` +
+          `📍 **Campus Type:** ${campus.campusType} (${campus.hasHostel ? 'Hostel Available' : 'Day Scholar with College Bus Transit'})\n` +
+          `📌 **Address:** ${campus.address}`,
+        quickChips: [
+          { label: `📝 Inquire for ${campus.shortName} NEET Batch`, action: 'open_lead_form', payload: { reason: `${campus.id}_neet_inquiry` } },
+          { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+          { label: '🩺 Explore Course 3: NEET UG', action: 'select_course', payload: { courseId: 'neet_ug' } },
+          { label: '🏫 All Campuses Offering NEET', action: 'filter_campuses', payload: { programKey: 'neet' } },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
+
+    // Handle JEE Advanced (Offered at 5 campuses: North, South, E-City, Mysuru, NMKRV)
+    if (programType === 'jee_adv') {
+      const hasJeeAdv = ['rv_north', 'rv_south', 'rv_mysuru', 'rv_ecity', 'nmkrv'].includes(campusId);
+      if (hasJeeAdv) {
+        return {
+          type: 'bot',
+          text: `🚀 **Yes! JEE Advanced (IIT Track) is offered at ${campus.name}.**\n\n` +
+            `At **${campus.name}**, we offer **Course 1: JEE Advanced (Main + KCET Decoded) + PU Board**.\n\n` +
+            `• **Objective:** Designed for ambitious students aiming for top 1,000 all-India ranks in JEE Advanced to secure seats in premier IITs.\n` +
+            `• **Streams:** Science (PCMB or PCMC).\n` +
+            `• **Zero-Clash Timetable:** PU board syllabus + advanced multi-concept problem solving conducted concurrently under one timetable.\n\n` +
+            `📍 **Location:** ${campus.address}`,
+          quickChips: [
+            { label: `📝 Apply for ${campus.shortName} JEE Adv`, action: 'open_lead_form', payload: { reason: `${campus.id}_jeeadv_inquiry` } },
+            { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+            { label: '🚀 View Course 1: JEE Advanced', action: 'select_course', payload: { courseId: 'jee_adv' } },
+            { label: '🏫 5 Campuses with JEE Adv', action: 'filter_campuses', payload: { programKey: 'jee_adv' } }
+          ]
+        };
+      } else {
+        return {
+          type: 'bot',
+          text: `ℹ️ **At ${campus.name}, we offer Course 2: JEE (Main + KCET Decoded) + PU Board**, which thoroughly prepares students for JEE Main, top NITs, IIITs, and KCET ranks for RVCE.\n\n` +
+            `If you are specifically seeking **Course 1: JEE Advanced (IIT focus)**, it is offered at these 5 RV campuses:\n` +
+            `• **RV PU College North, Bengaluru**\n` +
+            `• **RV PU College South, Bengaluru**\n` +
+            `• **RV PU College, Electronic City**\n` +
+            `• **RV PU College, Mysuru**\n` +
+            `• **NMKRV PU College, Bengaluru**`,
+          quickChips: [
+            { label: `🚀 View Course 2 at ${campus.shortName}`, action: 'select_campus', payload: { campusId: campus.id } },
+            { label: '🏫 View 5 JEE Advanced Campuses', action: 'filter_campuses', payload: { programKey: 'jee_adv' } },
+            { label: '📝 Speak to Academic Counselor', action: 'open_lead_form' }
+          ]
+        };
+      }
+    }
+
+    // Handle JEE Main / Engineering (Offered at ALL 8 Campuses)
+    if (programType === 'jee_main') {
+      return {
+        type: 'bot',
+        text: `🚀 **Yes, absolutely! JEE Main & Engineering entrance coaching is offered at ${campus.name}.**\n\n` +
+          `At **${campus.name}**, we provide **Course 2: JEE (Main + KCET Decoded) + PU Board** (and Course 1 JEE Advanced if applicable).\n\n` +
+          `• **Streams:** Science (PCMB, PCMC)\n` +
+          `• **Target:** Dual mastery of scoring 98%+ in Karnataka State PU Board and securing 99+ percentile in JEE Main for premier NITs, IIITs, and top KCET ranks for RVCE.\n\n` +
+          `📍 **Location:** ${campus.address}`,
+        quickChips: [
+          { label: `📝 Inquire for ${campus.shortName} JEE Batch`, action: 'open_lead_form', payload: { reason: `${campus.id}_jee_inquiry` } },
+          { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+          { label: '🚀 Explore Course 2: JEE Main', action: 'select_course', payload: { courseId: 'jee_main' } }
+        ]
+      };
+    }
+
+    // Handle KCET / CET (Offered at ALL 8 Campuses)
+    if (programType === 'kcet') {
+      return {
+        type: 'bot',
+        text: `🚀 **Yes, definitely! KCET Coaching is offered at ${campus.name}.**\n\n` +
+          `KCET preparation is seamlessly integrated into both **Course 1 & Course 2 (Engineering)** and **Course 3 (Medical & Allied Sciences)** at **${campus.name}**.\n\n` +
+          `• **Target:** Securing single-digit state ranks to enter **RV College of Engineering (RVCE)** under subsidized government quota fees.\n` +
+          `• **Speed Training:** Mastering solving 60 MCQs in 80 minutes without negative marking.\n\n` +
+          `📍 **Location:** ${campus.address}`,
+        quickChips: [
+          { label: `📝 Apply for ${campus.shortName} KCET Batch`, action: 'open_lead_form', payload: { reason: `${campus.id}_kcet_inquiry` } },
+          { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+          { label: '🏎️ ReVise CET Crash Course', action: 'select_course', payload: { courseId: 'revise_cet' } }
+        ]
+      };
+    }
+
+    // Handle Commerce / CA / CLAT (Offered at 7 Campuses - Not at VVN)
+    if (programType === 'commerce') {
+      const hasCommerce = ['rv_north', 'rv_south', 'ssmrv', 'nmkrv', 'rv_harohalli', 'rv_ecity', 'rv_mysuru'].includes(campusId);
+      if (hasCommerce) {
+        return {
+          type: 'bot',
+          text: `📊 **Yes! Commerce Decoded Programme (Commerce + CA Foundation + CLAT) is offered at ${campus.name}.**\n\n` +
+            `At **${campus.name}**, we offer **Course 4: Commerce Decoded Programme** with:\n` +
+            `• **Combinations:** ABMS (Accountancy, Business Studies, Basic Maths, Statistics) & ABME (with Economics).\n` +
+            `• **Integrated Coaching:** CA Foundation + CLAT (Law) + IPMAT + CUET led by practicing Chartered Accountants and advocates.\n\n` +
+            `📍 **Location:** ${campus.address}`,
+          quickChips: [
+            { label: `📝 Apply for ${campus.shortName} Commerce`, action: 'open_lead_form', payload: { reason: `${campus.id}_commerce_inquiry` } },
+            { label: `🏛️ View ${campus.shortName} Details`, action: 'select_campus', payload: { campusId: campus.id } },
+            { label: '📊 View Course 4: Commerce Decoded', action: 'select_course', payload: { courseId: 'commerce' } }
+          ]
+        };
+      } else {
+        return {
+          type: 'bot',
+          text: `ℹ️ **No, Commerce is not offered at ${campus.name}.**\n\n` +
+            `**${campus.name}** exclusively offers **Science streams (PCMB & PCMC)** with JEE Main & NEET/KCET preparation.\n\n` +
+            `However, **Course 4: Commerce Decoded (CA Foundation + CLAT)** is offered at **7 other RV campuses**:\n` +
+            `• **SSMRV PU College, Bengaluru (Jayanagar 4th T Block)**\n` +
+            `• **NMKRV PU College for Women, Bengaluru (Jayanagar 3rd Block)**\n` +
+            `• **RV PU College South, Bengaluru**\n` +
+            `• **RV PU College North, Bengaluru**\n` +
+            `• **RV PU College, Electronic City**\n` +
+            `• **RV PU College, Harohalli** (Residential)\n` +
+            `• **RV PU College, Mysuru**`,
+          quickChips: [
+            { label: '🏛️ SSMRV Commerce Campus', action: 'select_campus', payload: { campusId: 'ssmrv' } },
+            { label: '👩 NMKRV Women Campus', action: 'select_campus', payload: { campusId: 'nmkrv' } },
+            { label: '🏫 View All 7 Commerce Campuses', action: 'filter_campuses', payload: { programKey: 'commerce' } }
+          ]
+        };
+      }
+    }
+
+    return null;
+  }
+
+  // --- Natural Language Query Handler (Free Text & Short Abbreviations) ---
   async handleUserQuery(queryText) {
     if (!queryText || typeof queryText !== 'string') return this.getWelcomePayload();
-    const q = queryText.toLowerCase().trim();
+    const raw = queryText.trim();
+    const q = raw.toLowerCase().replace(/[?!.,;:]/g, ' ').replace(/\s+/g, ' ').trim();
     this.logTelemetry('user_message', { query: queryText });
+
+    // 0. Warm Human Greetings
+    const greetings = ['hi', 'hello', 'hey', 'namaste', 'namaskara', 'good morning', 'good afternoon', 'good evening', 'hey there', 'greetings'];
+    if (greetings.includes(q) || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('hey ')) {
+      return {
+        type: 'bot',
+        text: `👋 **Hello and a warm welcome to RV Learning Hub!**\n\nI'm your senior academic admissions guide. Whether you are exploring **11th/PU-I admissions**, preparing for **KCET & RVCE**, **JEE (Main/Adv)**, **NEET UG**, **Commerce (CA/CLAT)**, or inquiring about **RACE entrance scholarships**, I'm delighted to assist you!\n\nHow can I help you today? You can type any question or pick a quick option below:`,
+        quickChips: [
+          { label: '🎯 RACE Entrance Exam', action: 'ask_race' },
+          { label: '🚀 KCET Coaching & RVCE', action: 'ask_kcet' },
+          { label: '🏫 Explore 8 Campuses', action: 'explore_campuses' },
+          { label: '📚 View All Courses', action: 'explore_courses' },
+          { label: '💰 Fees & Scholarships', action: 'ask_fees' },
+          { label: '📞 Speak with Counselor', action: 'open_lead_form' }
+        ]
+      };
+    }
+
+    // 0.1 Gratitude & Politeness
+    if (q === 'thanks' || q === 'thank you' || q.includes('thank you') || q.includes('thanks a lot') || q === 'ok' || q === 'okay' || q === 'cool' || q === 'great' || q === 'super' || q === 'awesome') {
+      return {
+        type: 'bot',
+        text: `You're very welcome! 😊 It's our absolute pleasure to assist you. If you or your parents have any more questions about admissions, cutoffs, or campus visits, please feel free to ask anytime.\n\nYou can also speak directly with our senior counseling desk at **080-2663 2000**.`,
+        quickChips: [
+          { label: '📝 Book Campus Visit', action: 'open_lead_form', payload: { reason: 'campus_visit' } },
+          { label: '🏛️ Explore Campuses', action: 'explore_campuses' },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
+
+    // 0.2 Specific Program-at-Campus Inquiries (e.g. "whether neet is in rvpu south", "is neet in south", "is commerce in vvn")
+    const programAtCampusMatch = this.checkProgramAtCampus(q);
+    if (programAtCampusMatch) {
+      return programAtCampusMatch;
+    }
+
+    // 1. RACE Exam / Scholarship / Entrance Test Inquiries & Abbreviations
+    const isRaceQuery = q === 'race' || 
+      q === 'race exam' || 
+      q === 'race test' || 
+      q.includes('race') || 
+      q === 'rv-tsa' || 
+      q === 'tsa' || 
+      q === 'rvtsa' ||
+      q.includes('entrance test') || 
+      q.includes('scholarship test') || 
+      q.includes('admission test') || 
+      q.includes('aptitude test') || 
+      q.includes('entrance exam') ||
+      q.includes('scholarship exam');
+
+    if (isRaceQuery) {
+      return this.handleRaceInquiry();
+    }
+
+    // 2. KCET Inquiries & Abbreviations
+    const isKcetQuery = q === 'kcet' || 
+      q === 'cet' || 
+      q === 'kea' || 
+      q === 'k-cet' || 
+      q.includes('kcet') || 
+      q === 'revise cet' || 
+      q.includes('revise cet') || 
+      q.includes('cet coaching') || 
+      q.includes('cet exam') || 
+      q.includes('cet marks') || 
+      q.includes('cet rank') ||
+      q.includes('cet test');
+
+    if (isKcetQuery) {
+      return this.handleKcetInquiry();
+    }
+
+    // 2.1 RVCE / Engineering College Inquiries
+    if (q === 'rvce' || q.includes('rvce') || q.includes('rv college of engineering') || q.includes('bmsce') || q.includes('msrit')) {
+      return {
+        type: 'bot',
+        text: `🏛️ **Pathways to RV College of Engineering (RVCE) via RVLH**\n\nRV College of Engineering (RVCE) is Karnataka's #1 ranked engineering college under RSST. The most cost-effective and prestigious way to secure a seat at RVCE is by achieving a **top 100 KCET Rank** for government quota subsidized fees (~₹1 Lakh/year vs higher private/mgmt fees).\n\n### 🚀 How RVLH Prepares You for RVCE:\n• **Course 1: JEE Advanced (Main + KCET Decoded):** Top-tier IIT/NIT & RVCE coaching at North, South, E-City, Mysuru, and NMKRV.\n• **Course 2: JEE Main + KCET Decoded:** High-yield KCET drills across **ALL 8 Campuses**.\n• **ReVise CET Crash Course:** 30–60 day intensive revision right before KCET.\n• **Zero-Clash Timetable:** Both board theory (derivations) and entrance speed drills (60 MCQs in 80 mins) taught in college hours.\n\nWould you like guidance on which RVLH campus is best located for you?`,
+        quickChips: [
+          { label: '🚀 KCET Coaching Details', action: 'ask_kcet' },
+          { label: '🏛️ Campuses with KCET & JEE', action: 'filter_campuses', payload: { programKey: 'kcet' } },
+          { label: '📝 Request RVCE Cutoff Guide', action: 'open_lead_form', payload: { reason: 'rvce_guidance' } },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
+
+    // 2.2 CLAT & Law Inquiries
+    if (q === 'clat' || q === 'law' || q.includes('clat') || q.includes('law entrance') || q.includes('nlu') || q.includes('nlsiu')) {
+      return {
+        type: 'bot',
+        text: `⚖️ **CLAT & Integrated Law Coaching at RVLH**\n\nFor students aspiring to enter premier National Law Universities (like NLSIU Bengaluru, NALSAR, and WBNUJS), RVLH offers **Course 4: Commerce Decoded Programme (Commerce + CA + CLAT + PU Board)**.\n\n### 🌟 Highlights of the Integrated CLAT Track:\n• **Dual Professional Advantage:** Prepares you simultaneously for **CLAT (Law)** and **CA Foundation** along with Karnataka State PU Board Commerce.\n• **Curriculum Coverage:** Legal reasoning, logical deduction, current affairs/GK, reading comprehension, and elementary quantitative techniques.\n• **Master Mentors:** Classes guided by senior legal minds, advocates, and practicing CAs.\n• **Offered at 7 Campuses:** RV North, RV South, SSMRV (Jayanagar), NMKRV (Jayanagar), RV Electronic City, RV PU Harohalli, and RV PU Mysuru. *(Note: Not offered at VVN)*\n\nWould you like to explore our Commerce & Law batches?`,
+        quickChips: [
+          { label: '📊 View Course 4: Commerce & CLAT', action: 'select_course', payload: { courseId: 'commerce' } },
+          { label: '🏫 7 Campuses with Commerce & CLAT', action: 'filter_campuses', payload: { programKey: 'commerce' } },
+          { label: '📝 Speak to Law & Commerce Counselor', action: 'open_lead_form', payload: { reason: 'clat_inquiry' } },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
+
+    // 2.3 Science Streams & Abbreviations (PCMB / PCMC)
+    if (q === 'pcmb' || q === 'pcmc' || q === 'science' || q.includes('pcmb') || q.includes('pcmc') || q.includes('science stream')) {
+      return {
+        type: 'bot',
+        text: `🔬 **Science Streams at RV Learning Hub (PCMB & PCMC)**\n\nAll 8 RVLH PU Campuses offer Karnataka State Pre-University Science with integrated national entrance coaching:\n\n• **PCMB (Physics, Chemistry, Maths, Biology):** Ideal for students keeping options open for both **Medical (NEET UG)** and **Engineering (KCET / JEE)**, or agriculture/veterinary/biotechnology.\n• **PCMC (Physics, Chemistry, Maths, Computer Science):** Ideal for pure engineering aspirants targeting **IITs, NITs, IIITs, and RVCE**.\n\n### 📘 Integrated Science Courses:\n1. **Course 1: JEE Advanced (Main + KCET Decoded)** (North, South, E-City, Mysuru, NMKRV)\n2. **Course 2: JEE (Main + KCET Decoded)** (All 8 Campuses)\n3. **Course 3: NEET UG + KCET + PU Board** (All 8 Campuses)\n4. **ReVise CET Crash Course** (All 8 Campuses)\n\nWhich combination (PCMB or PCMC) are you leaning toward?`,
+        quickChips: [
+          { label: '🚀 Course 1: JEE Advanced', action: 'select_course', payload: { courseId: 'jee_adv' } },
+          { label: '🚀 Course 2: JEE Main + KCET', action: 'select_course', payload: { courseId: 'jee_main' } },
+          { label: '🩺 Course 3: NEET UG + KCET', action: 'select_course', payload: { courseId: 'neet_ug' } },
+          { label: '🏛️ Explore 8 Campuses', action: 'explore_campuses' }
+        ]
+      };
+    }
+
+    // 2.4 Commerce Streams & Abbreviations (EBAC / MEBA / PEAC / CA)
+    if (q === 'ebac' || q === 'meba' || q === 'peac' || q === 'ca' || q === 'cpt' || q === 'cma' || q === 'cs' || q.includes('ca foundation') || q.includes('chartered')) {
+      return {
+        type: 'bot',
+        text: `📊 **Commerce & Professional Finance Streams at RVLH**\n\nRVLH offers **Course 4: Commerce Decoded Programme (Commerce + CA + CLAT + PU Board)** across **7 constituent campuses**:\n• **Combinations Offered:** EBAC (Economics, Business Studies, Accountancy, Computer Science) and MEBA (Basic Maths, Economics, Business Studies, Accountancy).\n• **Professional Coaching:** Concurrent preparation for **CA Foundation (ICAI)**, **CMA Foundation**, **CS (CSEET)**, and **CLAT (Law)**.\n• **CUET Training:** Built-in guidance for admissions into SRCC, St. Xavier's, Christ University, and Hindu College.\n• **Available Campuses:** RV North, RV South, SSMRV, NMKRV, RV Electronic City, RV Harohalli, and RV Mysuru. *(Note: Not at VVN)*\n\nWould you like to speak to our commerce academic head?`,
+        quickChips: [
+          { label: '📊 Explore Commerce Decoded', action: 'select_course', payload: { courseId: 'commerce' } },
+          { label: '🏫 7 Campuses with Commerce', action: 'filter_campuses', payload: { programKey: 'commerce' } },
+          { label: '📝 Request CA Foundation Brochure', action: 'open_lead_form', payload: { reason: 'ca_commerce_inquiry' } },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
+
+    // 2.5 PU / PUC / 11th / 10th Transition Inquiries
+    if (q === 'pu' || q === 'puc' || q === 'puc 1' || q === 'puc 2' || q === 'pu-i' || q === 'pu-ii' || q === '11th' || q === '12th' || q === '10th' || q === 'sslc' || q === 'cbse' || q === 'icse' || q === 'admission' || q === 'admissions' || q === 'apply' || q === 'register' || q === 'seat' || q === 'seats' || q === 'cutoff') {
+      return {
+        type: 'bot',
+        text: `🎓 **Pre-University Admissions 2026-27 at RV Learning Hub**\n\nAdmissions for 11th Grade / PU-I are now open across all **8 RV PU Colleges** under RSST for students completing Class 10 (SSLC, CBSE, or ICSE):\n\n### 🌟 The 4 Synchronized Decoded Courses:\n• 📘 **Course 1: JEE Advanced (Main + KCET Decoded) + PU Board** (North, South, E-City, Mysuru, NMKRV)\n• 📘 **Course 2: JEE (Main + KCET Decoded) + PU Board** (All 8 Campuses)\n• 📘 **Course 3: NEET UG + KCET + PU Board Course** (All 8 Campuses)\n• 📘 **Course 4: Commerce Decoded Programme (Commerce + CA + CLAT + PU Board)** (7 Campuses - North, South, SSMRV, NMKRV, Harohalli, E-City, Mysuru)\n\n### 📝 4 Easy Steps to Apply:\n1. Take the **RACE Entrance & Scholarship Assessment** (Online or In-Campus).\n2. Unlock up to **100% Tuition Fee Waiver**.\n3. Attend campus counseling with parents to finalize batch & stream.\n4. Complete document verification & seat confirmation.`,
+        quickChips: [
+          { label: '🎯 Register for RACE Online', action: 'ask_race' },
+          { label: '🚀 KCET Coaching & RVCE', action: 'ask_kcet' },
+          { label: '🏫 View All 8 Campuses', action: 'explore_campuses' },
+          { label: '💰 Check Fees & Scholarships', action: 'ask_fees' },
+          { label: '📝 Apply for 2026-27 Admissions', action: 'open_lead_form', payload: { reason: 'pu_admission_apply' } }
+        ]
+      };
+    }
+
+    // 2.6 Bus & Transit Inquiries
+    if (q === 'bus' || q === 'transport' || q === 'van' || q === 'route' || q.includes('bus') || q.includes('transport') || q.includes('commute') || q.includes('metro')) {
+      return {
+        type: 'bot',
+        text: `🚌 **College Bus Transit & Metro Connectivity**\n\nRVLH ensures stress-free daily travel for students across Bengaluru and Mysuru:\n\n• **SSMRV (Jayanagar):** Extensive bus routes covering South, Central & West Bangalore (Banashankari, JP Nagar, BTM, Basavanagudi, Vijayanagar).\n• **NMKRV (Jayanagar):** Right next to **South End Circle Metro Station (Green Line)** + dedicated college buses.\n• **RV North (Yelahanka/Hebbal):** Transit routes covering Yelahanka, Sahakarnagar, Hebbal, Manyata tech corridor, and Vidyaranyapura.\n• **RV South (Kanakapura Rd):** Direct transit along Kanakapura Rd, JP Nagar, and Bannerghatta Rd.\n• **RV Electronic City:** Buses across Hosur Rd, E-City Phase 1 & 2, Bommasandra, and HSR Layout.\n• **Harohalli Residential:** Weekend transit shuttle to Bengaluru city centers for residential students.\n• **VVN PU (VV Puram):** 2-minute walk from **National College Metro Station**.\n• **RV Mysuru:** Buses covering Kuvempunagar, Saraswathipuram, Gokulam, and Vijayanagar.\n\nWhich area do you need transit from?`,
+        quickChips: [
+          { label: '📍 Find Nearest Campus', action: 'locate_nearest' },
+          { label: '🏫 Explore Campuses', action: 'explore_campuses' },
+          { label: '📞 Ask Transport Desk', action: 'open_lead_form', payload: { reason: 'transport_inquiry' } },
+          { label: '🔙 Main Menu', action: 'reset_context' }
+        ]
+      };
+    }
 
     // 0. Comprehensive Overview / Explain Everything
     if (q.includes('explain everything') || q.includes('all institutes') || q.includes('overview') || q.includes('tell me about rvlh') || q.includes('what is rvlh')) {
@@ -840,12 +1374,12 @@ class RVLHEngine {
       return this.handleSiteMapInquiry();
     }
 
-    // 0.1 Events & Academic Calendar Inquiry (tells a bit about events + page link)
+    // 0.1 Events & Academic Calendar Inquiry
     if (q.includes('event') || q.includes('seminar') || q.includes('webinar') || q.includes('open house') || q.includes('workshop') || q.includes('calendar') || q.includes('orientation') || q.includes('conclave') || q.includes('upcoming') || q.includes('events page')) {
       return this.handleEventsInquiry();
     }
 
-    // 0.2 Specific Website Page Requests (shows summary brief + direct page link)
+    // 0.2 Specific Website Page Requests
     if (q.includes('campus page') || q.includes('campuses page') || q.includes('campuses link') || q.includes('colleges page') || q.includes('campus directory')) {
       return this.handleCampusesPageInquiry();
     }
@@ -895,7 +1429,7 @@ class RVLHEngine {
     if (q.includes('mysore') || q.includes('mysuru')) return this.selectCampus('rv_mysuru');
     if (q.includes('vvn') || q.includes('vv puram')) return this.selectCampus('vvn');
 
-    // 2. Program-Filtered Campus Search (When user asks which institutes have JEE / Commerce / NEET)
+    // 2. Program-Filtered Campus Search
     const isJeeFilter = q === 'jee' || 
       q === 'jee main' || 
       q === 'only jee' || 
@@ -912,7 +1446,7 @@ class RVLHEngine {
       if (q.includes('jee adv') || q.includes('iit') || q.includes('advanced')) {
         return this.filterCampusesByProgram('jee_adv');
       }
-      return this.filterCampusesByProgram('jee');
+      return this.filterCampusesByProgram('jee_main');
     }
 
     const isCommerceFilter = q === 'commerce' || 
@@ -923,7 +1457,7 @@ class RVLHEngine {
         q.includes('college') || q.includes('campus') || q.includes('institute') || 
         q.includes('which') || q.includes('where') || q.includes('only') || 
         q.includes('list') || q.includes('offer') || q.includes('have') || q.includes('has')
-      )) || q.includes('ca foundation');
+      ));
 
     if (isCommerceFilter) {
       return this.filterCampusesByProgram('commerce');
@@ -947,28 +1481,25 @@ class RVLHEngine {
     if (q.includes('medical') || q.includes('mbbs') || q.includes('doctor')) {
       return this.selectCourse('neet_ug');
     }
-    if (q.includes('engineering') || q.includes('nit')) {
+    if (q.includes('engineering') || q.includes('nit') || q.includes('iit')) {
       return this.selectCourse('jee_main');
-    }
-    if (q.includes('cma') || q.includes('cs ') || q.includes('cuet') || q.includes('accountancy')) {
-      return this.selectCourse('commerce');
     }
     if (q.includes('revise') || q.includes('crash') || q.includes('test series')) {
       return this.selectCourse('revise_cet');
     }
 
     // 3. Hostel & Accommodation
-    if (q.includes('hostel') || q.includes('stay') || q.includes('boarding') || q.includes('room') || q.includes('accommodation')) {
+    if (q.includes('hostel') || q.includes('stay') || q.includes('boarding') || q.includes('room') || q.includes('accommodation') || q.includes('food') || q.includes('mess')) {
       return this.handleHostelInquiry();
     }
 
     // 4. Fees & Costs
-    if (q.includes('fee') || q.includes('cost') || q.includes('price') || q.includes('scholarship') || q.includes('discount')) {
+    if (q.includes('fee') || q.includes('cost') || q.includes('price') || q.includes('scholarship') || q.includes('discount') || q.includes('waiver')) {
       return this.handleFeesInquiry();
     }
 
     // 5. Contact / Phone / Email
-    if (q === 'contact' || q === 'phone' || q === 'call' || q === 'email' || q === 'address' || q.includes('helpline')) {
+    if (q === 'contact' || q === 'phone' || q === 'call' || q === 'email' || q === 'address' || q.includes('helpline') || q.includes('phone number')) {
       return this.handleContactPageInquiry();
     }
 
