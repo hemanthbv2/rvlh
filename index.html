@@ -3,575 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RV Learning Hub | Top Coaching for JEE, NEET & Commerce</title>
+  <title>RV Learning Hub — Admissions & Academic AI Chatbot</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Common Navigation & Chatbot Stylesheets -->
-  <link rel="stylesheet" href="website-nav.css">
-  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.5">
+  <!-- RVLH Chatbot Stylesheet -->
+  <link rel="stylesheet" href="rvlh-chatbot.css?v=2.6">
 
   <style>
-    :root {
-      --primary: #1d4ed8;
-      --accent: #f59e0b;
-      --bg: #030712;
-      --surface: #0f172a;
-      --card: rgba(30, 41, 59, 0.5);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Hero Section */
-    .hero {
-      max-width: 1200px;
-      margin: 60px auto 40px auto;
-      padding: 0 24px;
-      text-align: center;
-    }
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      color: var(--accent);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    .hero h2 {
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      max-width: 720px;
-      margin: 0 auto 32px auto;
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* 8 Campuses Grid */
-    .campuses-section {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 24px;
-    }
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 28px;
-    }
-    .section-title h3 {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    .campus-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 18px;
-    }
-    .campus-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .campus-box:hover {
-      border-color: rgba(29, 78, 216, 0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    }
-    .campus-box-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
-    .campus-tag {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-    }
-    .campus-tag.residential {
-      background: rgba(245, 158, 11, 0.15);
-      color: var(--accent);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-    .campus-name {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: #fff;
-    }
-    .campus-loc {
-      font-size: 13px;
-      color: #60a5fa;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .campus-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .campus-chat-trigger {
+    html, body {
+      margin: 0;
+      padding: 0;
       width: 100%;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .campus-chat-trigger:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
-    /* Live Telemetry Inspector Drawer */
-    .telemetry-inspector {
-      max-width: 1200px;
-      margin: 60px auto 100px auto;
-      padding: 24px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-    .telemetry-inspector h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .telemetry-log-box {
-      background: #020617;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      padding: 14px;
-      height: 140px;
-      overflow-y: auto;
-      font-family: monospace;
-      font-size: 12px;
-      color: #38bdf8;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .hero h2 { font-size: 32px; }
-      .nav-links { display: none; }
+      height: 100%;
+      background: transparent !important;
+      background-color: transparent !important;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     }
   </style>
 </head>
-<body>
+<body data-nobg="true" data-auto-open="true">
 
-  <div class="ambient-bg"></div>
-
-  <!-- Shared Header -->
-  <header class="site-header">
-    <div class="site-nav-container">
-      <a href="index.html" class="site-logo-group">
-        <div class="site-logo-badge">RV</div>
-        <div class="site-logo-text">
-          <div class="site-logo-title">RV Learning Hub</div>
-          <p>RSST Educational Initiative</p>
-        </div>
-      </a>
-      <nav class="site-nav-links">
-        <a href="index.html" class="site-nav-link active">Home</a>
-        <a href="campuses.html" class="site-nav-link">8 Campuses</a>
-        <a href="courses.html" class="site-nav-link">Courses</a>
-        <a href="hostels.html" class="site-nav-link">Residential & Hostels</a>
-        <a href="admissions.html" class="site-nav-link">Scholarships & Fees</a>
-        <a href="faculty.html" class="site-nav-link">Faculty</a>
-        <a href="events.html" class="site-nav-link">Events</a>
-        <a href="contact.html" class="site-nav-link">Contact</a>
-        <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
-      </nav>
-      <button class="site-mobile-toggle" id="site-mobile-toggle" aria-label="Toggle Navigation">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="site-mobile-drawer" id="site-mobile-drawer">
-    <a href="index.html" class="site-nav-link active">Home</a>
-    <a href="campuses.html" class="site-nav-link">8 Campuses Directory</a>
-    <a href="courses.html" class="site-nav-link">Courses (JEE / NEET / Commerce)</a>
-    <a href="hostels.html" class="site-nav-link">Residential & Hostels (Harohalli)</a>
-    <a href="admissions.html" class="site-nav-link">Scholarships & Fees (RV-TSA)</a>
-    <a href="faculty.html" class="site-nav-link">Faculty & Leadership</a>
-    <a href="events.html" class="site-nav-link">Events & Calendar</a>
-    <a href="contact.html" class="site-nav-link">Admissions Contact & Counseling</a>
-    <a href="admissions.html#apply" class="site-nav-cta">Apply for Admissions</a>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-pill">
-      <span>✨ Admissions Open for Academic Year 2026-27</span>
-    </div>
-    <h2>Unlock Your Potential with<br/>RV Learning Hub Integrated Coaching</h2>
-    <p>
-      Experience Karnataka's most trusted coaching ecosystem across 8 premier PU college campuses. 
-      Master JEE Advanced, JEE Main, NEET UG, KCET, and Commerce (CA/CS/CUET) seamlessly integrated with PU Board studies.
-    </p>
-
-    <!-- AI Brain Quick Prompt Testers -->
-    <div style="margin-top: 24px; display:flex; flex-direction:column; align-items:center; gap:10px;">
-      <span style="font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.8px;">
-        🧠 Ask The RVLH AI Brain (Complex Queries)
-      </span>
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-width:850px;">
-        <button onclick="testBrainPrompt('My daughter got 88% in 10th CBSE and wants NEET with hostel. What are the best options and scholarships?')" style="background:rgba(30,41,59,0.8); border:1px solid rgba(245,158,11,0.4); color:#f8fafc; padding:8px 14px; border-radius:20px; font-size:12.5px; cursor:pointer; font-weight:600; transition:all 0.2s;">
-          ✨ "88% in 10th CBSE + NEET with hostel & scholarship?"
-        </button>
-        <button onclick="testBrainPrompt('Can I prepare for CA Foundation and Commerce PU at NMKRV Women College?')" style="background:rgba(30,41,59,0.8); border:1px solid var(--border); color:#f8fafc; padding:8px 14px; border-radius:20px; font-size:12.5px; cursor:pointer; font-weight:600; transition:all 0.2s;">
-          ✨ "CA Foundation + Commerce at NMKRV?"
-        </button>
-        <button onclick="testBrainPrompt('We stay in North Bangalore near Yelahanka. Which campus offers integrated JEE Advanced coaching?')" style="background:rgba(30,41,59,0.8); border:1px solid var(--border); color:#f8fafc; padding:8px 14px; border-radius:20px; font-size:12.5px; cursor:pointer; font-weight:600; transition:all 0.2s;">
-          ✨ "North Bangalore near Yelahanka for JEE Adv?"
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8 Campuses Grid -->
-  <section class="campuses-section" id="campuses">
-    <div class="section-header">
-      <div class="section-title">
-        <h3>Explore Our 8 PU College Campuses</h3>
-        <p>Choose your nearest campus or opt for our serene Kanakapura Road residential sanctuary.</p>
-      </div>
-    </div>
-
-    <div class="campus-grid">
-      <!-- 1. SSMRV -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag">Day Scholar</span>
-          </div>
-          <div class="campus-name">SSMRV PU College</div>
-          <div class="campus-loc">📍 Jayanagar, Bengaluru</div>
-          <div class="campus-desc">Premier co-ed campus with outstanding PU Board ranks and integrated JEE, NEET & Commerce coaching.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('ssmrv')">Chat About SSMRV</button>
-      </div>
-
-      <!-- 2. NMKRV -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag residential">Women's Hostel</span>
-          </div>
-          <div class="campus-name">NMKRV PU College for Women</div>
-          <div class="campus-loc">📍 Jayanagar, Bengaluru</div>
-          <div class="campus-desc">Dedicated women's institution with on-campus secure boarding, empowering girl students in STEM and Commerce.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('nmkrv')">Chat About NMKRV</button>
-      </div>
-
-      <!-- 3. RV PU North -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag">Day Scholar</span>
-          </div>
-          <div class="campus-name">RV PU College North</div>
-          <div class="campus-loc">📍 Yelahanka / Hebbal, Bengaluru</div>
-          <div class="campus-desc">State-of-the-art infrastructure bringing RV's educational benchmark to North Bengaluru students.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('rv_north')">Chat About North Campus</button>
-      </div>
-
-      <!-- 4. RV PU South -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag">Day Scholar</span>
-          </div>
-          <div class="campus-name">RV PU College South</div>
-          <div class="campus-loc">📍 Kanakapura Rd / JP Nagar</div>
-          <div class="campus-desc">Forward-looking science and commerce campus with intensive test series and doubt-clearing clinics.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('rv_south')">Chat About South Campus</button>
-      </div>
-
-      <!-- 5. RV PU E-City -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag">Tech Corridor</span>
-          </div>
-          <div class="campus-name">RV PU College, Electronic City</div>
-          <div class="campus-loc">📍 Electronic City Phase 1</div>
-          <div class="campus-desc">Located in Bengaluru's tech capital, designed for rigorous engineering entrance preparation for IITs & NITs.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('rv_ecity')">Chat About E-City Campus</button>
-      </div>
-
-      <!-- 6. RV PU Harohalli (Residential) -->
-      <div class="campus-box" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(30, 41, 59, 0.8);">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag residential">🌟 50-Acre Residential</span>
-          </div>
-          <div class="campus-name">RV PU College, Harohalli</div>
-          <div class="campus-loc">📍 Kanakapura Road, Karnataka</div>
-          <div class="campus-desc">Premier 50-acre green residential sanctuary. Distraction-free learning, 24/7 mentor hours & nutritious dining.</div>
-        </div>
-        <button class="campus-chat-trigger" style="background: var(--accent); color: #000; font-weight:800;" onclick="openChatWithCampus('rv_harohalli')">Inquire Harohalli Residential</button>
-      </div>
-
-      <!-- 7. RV PU Mysuru -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag">Heritage Campus</span>
-          </div>
-          <div class="campus-name">RV PU College, Mysuru</div>
-          <div class="campus-loc">📍 Mysuru City, Karnataka</div>
-          <div class="campus-desc">Brings RV benchmark coaching to Mysore with state rank holders in KCET and NEET.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('rv_mysuru')">Chat About Mysore</button>
-      </div>
-
-      <!-- 8. VVN PU College -->
-      <div class="campus-box">
-        <div>
-          <div class="campus-box-header">
-            <span class="campus-tag">Central Bangalore</span>
-          </div>
-          <div class="campus-name">VVN PU College</div>
-          <div class="campus-loc">📍 VV Puram, Bengaluru</div>
-          <div class="campus-desc">A historic collaboration between V.V.N. Trust and RV Educational Institutions under an official MoU.</div>
-        </div>
-        <button class="campus-chat-trigger" onclick="openChatWithCampus('vvn')">Chat About VVN</button>
-      </div>
-    </div>
-
-    <!-- View All Campuses Action -->
-    <div style="text-align: center; margin-top: 32px;">
-      <a href="campuses.html" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, #1d4ed8, #2563eb); color:#fff; padding:12px 28px; border-radius:30px; font-weight:700; text-decoration:none; font-size:14.5px; box-shadow:0 4px 15px rgba(37,99,235,0.4); transition:all 0.2s;">
-        <span>🏢 View Full 8 Campuses Directory, Bus Routes & Matrix</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- Portal Gateway Feature Grid -->
-  <section style="max-width: 1200px; margin: 50px auto 70px auto; padding: 0 24px;">
-    <div style="text-align: center; margin-bottom: 32px;">
-      <div style="display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;">
-        Everything You Need
-      </div>
-      <h3 style="font-size: 28px; font-weight: 800; color: #fff;">Explore The RVLH Advantage</h3>
-      <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 6px;">Discover synchronized academic coaching, world-class residential boarding, and scholarship avenues.</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-      <!-- Card 1: Courses -->
-      <a href="courses.html" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.25s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='none';">
-        <div>
-          <div style="font-size: 32px; margin-bottom: 14px;">🎯</div>
-          <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Academic Tracks</h4>
-          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">JEE Advanced, JEE Main, NEET UG, Commerce Decoded (CA/CS), and ReVise CET under our synchronized zero-clash model.</p>
-        </div>
-        <div style="margin-top: 18px; font-size: 13px; font-weight: 700; color: #60a5fa; display: flex; align-items: center; gap: 6px;">
-          <span>Explore 5 Courses</span> &rarr;
-        </div>
-      </a>
-
-      <!-- Card 2: Hostels -->
-      <a href="hostels.html" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.25s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.borderColor='rgba(245,158,11,0.5)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='none';">
-        <div>
-          <div style="font-size: 32px; margin-bottom: 14px;">🏡</div>
-          <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Residential & Hostels</h4>
-          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">50-Acre green sanctuary at Harohalli with air-cooled boarding, 4 nutritious meals, sports turf, and supervised evening study.</p>
-        </div>
-        <div style="margin-top: 18px; font-size: 13px; font-weight: 700; color: #fbbf24; display: flex; align-items: center; gap: 6px;">
-          <span>Explore Boarding</span> &rarr;
-        </div>
-      </a>
-
-      <!-- Card 3: Scholarships -->
-      <a href="admissions.html" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.25s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.borderColor='rgba(16,185,129,0.5)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='none';">
-        <div>
-          <div style="font-size: 32px; margin-bottom: 14px;">🎓</div>
-          <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Scholarships & Fees</h4>
-          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">RV-TSA Assessment rewards up to 100% tuition waivers for merit students. Transparent fee structure with flexible EMI plans.</p>
-        </div>
-        <div style="margin-top: 18px; font-size: 13px; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 6px;">
-          <span>View Slabs & Fees</span> &rarr;
-        </div>
-      </a>
-
-      <!-- Card 4: Contact & Counseling -->
-      <a href="contact.html" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.25s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.borderColor='rgba(168,85,247,0.5)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='none';">
-        <div>
-          <div style="font-size: 32px; margin-bottom: 14px;">📍</div>
-          <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Campus Help Desks</h4>
-          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">Central HQ at Bull Temple Road and dedicated counselor help desks at all 8 PU colleges. Book campus tours and visits.</p>
-        </div>
-        <div style="margin-top: 18px; font-size: 13px; font-weight: 700; color: #c084fc; display: flex; align-items: center; gap: 6px;">
-          <span>Contact Campuses</span> &rarr;
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Live Telemetry Inspector (For Developer / Admin Verification) -->
-  <section class="telemetry-inspector">
-    <h4>⚡ Simulated Dual-Write Telemetry Stream</h4>
-    <p style="font-size:13px; color:var(--text-muted); margin-bottom: 10px;">
-      Captures events in real-time as you interact with the bot. Simulates payload transmission to WordPress REST API and MongoDB Atlas.
-    </p>
-    <div class="telemetry-log-box" id="telemetry-logs">
-      [System] Telemetry initialized. Ready to record interactions...
-    </div>
-  </section>
-
-  <!-- Unified Footer -->
-  <footer class="site-footer">
-    <div class="site-footer-container">
-      <div class="site-footer-brand">
-        <div class="site-logo-group" style="margin-bottom: 12px;">
-          <div class="site-logo-badge">RV</div>
-          <div class="site-logo-text">
-            <div class="site-logo-title">RV Learning Hub</div>
-            <p>RSST Educational Initiative</p>
-          </div>
-        </div>
-        <p>
-          Rashtreeya Sikshana Samithi Trust (RSST) has pioneered world-class education since 1940. 
-          RV Learning Hub synchronizes premier coaching for JEE, NEET, and Commerce with Karnataka Pre-University board studies.
-        </p>
-        <div class="site-footer-trust">85+ Years of Academic Legacy &bull; 8 PU Campuses</div>
-      </div>
-      <div class="site-footer-col">
-        <h5>Explore Campuses</h5>
-        <ul>
-          <li><a href="campuses.html#ssmrv">SSMRV PU College (Jayanagar)</a></li>
-          <li><a href="campuses.html#nmkrv">NMKRV PU College for Women</a></li>
-          <li><a href="campuses.html#rv_north">RV PU College North (Yelahanka)</a></li>
-          <li><a href="campuses.html#rv_south">RV PU College South (Jayanagar)</a></li>
-          <li><a href="campuses.html#rv_ecity">RV PU College Electronic City</a></li>
-          <li><a href="campuses.html#rv_harohalli">Harohalli Residential Campus</a></li>
-          <li><a href="campuses.html#rv_mysuru">RV PU College Mysuru</a></li>
-          <li><a href="campuses.html#vvn">VVN PU College (VV Puram)</a></li>
-        </ul>
-      </div>
-      <div class="site-footer-col">
-        <h5>Academic Tracks</h5>
-        <ul>
-          <li><a href="courses.html#jee_adv">JEE Advanced Decoded</a></li>
-          <li><a href="courses.html#jee_main">JEE Main + KCET Decoded</a></li>
-          <li><a href="courses.html#neet_ug">NEET UG Medical Decoded</a></li>
-          <li><a href="courses.html#commerce">Commerce Decoded (CA/CS/CUET)</a></li>
-          <li><a href="courses.html#revise_cet">ReVise CET Crash Course</a></li>
-          <li><a href="admissions.html#scholarships">RV-TSA Scholarship Slabs</a></li>
-          <li><a href="hostels.html#schedule">Synchronized Timetables</a></li>
-        </ul>
-      </div>
-      <div class="site-footer-col">
-        <h5>Admissions & Help</h5>
-        <ul>
-          <li><a href="tel:08026632000">📞 Central Desk: 080-2663 2000</a></li>
-          <li><a href="https://wa.me/918317346585">💬 WhatsApp: +91 83173 46585</a></li>
-          <li><a href="mailto:admissions.rvlh@rvei.edu.in">✉️ admissions.rvlh@rvei.edu.in</a></li>
-          <li><a href="hostels.html">🏡 Residential Living & Hostels</a></li>
-          <li><a href="admissions.html">💰 Fees & Installments</a></li>
-          <li><a href="contact.html">📍 Campus Map & Addresses</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="site-footer-bottom">
-      <div>&copy; 2026 RV Learning Hub &bull; Rashtreeya Sikshana Samithi Trust (RSST). All Rights Reserved.</div>
-      <div>
-        <a href="index.html">Home</a> &bull;
-        <a href="campuses.html">Campuses</a> &bull;
-        <a href="courses.html">Courses</a> &bull;
-        <a href="hostels.html">Hostels</a> &bull;
-        <a href="admissions.html">Admissions</a> &bull;
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="website-nav.js"></script>
+  <!-- Core RVLH Chatbot Scripts -->
   <script>
-    // Configuration Mock for Local Testing
+    // Global flag for instant auto-open
+    window.AUTO_OPEN_CHATBOT = true;
+
+    // Configuration Mock for Local & Live Testing
     window.RVLH_CONFIG = {
       wpRestUrl: 'https://rvlearninghub.com/wp-json/rvlh-chatbot/v1',
       vercelUrl: 'https://chatbot-dashboard.vercel.app',
       apiKey: 'rvlh_demo_key_12345',
       instituteId: 'rvlh'
     };
-
-    // Override console.log for Telemetry Inspector
-    const logBox = document.getElementById('telemetry-logs');
-    const originalLog = console.log;
-    console.log = function(...args) {
-      originalLog.apply(console, args);
-      const str = args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ');
-      if (str.includes('[RVLH Telemetry]') || str.includes('[DB]') || str.includes('[RVLH Engine]')) {
-        const line = document.createElement('div');
-        line.textContent = `[${new Date().toLocaleTimeString()}] ${str}`;
-        logBox.appendChild(line);
-        logBox.scrollTop = logBox.scrollHeight;
-      }
-    };
   </script>
 
-  <script src="rvlh-knowledge-base.js?v=2.5"></script>
-  <script src="telemetry.js?v=2.5"></script>
-  <script src="rvlh-engine.js?v=2.5"></script>
-  <script src="rvlh-chatbot.js?v=2.5"></script>
+  <script src="rvlh-knowledge-base.js?v=2.6"></script>
+  <script src="telemetry.js?v=2.6"></script>
+  <script src="rvlh-engine.js?v=2.6"></script>
+  <script src="rvlh-chatbot.js?v=2.6"></script>
 
+  <script>
+    // Ensure instant auto-open of RVLH chatbot window
+    (function ensureAutoOpen() {
+      const openWindow = () => {
+        const win = document.getElementById('rvlh-chat-window');
+        const badge = document.getElementById('rvlh-fab-badge');
+        const fabIcon = document.getElementById('rvlh-fab-icon');
+        const inp = document.getElementById('rvlh-input-field');
+
+        if (win) {
+          document.body.classList.add('rvlh-chat-open');
+          win.classList.add('open');
+          if (badge) badge.style.display = 'none';
+          if (fabIcon) {
+            fabIcon.innerHTML = '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>';
+          }
+          if (inp) {
+            try { inp.focus(); } catch (e) {}
+          }
+          return true;
+        }
+        return false;
+      };
+
+      // Attempt immediately and with fallback interval
+      if (!openWindow()) {
+        const timer = setInterval(() => {
+          if (openWindow()) clearInterval(timer);
+        }, 30);
+        setTimeout(() => clearInterval(timer), 3000);
+      }
+    })();
+  </script>
 </body>
 </html>

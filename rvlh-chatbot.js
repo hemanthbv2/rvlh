@@ -55,7 +55,7 @@
         document.body.style.backgroundColor = 'transparent';
       }
       if (urlParams.get('open') === '1' || urlParams.get('chat') === '1' || urlParams.get('auto') === '1' || document.body.dataset.autoOpen === 'true' || window.AUTO_OPEN_CHATBOT) {
-        setTimeout(() => this.toggleChat(true), 250);
+        setTimeout(() => this.toggleChat(true), 50);
       }
     }
 
